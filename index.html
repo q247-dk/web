@@ -850,6 +850,11 @@ html{background:var(--color-bg);}
 #q247-reels.is-open .q247-reels-hint.show{animation:q247swipeY 1.5s ease-in-out infinite !important;}
 @keyframes q247swipeY{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(-9px);}}
 .q247-reel .dnesbadge{position:absolute;top:calc(60px + env(safe-area-inset-top));right:14px;z-index:4;}
+
+/* v50 — reels logo přesně jako v hlavičce + zavření „přibité" na vršek */
+.q247-reels-logo{top:calc(17px + env(safe-area-inset-top));left:28px;gap:11px;}
+.q247-reels-logo__mark{width:34px;height:34px;border-radius:9px;}
+.q247-reels-logo__word{font-size:23px;letter-spacing:-.03em;}
 </style>
 </head>
 <body>
@@ -1961,7 +1966,7 @@ document.querySelectorAll('[data-lang]').forEach(function(a){
   var isMobile = matchMedia('(max-width:768px)').matches;
   var key = 'q247-reels-' + new Date().toISOString().slice(0,10);
   var cards = reels.querySelectorAll('.q247-reel');
-  function close(){ reels.classList.remove('is-open'); document.body.style.overflow=''; window.scrollTo(0,0); if(document.documentElement)document.documentElement.scrollTop=0; if(document.body)document.body.scrollTop=0; setTimeout(function(){ window.scrollTo(0,0); },0); try{ localStorage.setItem(key,'1'); }catch(e){} }
+  function close(){ reels.classList.remove('is-open'); window.scrollTo(0,0); if(document.documentElement)document.documentElement.scrollTop=0; if(document.body)document.body.scrollTop=0; document.body.style.overflow='hidden'; var _t0=Date.now(); (function pin(){ window.scrollTo(0,0); if(document.documentElement)document.documentElement.scrollTop=0; if(document.body)document.body.scrollTop=0; if(Date.now()-_t0<500){ requestAnimationFrame(pin); } else { document.body.style.overflow=''; } })(); try{ localStorage.setItem(key,'1'); }catch(e){} }
   if (isMobile && cards.length) {  /* TESTING: zobrazit pokaždé */
     reels.classList.add('is-open'); document.body.style.overflow='hidden';
     var x = document.getElementById('q247-reels-close'); if (x) x.addEventListener('click', close);
