@@ -1,0 +1,9 @@
+# Pracovní / ne-webové soubory — NIKDY nepublikovat na web
+q247-denni-rutina.md
+_ke-smazani/
+q247-publish/
+wa-banner.png
+wa-post.md
+*.tmp
+.DS_Store
+Thumbs.db
