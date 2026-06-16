@@ -1,0 +1,20 @@
+{
+  "name": "q247.live — queer Czechia 24/7",
+  "short_name": "q247.live",
+  "description": "Queer Czechia 24/7 — events, clubs, cafés, films, podcasts and culture. Updated every day.",
+  "lang": "en",
+  "dir": "ltr",
+  "id": "/en",
+  "start_url": "./en.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#130a10",
+  "theme_color": "#130a10",
+  "categories": ["lifestyle", "social", "events"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
