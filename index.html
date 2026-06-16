@@ -858,7 +858,7 @@ html{background:var(--color-bg);}
   <button id="q247-reels-close" type="button" aria-label="✕ Zavřít">✕ Zavřít</button>
   <div id="q247-reels-hint" class="q247-reels-hint">Posuň nahoru ↑</div>
   <!-- DENNÍ RUTINA: jeden <section class="q247-reel"> na KAŽDOU dnešní akci z „Příštích 5 dní" -->
-  <section class="q247-reel" style="background-image:url('https://friendsclub.cz/uploads/events/2026/03/karaoke-night-1.webp')">
+  <section class="q247-reel" style="background:radial-gradient(130% 90% at 12% 0%,rgba(124,92,246,.55),transparent 58%),radial-gradient(120% 95% at 100% 100%,rgba(236,72,153,.5),transparent 55%),radial-gradient(90% 70% at 85% 8%,rgba(59,130,246,.4),transparent 60%),linear-gradient(155deg,#241048,#120a1e 72%)">
     <div class="q247-reel__scrim"></div>
     <span class="dnesbadge">DNES</span>
     <div class="q247-reel__content">
@@ -868,7 +868,7 @@ html{background:var(--color-bg);}
       <a class="q247-reel__link" href="https://friendsclub.cz/program/2026-06-16-karaoke-night" target="_blank" rel="noopener">Zobrazit detail →</a>
     </div>
   </section>
-  <section class="q247-reel" style="background-image:url('https://www.praguepride.com/wp-content/uploads/2025/03/Rodicovska-skupina-I.-II.-III-scaled.jpeg')">
+  <section class="q247-reel" style="background:radial-gradient(130% 90% at 12% 0%,rgba(124,92,246,.55),transparent 58%),radial-gradient(120% 95% at 100% 100%,rgba(236,72,153,.5),transparent 55%),radial-gradient(90% 70% at 85% 8%,rgba(59,130,246,.4),transparent 60%),linear-gradient(155deg,#241048,#120a1e 72%)">
     <div class="q247-reel__scrim"></div>
     <span class="dnesbadge">DNES</span>
     <div class="q247-reel__content">
@@ -1961,7 +1961,7 @@ document.querySelectorAll('[data-lang]').forEach(function(a){
   var isMobile = matchMedia('(max-width:768px)').matches;
   var key = 'q247-reels-' + new Date().toISOString().slice(0,10);
   var cards = reels.querySelectorAll('.q247-reel');
-  function close(){ reels.classList.remove('is-open'); document.body.style.overflow=''; try{ localStorage.setItem(key,'1'); }catch(e){} }
+  function close(){ reels.classList.remove('is-open'); document.body.style.overflow=''; window.scrollTo(0,0); if(document.documentElement)document.documentElement.scrollTop=0; if(document.body)document.body.scrollTop=0; setTimeout(function(){ window.scrollTo(0,0); },0); try{ localStorage.setItem(key,'1'); }catch(e){} }
   if (isMobile && cards.length) {  /* TESTING: zobrazit pokaždé */
     reels.classList.add('is-open'); document.body.style.overflow='hidden';
     var x = document.getElementById('q247-reels-close'); if (x) x.addEventListener('click', close);
@@ -1978,4 +1978,4 @@ document.querySelectorAll('[data-lang]').forEach(function(a){
 </script>
 </body>
 </html>
-                                                                                                   
+                                                                                                
