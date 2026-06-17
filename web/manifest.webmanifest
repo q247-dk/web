@@ -4,17 +4,17 @@
   "description": "Queer Česko 24/7 — akce, kluby, kavárny, filmy, podcasty a kultura. Aktualizováno každý den.",
   "lang": "cs",
   "dir": "ltr",
-  "id": "/landing",
-  "start_url": "/web/",
-  "scope": "/",
+  "id": "/",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#130a10",
   "theme_color": "#130a10",
   "categories": ["lifestyle", "social", "events"],
   "icons": [
-    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ]
 }

@@ -26,7 +26,7 @@
 (function () {
   var KEY = 'q247-lang';
   var PAGE_LANG = 'cs';
-  var URLS = { cs: 'index.html', en: 'en.html' };
+  var URLS = { cs: '/', en: '/en.html' };
   function stored(){ try { return localStorage.getItem(KEY); } catch(e){ return null; } }
   var want = stored();
   if (!want) {
@@ -34,17 +34,14 @@
     want = langs.indexOf('cs') !== -1 ? 'cs' : (langs.indexOf('en') !== -1 ? 'en' : 'cs');
   }
   if (want !== PAGE_LANG && URLS[want]) location.replace(URLS[want]);
-})();
-</script>
-<title>q247.live — queer Česko 24/7</title>
-<meta name="description" content="Queer Česko 24/7: co vidět, slyšet a číst, kam vyrazit a koho potkat. Akce, kluby, kavárny, filmy, podcasty a kultura — aktualizováno každý den.">
+})();</script>
+<title>q247.live — nainstaluj si appku</title>
+<meta name="description" content="q247.live — živý průvodce queer Českem 24/7. Přidej si appku na plochu telefonu: bez registrace, bez sledování, nic se nikam neodesílá.">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -76,674 +73,6 @@
   --shadow-brand:0 16px 34px -12px rgba(214,36,140,.5);
   --shadow-focus:0 0 0 3px var(--accent-soft);
 }
-*{box-sizing:border-box;}
-html{scroll-behavior:smooth;scroll-padding-top:90px;}
-body{margin:0;background:var(--color-bg);color:var(--text-body);font-family:var(--font-sans);-webkit-font-smoothing:antialiased;}
-a{color:inherit;}
-img{max-width:100%;display:block;}
-.wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
-.flagimg{width:26px;height:20px;border-radius:3px;flex:none;object-fit:cover;box-shadow:0 0 0 1px rgba(255,255,255,.12);}
-.flagimg.sm{width:18px;height:13px;border-radius:2px;}
-
-.qbtn{font-family:var(--font-sans);font-weight:600;border-radius:var(--radius-pill);border:2px solid transparent;cursor:pointer;
-  display:inline-flex;align-items:center;justify-content:center;gap:.55em;line-height:1;text-decoration:none;white-space:nowrap;
-  transition:transform .12s ease,background .15s ease,box-shadow .15s ease,color .15s ease,border-color .15s ease,filter .15s ease;}
-.qbtn:active{transform:translateY(1px) scale(.99);}
-.qbtn svg{width:1.15em;height:1.15em;display:block;}
-.qbtn--sm{font-size:.8125rem;padding:8px 15px;}
-.qbtn--lg{font-size:1.1875rem;padding:15px 28px;}
-.qbtn--primary{background:var(--brand);color:var(--text-on-brand);box-shadow:var(--shadow-brand);}
-.qbtn--primary:hover{background:var(--brand-strong);}
-.qbtn--secondary{background:var(--color-surface-2);color:var(--text-strong);border-color:var(--border-strong);}
-.qbtn--secondary:hover{border-color:var(--text-muted);}
-.qbtn--pride{background:var(--gradient-brand);color:#fff;box-shadow:var(--shadow-brand);}
-.qbtn--pride:hover{filter:brightness(1.08);}
-
-.qbadge{font-family:var(--font-sans);font-weight:600;display:inline-flex;align-items:center;gap:.4em;border-radius:var(--radius-pill);
-  line-height:1.25;border:1.5px solid transparent;white-space:nowrap;vertical-align:middle;font-size:.75rem;padding:3px 9px;}
-.qbadge--md{font-size:.8125rem;padding:5px 12px;}
-.t-neutral{background:var(--color-surface-2);color:var(--text-body);}
-.t-neutral-out{background:transparent;border-color:var(--border-strong);color:var(--text-body);}
-.t-brand{background:var(--brand-soft);color:var(--magenta-300);}
-.t-success{background:color-mix(in srgb,var(--status-success) 22%,#000);color:#5fe0a3;}
-.qbadge--pride{background:var(--gradient-brand);color:#fff;}
-
-/* TimePill tile (shared by 5-day + monthly) */
-.qtime{font-family:var(--font-mono);font-variant-numeric:tabular-nums;display:inline-flex;flex-direction:column;align-items:center;
-  justify-content:center;width:62px;min-height:62px;padding:7px 6px;border-radius:var(--radius-md);border:1.5px solid var(--border);
-  background:var(--color-surface-2);line-height:1;flex:none;}
-.qtime .wd{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);}
-.qtime .day{font-size:24px;font-weight:700;color:var(--text-strong);margin:3px 0 1px;}
-.qtime .mo{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);}
-.qtime .tm{font-size:11px;margin-top:5px;color:var(--magenta-300);font-weight:700;}
-.qtime.is-brand{background:color-mix(in srgb,var(--magenta-500) 20%,#000);border-color:var(--border-brand);}
-.qtime.is-brand .day{color:var(--magenta-300);}
-
-/* EventCard row */
-.qevent{display:flex;align-items:stretch;gap:16px;width:100%;text-align:left;background:var(--color-surface);border:1.5px solid var(--border);
-  border-radius:var(--radius-lg);padding:16px;text-decoration:none;color:inherit;transition:transform .14s,box-shadow .16s,border-color .16s;}
-.qevent:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:var(--border-brand);}
-.qevent__main{display:flex;flex-direction:column;gap:7px;min-width:0;flex:1;}
-.qevent__top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-.qevent__title{font-family:var(--font-display);font-weight:700;letter-spacing:-.015em;font-size:1.1875rem;line-height:1.12;color:var(--text-strong);margin:0;}
-.qevent__venue{display:flex;align-items:center;gap:6px;color:var(--text-muted);font-family:var(--font-mono);font-size:.8125rem;}
-.qevent__venue svg{width:14px;height:14px;}
-.qevent__tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:2px;}
-.qevent__side{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;gap:8px;flex:none;}
-.qevent__chev{color:var(--text-faint);display:flex;}
-.qevent:hover .qevent__chev{color:var(--brand-strong);}
-.qevent__chev svg{width:20px;height:20px;}
-
-.qav{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:none;border-radius:50%;
-  background:color-mix(in srgb,var(--magenta-500) 26%,#000);color:var(--magenta-200);font-family:var(--font-display);font-weight:700;overflow:hidden;line-height:1;}
-.qav--sm{width:32px;height:32px;font-size:13px;}
-
-/* Header */
-.head{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--color-bg) 84%,transparent);backdrop-filter:blur(14px);border-bottom:1.5px solid var(--border);}
-.head__bar{display:flex;align-items:center;gap:16px;height:68px;}
-.head__logo{display:flex;align-items:center;gap:11px;flex:none;text-decoration:none;}
-.head__logo .mark{width:34px;height:34px;border-radius:9px;overflow:hidden;display:block;flex:none;}
-.head__logo .mark svg{width:100%;height:100%;display:block;}
-.head__word{font-family:var(--font-display);font-weight:800;font-size:23px;letter-spacing:-.03em;color:var(--text-strong);}
-.head__word .dot{color:var(--brand-strong);}
-.head__nav{display:flex;gap:1px;margin-left:6px;}
-.head__link{font-family:var(--font-sans);font-weight:600;font-size:14.5px;color:var(--text-body);padding:8px 10px;border-radius:var(--radius-pill);
-  border:0;background:transparent;transition:color .14s,background .14s;text-decoration:none;}
-.head__link:hover{background:var(--brand-tint);color:var(--text-brand);}
-.head__spacer{flex:1;}
-
-/* Section header */
-.sec{padding:46px 0 8px;}
-.sechead{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin:0 0 24px;}
-.eyebrow{font-family:var(--font-mono);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text-brand);
-  display:flex;align-items:center;gap:11px;margin:0 0 12px;}
-.eyebrow::before{content:"";width:30px;height:3px;border-radius:3px;background:var(--gradient-pride);}
-.sectitle{font-family:var(--font-display);font-weight:800;letter-spacing:-.025em;line-height:1.02;font-size:clamp(28px,4vw,42px);
-  color:var(--text-strong);margin:0;max-width:24ch;text-wrap:balance;}
-.secsub{font-size:16px;color:var(--text-muted);margin:8px 0 0;max-width:60ch;line-height:1.5;}
-.secaction{font-family:var(--font-sans);font-weight:600;font-size:15px;color:var(--text-link);display:inline-flex;align-items:center;gap:6px;
-  white-space:nowrap;flex:none;text-decoration:none;}
-.secaction svg{width:16px;height:16px;}
-
-/* Hero */
-.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:50px 0 56px;}
-.hero__eyebrow{font-family:var(--font-mono);font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text-brand);
-  display:flex;align-items:center;gap:11px;margin:0 0 22px;}
-.hero__eyebrow::before{content:"";width:34px;height:3px;border-radius:3px;background:var(--gradient-pride);}
-.hero__title{font-family:var(--font-display);font-weight:800;letter-spacing:-.035em;line-height:.98;font-size:clamp(40px,6vw,68px);
-  color:var(--text-strong);margin:0 0 22px;text-wrap:balance;}
-.hero__title em{font-style:normal;color:var(--brand-strong);}
-.hero__lead{font-size:19px;line-height:1.55;color:var(--text-body);margin:0 0 28px;max-width:44ch;}
-.hero__cta{display:flex;gap:13px;flex-wrap:wrap;align-items:center;}
-.hero__updated{font-family:var(--font-mono);font-size:12.5px;color:var(--text-faint);margin:24px 0 0;display:flex;align-items:center;gap:8px;}
-.hero__updated .dotlive{width:8px;height:8px;border-radius:50%;background:var(--status-success);box-shadow:0 0 0 4px color-mix(in srgb,var(--status-success) 22%,transparent);}
-
-/* Featured */
-.feat{background:var(--color-surface);border:1.5px solid var(--border);border-radius:var(--radius-2xl);overflow:hidden;box-shadow:var(--shadow-lg);}
-.feat__photo{height:262px;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--magenta-700),var(--violet-600));display:flex;align-items:center;justify-content:center;}
-.feat__photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;}
-.feat__photo svg{width:46px;height:46px;color:var(--magenta-200);opacity:.8;position:relative;z-index:1;}
-.feat__body{padding:24px 26px 26px;}
-.feat__row{display:flex;align-items:center;gap:9px;margin-bottom:13px;flex-wrap:wrap;}
-.feat__lead{font-size:15px;color:var(--text-muted);margin:0 0 12px;line-height:1.5;}
-.feat__title{font-family:var(--font-display);font-weight:800;font-size:27px;letter-spacing:-.02em;line-height:1.06;color:var(--text-strong);margin:0 0 14px;}
-.feat__meta{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:18px;}
-.feat__metaItem{display:flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:13px;color:var(--text-muted);}
-.feat__metaItem svg{width:15px;height:15px;color:var(--brand-strong);}
-.feat__foot{display:flex;align-items:center;justify-content:space-between;gap:14px;border-top:1px solid var(--divider);padding-top:18px;}
-.feat__hosts{display:flex;align-items:center;}
-.feat__hosts .qav{margin-left:-8px;border:2px solid var(--color-surface);}
-.feat__hosts .qav:first-child{margin-left:0;}
-.feat__hostlabel{font-size:13px;color:var(--text-muted);margin-left:10px;}
-
-
-.monthgroup{display:flex;flex-direction:column;gap:12px;margin-bottom:10px;}
-
-/* Regular events */
-.reggrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
-.regcard{display:flex;align-items:center;gap:13px;background:var(--color-surface);border:1.5px solid var(--border);border-radius:var(--radius-md);padding:13px 15px;text-decoration:none;color:inherit;transition:border-color .15s,transform .14s;}
-.regcard:hover{border-color:var(--border-brand);transform:translateY(-2px);}
-.regcard 
-.regcard .rl{min-width:0;flex:1;}
-.regcard .rl b{display:block;font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--text-strong);letter-spacing:-.01em;}
-.regcard .rl span{font-size:12.5px;color:var(--text-muted);font-family:var(--font-mono);}
-.regcard .ext{color:var(--text-faint);display:flex;flex:none;}
-.regcard:hover .ext{color:var(--brand-strong);}
-.regcard .ext svg{width:15px;height:15px;}
-
-/* Tip */
-.tip{background:var(--gradient-brand);border-radius:var(--radius-2xl);padding:38px clamp(26px,4vw,52px);color:#fff;position:relative;overflow:hidden;}
-
-
-.tip .eyebrow{color:#ffe1f0;}
-.tip .eyebrow::before{background:#fff;}
-.tip h3{font-family:var(--font-display);font-weight:800;font-size:clamp(24px,3.2vw,33px);letter-spacing:-.02em;margin:0 0 12px;line-height:1.08;max-width:22ch;position:relative;}
-.tip p{font-size:16.5px;line-height:1.6;color:#fdeef6;margin:0;max-width:64ch;position:relative;}
-.tip p+p{margin-top:12px;}
-.tip a{color:#fff;text-decoration:underline;}
-
-/* Monthly headers */
-.month__head{display:flex;align-items:baseline;gap:12px;border-top:2px solid var(--border-strong);padding-top:14px;margin:30px 0 14px;flex-wrap:wrap;}
-.month__name{font-family:var(--font-display);font-weight:800;font-size:23px;letter-spacing:-.02em;color:var(--text-strong);display:flex;align-items:center;gap:9px;}
-.month__quip{font-size:14.5px;color:var(--text-muted);flex:1;min-width:240px;line-height:1.4;}
-
-/* Media cards (films/podcasts) */
-.mediagrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
-.mediacard{display:flex;gap:15px;background:var(--color-surface);border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:15px;transition:transform .14s,box-shadow .16s,border-color .16s;}
-.mediacard:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:var(--border-brand);}
-.mediacard__thumb{width:78px;height:104px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
-  background:linear-gradient(135deg,var(--magenta-700),var(--violet-600));color:var(--magenta-200);font-family:var(--font-display);font-weight:800;font-size:24px;}
-.mediacard__thumb.sq{width:78px;height:78px;}
-.mediacard__thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;}
-.mediacard__thumb svg{width:24px;height:24px;}
-.mediacard__b{min-width:0;flex:1;display:flex;flex-direction:column;gap:5px;}
-.mediacard__rank{font-family:var(--font-mono);font-size:11px;color:var(--text-faint);font-weight:700;display:flex;align-items:center;gap:6px;}
-.mediacard__title{font-family:var(--font-display);font-weight:700;font-size:16.5px;letter-spacing:-.01em;color:var(--text-strong);margin:0;line-height:1.12;}
-.mediacard__sub{font-family:var(--font-mono);font-size:12px;color:var(--text-muted);margin:0;}
-.mediacard__foot{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:auto;padding-top:4px;}
-
-.media1{display:grid;grid-template-columns:300px 1fr;gap:0;background:var(--color-surface);border:1.5px solid var(--border);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:16px;}
-.media1__img{position:relative;min-height:240px;background:linear-gradient(135deg,#3a1126,var(--magenta-700));display:flex;align-items:center;justify-content:center;overflow:hidden;}
-.media1__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;}
-.media1__img svg{width:54px;height:54px;color:var(--magenta-200);opacity:.85;position:relative;z-index:1;}
-.media1__b{padding:22px 24px;display:flex;flex-direction:column;gap:9px;}
-.media1__rank{font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-brand);}
-.media1__title{font-family:var(--font-display);font-weight:800;font-size:25px;letter-spacing:-.02em;color:var(--text-strong);margin:0;line-height:1.06;}
-.media1__sub{font-family:var(--font-mono);font-size:12.5px;color:var(--text-muted);margin:0;display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
-.media1__desc{font-size:15px;line-height:1.55;color:var(--text-body);margin:2px 0 6px;}
-.media1__foot{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:auto;}
-
-/* ratings + detail links */
-.rate{display:inline-flex;align-items:center;gap:5px;font-family:var(--font-mono);font-size:11px;font-weight:700;padding:3px 8px;border-radius:var(--radius-pill);}
-.rate--csfd{background:color-mix(in srgb,var(--magenta-500) 20%,#000);color:var(--magenta-300);}
-.rate--imdb{background:#312800;color:#f5c518;}
-.detail{font-family:var(--font-mono);font-size:11px;color:var(--text-muted);text-decoration:underline;text-underline-offset:2px;}
-.detail:hover{color:var(--text-brand);}
-
-/* play buttons & VOD logos */
-.yt{display:inline-flex;align-items:center;gap:7px;background:#ff0000;color:#fff;font-family:var(--font-sans);font-weight:700;font-size:12.5px;
-  padding:6px 13px 6px 11px;border-radius:var(--radius-pill);text-decoration:none;transition:filter .14s;}
-.yt:hover{filter:brightness(1.12);}
-.yt svg{width:15px;height:15px;}
-.sp{display:inline-flex;align-items:center;gap:7px;background:#1db954;color:#04140a;font-family:var(--font-sans);font-weight:700;font-size:12.5px;
-  padding:6px 13px 6px 11px;border-radius:var(--radius-pill);text-decoration:none;transition:filter .14s;}
-.sp:hover{filter:brightness(1.08);}
-.sp svg{width:15px;height:15px;}
-.vods{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap;}
-.vods .lbl{font-family:var(--font-mono);font-size:10px;color:var(--text-faint);letter-spacing:.06em;text-transform:uppercase;}
-.vod{display:inline-flex;align-items:center;gap:5px;padding:3px 8px 3px 5px;border-radius:var(--radius-pill);border:1.5px solid var(--border-strong);
-  color:var(--text-body);background:transparent;text-decoration:none;font-family:var(--font-mono);font-size:10.5px;font-weight:700;}
-.vod:hover{border-color:var(--text-muted);}
-.vod img{width:15px;height:15px;border-radius:3px;}
-
-/* Books */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Places */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Health */
-
-
-
-
-
-
-
-
-
-
-/* World */
-.world{background:#1a1019;border:1.5px solid var(--border);border-radius:var(--radius-2xl);padding:30px clamp(22px,4vw,44px) 34px;color:#fff;position:relative;overflow:hidden;}
-.world__rule{position:absolute;left:0;right:0;top:0;height:5px;background:var(--gradient-pride);}
-.world h3{font-family:var(--font-display);font-weight:800;font-size:clamp(23px,3vw,30px);letter-spacing:-.02em;margin:6px 0 6px;display:flex;align-items:center;gap:10px;}
-.world p.intro{font-size:15px;color:#cdbfc8;margin:0 0 18px;max-width:62ch;line-height:1.55;}
-.worldmap{position:relative;width:100%;aspect-ratio:2/1;max-height:380px;margin:6px 0 22px;border-radius:var(--radius-lg);overflow:hidden;
-  background:radial-gradient(120% 120% at 50% 0%,#2a1726,#120a10);border:1px solid var(--border);}
-.worldmap svg{width:100%;height:100%;display:block;}
-
-
-
-
-
-
-
-.wpin circle.core{fill:var(--magenta-400);}
-.wpin circle.halo{fill:var(--magenta-400);opacity:.28;animation:pulse 2.6s ease-out infinite;transform-origin:center;transform-box:fill-box;}
-.wpin.home circle.core{fill:var(--pride-yellow);}
-.wpin.home circle.halo{fill:var(--pride-yellow);}
-@keyframes pulse{0%{transform:scale(1);opacity:.5;}70%{transform:scale(3.2);opacity:0;}100%{opacity:0;}}
-.wpin text{font-family:var(--font-mono);font-size:6.5px;fill:#fff;font-weight:700;}
-
-/* Footer */
-.foot{border-top:1.5px solid var(--border);margin-top:64px;padding:52px 0 40px;}
-.foot__top{display:flex;gap:48px;flex-wrap:wrap;justify-content:space-between;margin-bottom:36px;}
-.foot__brand{max-width:300px;}
-.foot__logo{display:flex;align-items:center;gap:11px;margin-bottom:14px;}
-.foot__logo .mark{width:30px;height:30px;border-radius:8px;overflow:hidden;}
-.foot__logo .mark svg{width:100%;height:100%;display:block;}
-.foot__logo span{font-family:var(--font-display);font-weight:800;font-size:20px;letter-spacing:-.03em;color:var(--text-strong);}
-.foot__brand p{font-size:14px;line-height:1.6;color:var(--text-muted);margin:0;}
-.foot__cols{display:flex;gap:56px;flex-wrap:wrap;}
-.foot__col h4{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin:0 0 14px;}
-.foot__col a{display:block;font-size:14.5px;color:var(--text-body);text-decoration:none;margin-bottom:10px;}
-.foot__col a:hover{color:var(--text-brand);}
-.rights{margin-top:18px;font-size:13.5px;line-height:1.6;color:var(--text-muted);}
-.rights b{color:var(--text-strong);}
-.rights a{color:var(--text-link);font-weight:600;text-decoration:none;}
-.rights a:hover{text-decoration:underline;}
-.copy{font-family:var(--font-mono);font-size:12px;color:var(--text-faint);margin-top:26px;}
-
-@media(max-width:980px){.reggrid{grid-template-columns:repeat(2,1fr);}.mediagrid{grid-template-columns:1fr;}}
-@media(max-width:860px){
-  .head__nav{display:none;}
-  .hero{grid-template-columns:1fr;gap:32px;padding:34px 0 40px;}
-  .media1{grid-template-columns:1fr;}
-  
-}
-@media(max-width:620px){.reggrid{grid-template-columns:1fr;}}
-
-/* v4 refinements */
-.gcal{display:inline-flex;align-items:center;gap:8px;background:#fff;color:#3c4043;font-family:var(--font-sans);font-weight:600;font-size:13px;padding:7px 14px 7px 10px;border-radius:var(--radius-pill);border:1px solid #dadce0;text-decoration:none;box-shadow:0 1px 3px rgba(0,0,0,.35);transition:box-shadow .15s,background .15s;flex:none;}
-.gcal:hover{background:#f1f3f4;box-shadow:0 2px 7px rgba(0,0,0,.45);}
-.gcal img{display:block;width:18px;height:18px;}
-.langsw{display:inline-flex;align-items:center;gap:2px;margin-left:8px;font-family:var(--font-mono);font-size:12px;font-weight:700;flex:none;}
-.langsw a,.langsw span{padding:4px 7px;border-radius:8px;text-decoration:none;color:var(--text-muted);}
-.langsw a:hover{color:var(--text-brand);background:var(--brand-tint);}
-.langsw .is-on{background:var(--brand);color:#fff;}
-
-.regcard{gap:11px;}
-
-
-.regcard:hover{box-shadow:var(--shadow-md);}
-
-
-.tip{position:relative;background:linear-gradient(135deg,#251428,#191020);border:1.5px solid var(--border);color:var(--text-body);}
-.tip::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--gradient-pride);}
-.tip .eyebrow{color:var(--text-brand);}
-.tip .eyebrow::before{background:var(--gradient-pride);}
-.tip h3{color:var(--text-strong);}
-.tip p{color:var(--text-body);}
-.tip a{color:var(--text-link);}
-
-@media(max-width:520px){.langsw{margin-left:4px;}.gcal span{display:none;}}
-
-/* v5 */
-.hotbadge{position:absolute;right:14px;top:14px;z-index:3;display:inline-flex;align-items:center;gap:6px;background:linear-gradient(90deg,#ffce00,#ff9d00);color:#3a2600;font-family:var(--font-sans);font-weight:800;font-size:12px;letter-spacing:.03em;text-transform:uppercase;padding:6px 12px;border-radius:var(--radius-pill);box-shadow:0 4px 14px rgba(255,180,0,.45);}
-.ddyk{background:linear-gradient(90deg,#160d13,#241823);position:relative;}
-.ddyk::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--gradient-pride);}
-.ddyk .wrap{display:flex;align-items:center;gap:14px;min-height:42px;padding-top:8px;padding-bottom:8px;flex-wrap:wrap;}
-.ddyk__txt{font-family:var(--font-sans);font-size:13.5px;color:var(--text-body);line-height:1.4;}
-.ddyk__txt b{color:var(--text-strong);}
-.ddyk__more{font-family:var(--font-sans);font-size:13px;font-weight:600;color:var(--text-link);text-decoration:underline;text-underline-offset:2px;white-space:nowrap;flex:none;margin-left:auto;}
-.ddyk__more:hover{color:var(--text-brand);}
-@media(max-width:620px){.ddyk__more{margin-left:0;}}
-
-/* v6 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* v7 */
-.ddyk{border-radius:var(--radius-lg);margin:26px 0 4px;border:1px solid var(--border);overflow:hidden;}
-.ddyk .wrap{max-width:none;padding:13px 22px;}
-
-
-
-
-
-
-/* v8 */
-.ddyk{left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;width:100vw;max-width:100vw;border-radius:0;border:0;}
-.ddyk .wrap{max-width:1180px;margin:0 auto;padding:13px 28px;}
-.ddyk__more{margin-left:0;}
-.rights a{font-weight:400;}
-
-/* v8 kam */
-.kamgrid{columns:3;column-gap:36px;}
-.kamcat{break-inside:avoid;-webkit-column-break-inside:avoid;margin:0 0 26px;display:inline-block;width:100%;}
-.kamcat__h{font-family:var(--font-display);font-weight:800;font-size:18px;letter-spacing:-.01em;color:var(--text-strong);margin:0 0 10px;padding-bottom:8px;border-bottom:1.5px solid var(--border);}
-.kamlist{display:flex;flex-direction:column;gap:3px;}
-.kamitem{font-family:var(--font-sans);font-size:13.5px;line-height:1.45;color:var(--text-body);padding:2px 0;}
-.kamitem a{font-weight:600;color:var(--text-strong);text-decoration:underline;text-underline-offset:2px;text-decoration-color:var(--border-strong);}
-.kamitem a:hover{color:var(--text-brand);text-decoration-color:var(--brand);}
-.kamitem b{font-weight:600;color:var(--text-strong);}
-.kammeta{color:var(--text-muted);}
-@media(max-width:980px){.kamgrid{columns:2;}}
-@media(max-width:620px){.kamgrid{columns:1;}}
-
-/* v8 tip scene */
-.tip{position:relative;overflow:hidden;}
-
-
-
-.tip .eyebrow,.tip .tip h3,.tip p{position:relative;z-index:1;}
-
-
-
-
-
-
-
-
-
-
-/* v9 — visual consistency polish (no content changes) */
-/* standard interactive cards: one border, one radius, one hover */
-.qevent,.regcard,.mediacard{
-  border:1.5px solid var(--border);
-  border-radius:var(--radius-lg);
-  box-shadow:none;
-  transition:transform .15s ease, box-shadow .18s ease, border-color .18s ease;
-}
-.qevent:hover,.regcard:hover,.mediacard:hover{
-  transform:translateY(-2px);
-  box-shadow:var(--shadow-md);
-  border-color:var(--border-brand);
-}
-/* feature cards: one tier up, consistent radius + resting shadow */
-.feat,.media1{
-  border:1.5px solid var(--border);
-  border-radius:var(--radius-xl);
-  box-shadow:var(--shadow-md);
-}
-/* large bands: consistent rounding */
-.tip,.world{border-radius:var(--radius-2xl);}
-/* consistent grid rhythm */
-.reggrid,.monthgroup,.mediagrid{gap:16px;}
-/* tidy section spacing */
-.sec{padding:44px 0 8px;}
-.sechead{margin-bottom:22px;}
-
-/* v10 — unify Co číst / Zdraví with Kam zajít directory style */
-
-.kamgrid>.kamitem{break-inside:avoid;-webkit-column-break-inside:avoid;margin:3px 0;display:block;}
-
-
-
-/* v11 */
-.kamnote{font-size:11.5px;color:var(--text-muted);line-height:1.45;margin-top:9px;padding-top:8px;border-top:1px solid var(--divider);}
-.kamnote a{color:var(--text-link);}
-
-/* v12 — tip box: city photo bg, no weather */
-.tip{background:#160d13 !important;position:relative;overflow:hidden;}
-.tip__bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0;}
-.tip__overlay{position:absolute;inset:0;z-index:0;background:linear-gradient(100deg,rgba(18,10,16,.96) 0%,rgba(18,10,16,.9) 38%,rgba(18,10,16,.62) 66%,rgba(18,10,16,.35) 100%);}
-.tip .eyebrow,.tip h3,.tip p{position:relative;z-index:1;}
-.tip a{color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:2px;}
-.tip a:hover{color:var(--magenta-200);}
-
-@media(max-width:680px){.tip__overlay{background:linear-gradient(180deg,rgba(18,10,16,.92),rgba(18,10,16,.82));}}
-
-/* v13 — films: unified pill heights + full-bleed thumbnails */
-.media1__img img,.mediacard__thumb img{object-fit:cover;object-position:center;}
-.vod{box-sizing:border-box;font-size:12.5px;padding:6px 12px;gap:6px;}
-.vod img{width:15px;height:15px;}
-.detail{box-sizing:border-box;display:inline-flex;align-items:center;font-family:var(--font-sans);font-weight:700;font-size:12px;line-height:15px;padding:6px 12px;border:1.5px solid var(--border-strong);border-radius:var(--radius-pill);background:transparent;color:var(--text-body);text-decoration:none;}
-.detail:hover{border-color:var(--border-brand);color:var(--text-brand);}
-.media1__foot,.mediacard__foot{align-items:center;}
-
-/* v14 — unify pill typography with the trailer button (sans 700, 12.5px) */
-.vod,.detail{font-family:var(--font-sans);font-weight:700;font-size:12.5px;letter-spacing:0;}
-.detail{line-height:1;}
-
-/* v15 — favicon on ČSFD/IMDb pills, consistent with VoD */
-.detail{gap:5px;}
-.dbico{width:15px;height:15px;border-radius:3px;display:block;}
-
-/* v16 — favicon on play buttons (YouTube / Spotify) */
-.btnfav{width:16px;height:16px;border-radius:4px;display:block;background:#fff;padding:1px;box-sizing:border-box;flex:none;}
-
-/* v17 — unwrap world frame, drop logos */
-.world{background:none !important;border:none !important;border-radius:0 !important;padding:0 !important;}
-.world__rule{display:none !important;}
-.world h3{margin-top:0;}
-
-
-/* v18 — world prides as a horizontal timeline */
-.tl{display:flex;gap:14px;overflow-x:auto;padding:4px 2px 14px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;}
-.tl::-webkit-scrollbar{height:8px;}
-.tl::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:8px;}
-.tl::-webkit-scrollbar-track{background:transparent;}
-.tlcol{flex:0 0 212px;display:flex;flex-direction:column;gap:10px;scroll-snap-align:start;}
-.tldate{position:relative;background:var(--color-surface-2);border:1.5px solid var(--border);border-radius:var(--radius-md);padding:9px 13px 12px;overflow:hidden;}
-.tldate::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--gradient-pride);}
-.tlwd{display:block;font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;color:var(--text-muted);margin-bottom:3px;}
-.tlnum{display:flex;align-items:baseline;gap:7px;}
-.tlday{font-family:var(--font-display);font-weight:800;font-size:30px;letter-spacing:-.02em;color:var(--text-strong);line-height:1;}
-.tlmo{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;color:var(--text-muted);}
-.tlcard{display:flex;flex-direction:column;gap:5px;background:var(--color-surface);border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:14px;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .18s,border-color .18s;flex:1;}
-.tlcard:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:var(--border-brand);}
-.tlcard .flagimg{width:30px;height:22px;margin-bottom:4px;}
-.tlcard__name{font-family:var(--font-display);font-weight:700;font-size:16px;letter-spacing:-.01em;color:var(--text-strong);line-height:1.12;}
-.tlcard__sub{font-size:13px;color:var(--text-body);line-height:1.3;}
-.tlcard__when{font-family:var(--font-mono);font-size:11.5px;color:var(--text-muted);margin-top:2px;}
-.tlflights{font-family:var(--font-sans);font-size:12px;font-weight:600;color:var(--text-link);text-decoration:underline;text-underline-offset:2px;display:inline-flex;align-items:center;gap:5px;padding-left:2px;}
-.tlflights:hover{color:var(--text-brand);}
-.tlflights svg{width:13px;height:13px;}
-.tlflights--home{color:var(--text-faint);text-decoration:none;font-weight:600;}
-
-/* v19 — flights link moved inside the event card */
-.tlcard__name{text-decoration:none;color:var(--text-strong);}
-.tlcard__name:hover{color:var(--text-brand);}
-.tlcard .tlflights{margin-top:auto;padding-top:11px;border-top:1px solid var(--divider);}
-
-/* v20 — Next 5 days as timeline cards */
-.tl5 .tlcard{flex:0 0 auto;}
-.tlcard__time{font-family:var(--font-mono);font-size:11.5px;font-weight:700;color:var(--magenta-300);letter-spacing:.02em;}
-
-/* v21 — card consistency: date/time, right edge, clickability, half-width */
-/* (2) one date/time language: dark tile/chip + magenta accent (no filled-magenta, no rainbow) */
-.regcard 
-.tldate::after{background:var(--brand) !important;height:2px;}
-/* (3) right edge: chevron only (no link icon), a touch more visible */
-.qevent__chev,.regcard .ext{color:var(--text-muted);}
-.qevent:hover .qevent__chev,.regcard:hover .ext{color:var(--brand-strong);}
-/* (4) make event tiles obviously clickable */
-.qevent,.regcard{cursor:pointer;}
-.qevent:hover .qevent__title,.regcard:hover .rl b,.tlcard:hover .tlcard__name{color:var(--text-brand);}
-/* (1b) half-width cards: monthly events 2 per row */
-.monthgroup{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;align-items:stretch;}
-.monthgroup .qevent{height:100%;}
-@media(max-width:760px){.monthgroup{grid-template-columns:1fr;}}
-
-/* v22 — fix horizontal scrollbar caused by 100vw full-bleed banner */
-html{overflow-x:clip;}
-
-/* v23 — consistent chevron: price -> tags, chevron always centered */
-.qevent__side{justify-content:center;}
-
-/* v24 — Pravidelně: same date tile (recurring), no icon, aligned names */
-
-.qtime--reg{width:64px;flex:none;}
-.qtime--reg .wd{font-size:9px;letter-spacing:.04em;}
-.qtime--reg .day{font-size:24px;margin:2px 0 1px;}
-.qtime--reg .day.sm{font-size:13px;line-height:1.1;letter-spacing:-.01em;}
-
-/* v25 — language switcher between logo and first nav link */
-.langsw{margin-left:0;}
-@media(max-width:860px){.head__nav{display:none;}.langsw{margin-left:auto;}}
-
-/* v26 — film grid cards: image on top, clean 16:9 (no portrait crop) */
-.mediacard--film{flex-direction:column;padding:0;gap:0;overflow:hidden;align-items:stretch;}
-.mediacard--film .mediacard__thumb{width:100%;height:auto;aspect-ratio:16/9;border-radius:0;}
-.mediacard--film .mediacard__thumb svg{width:30px;height:30px;}
-.mediacard--film .mediacard__b{padding:14px;gap:7px;}
-.mediacard--film:hover{transform:translateY(-3px);}
-
-@media(max-width:560px){.gcal span{display:none;}}
-
-/* v28 — friendly employers + jobs */
-
-
-
-
-
-
-
-.emptier{font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.04em;display:inline-flex;align-items:center;gap:6px;width:fit-content;padding:3px 9px;border-radius:var(--radius-pill);}
-.emptier::before{content:"";width:8px;height:8px;border-radius:50%;flex:none;}
-.emptier--gold{background:rgba(255,206,0,.14);color:#ffce00;}.emptier--gold::before{background:#ffce00;}
-.emptier--silver{background:rgba(200,205,215,.16);color:#cbd0da;}.emptier--silver::before{background:#cbd0da;}
-.emptier--bronze{background:rgba(205,127,50,.18);color:#e0a071;}.emptier--bronze::before{background:#cd7f32;}
-
-
-
-
-
-
-/* v29 — film grid in thirds */
-#videt .mediagrid{grid-template-columns:repeat(3,1fr);}
-@media(max-width:980px){#videt .mediagrid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:620px){#videt .mediagrid{grid-template-columns:1fr;}}
-
-/* v30 — restore pride-gradient accent on timeline date headers */
-.tldate::after{background:var(--gradient-pride) !important;height:3px !important;}
-
-/* v31 — jobs CTA without box + nice orange myGwork button */
-
-
-
-
-
-
-
-/* v32 — sjednocení všech textových odkazů: jednotná barva, podtržení, BEZ boldu */
-.ddyk__more,.tlflights,.secaction,.secsub a,.kamitem a,.kamnote a,.rights a{
-  color:#fff !important;
-  font-weight:500 !important;
-  text-decoration:underline !important;
-  text-decoration-color:rgba(255,255,255,.4) !important;
-  text-underline-offset:2px !important;
-}
-.ddyk__more:hover,.tlflights:hover,.secaction:hover,.secsub a:hover,.kamitem a:hover,.kamnote a:hover,.rights a:hover{
-  color:#fff !important;
-  text-decoration-color:rgba(255,255,255,.85) !important;
-}
-
-/* v33 — Co číst jako 8 dlaždic (2 řádky × 4), styl jako ostatní karty */
-
-
-
-
-
-
-
-
-
-/* v34 — Co číst: 2 výrazné tipy s obálkou, anotací a tlačítkem Koupit */
-.bookgrid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
-.bookbig{display:grid;grid-template-columns:132px 1fr;gap:18px;background:var(--color-surface);border:1.5px solid var(--border);border-radius:var(--radius-xl);padding:18px;}
-.bookbig__cover{display:block;width:132px;border-radius:10px;overflow:hidden;box-shadow:0 12px 26px -12px rgba(0,0,0,.65);align-self:start;}
-.bookbig__cover img{width:100%;height:auto;display:block;}
-.bookbig__body{display:flex;flex-direction:column;}
-.bookbig__title{font-family:var(--font-display);font-weight:700;font-size:19px;letter-spacing:-.015em;color:var(--text-strong);line-height:1.12;margin:0;}
-.bookbig__author{font-family:var(--font-mono);font-size:11px;color:var(--text-brand);text-transform:uppercase;letter-spacing:.08em;margin:5px 0 0;}
-.bookbig__desc{font-size:13.5px;color:var(--text-muted);line-height:1.5;margin:11px 0 0;}
-.bookbig__buy{margin-top:16px;align-self:flex-start;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:var(--text-on-brand);font-family:var(--font-sans);font-weight:700;font-size:13px;padding:7px 14px 7px 12px;border-radius:var(--radius-pill);text-decoration:none;border:1px solid transparent;transition:filter .15s;white-space:nowrap;}
-.bookbig__buy:hover{filter:brightness(1.07);}
-.bookbig__buy svg{width:16px;height:16px;}
-@media(max-width:820px){.bookgrid2{grid-template-columns:1fr;}}
-@media(max-width:420px){.bookbig{grid-template-columns:104px 1fr;gap:14px;}.bookbig__cover{width:104px;}}
-
-/* v35 — placeholder sekce: výzva pro poskytovatele služeb */
-
-
-
-
-.svcchips{display:flex;flex-wrap:wrap;gap:8px;}
-.svcchip{font-family:var(--font-sans);font-size:12.5px;font-weight:600;color:var(--magenta-200);background:var(--brand-soft);border:1px solid var(--border-brand);padding:6px 12px;border-radius:var(--radius-pill);}
-.svcchip--more{color:var(--text-muted);background:transparent;border-color:var(--border);}
-.svccta__btn{flex:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:var(--text-on-brand);font-family:var(--font-sans);font-weight:700;font-size:13px;padding:9px 18px;border-radius:var(--radius-pill);text-decoration:none;border:1px solid transparent;transition:filter .15s;white-space:nowrap;}
-.svccta__btn:hover{filter:brightness(1.07);}
-.svccta__btn svg{width:16px;height:16px;}
-
-/* v36 — placeholder jako wireframe: čárkovaný rámeček + nůžky, sdělení uvnitř */
-.svcph{position:relative;margin-top:6px;border:2px dashed var(--border-strong);border-radius:var(--radius-xl);background:rgba(255,255,255,.012);padding:110px 34px 100px;min-height:460px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;text-align:center;}
-.svcph__cut{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--color-bg);padding:0 14px;color:var(--text-muted);display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;}
-.svcph__cut svg{width:16px;height:16px;stroke-dasharray:0;}
-.svcph__lead{margin:0;font-size:15px;color:var(--text-body);line-height:1.5;max-width:52ch;}
-.svcph .svcchips{justify-content:center;}
-@media(max-width:560px){.svcph{padding:72px 18px 64px;min-height:auto;}}
-
-/* v37 — profese ve třech řádcích */
-.svcchips{flex-direction:column;gap:10px;align-items:center;}
-.svcrow{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
-
-/* v38 — hotbadge top-right */
-.media1{position:relative;overflow:visible;}
-.media1__img{border-top-right-radius:var(--radius-xl);border-top-left-radius:var(--radius-xl);overflow:hidden;}
-
-/* v39 — automatický štítek DNES (gold, jako hotbadge), řízený datem v JS */
-.dnesbadge{position:absolute;right:10px;top:10px;z-index:5;display:inline-flex;align-items:center;gap:6px;background:linear-gradient(90deg,#ffce00,#ff9d00);color:#3a2600;font-family:var(--font-sans);font-weight:800;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;padding:4px 10px;border-radius:var(--radius-pill);box-shadow:0 4px 13px rgba(255,180,0,.45);pointer-events:none;}
-.dnesbadge::before{content:"";width:6px;height:6px;border-radius:50%;background:#e0153a;box-shadow:0 0 0 3px rgba(224,21,58,.22);}
-.feat .dnesbadge,.tip .dnesbadge{right:14px;top:14px;font-size:11.5px;padding:5px 12px;}
-/* v41 — „Přidat na plochu" (A2HS): proužek jen na mobilu a jen když to zařízení/prohlížeč umí (řízeno JS) */
-.a2hs{display:flex;align-items:center;gap:10px;justify-content:center;padding:9px 14px;
-  background:linear-gradient(120deg,var(--magenta-600),var(--violet-600));border-bottom:1.5px solid var(--border-brand);}
-.a2hs[hidden]{display:none;}
-.a2hs.is-off{display:none!important;}
-.a2hs__btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-sans);font-weight:700;font-size:15px;
-  color:#fff;background:rgba(0,0,0,.22);border:1.5px solid rgba(255,255,255,.4);border-radius:var(--radius-pill);
-  padding:9px 18px;cursor:pointer;-webkit-tap-highlight-color:transparent;}
-.a2hs__btn svg{width:18px;height:18px;flex:none;}
-.a2hs__btn:active{transform:translateY(1px);}
-.a2hs__x{background:transparent;border:0;color:rgba(255,255,255,.85);font-size:17px;line-height:1;padding:6px 9px;cursor:pointer;border-radius:50%;flex:none;}
-.a2hs__x:active{background:rgba(0,0,0,.22);}
-.a2hsheet{position:fixed;inset:0;z-index:60;display:flex;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.55);padding:0 14px 22px;}
-.a2hsheet[hidden]{display:none;}
-.a2hsheet__card{background:var(--color-surface);border:1.5px solid var(--border-strong);border-radius:var(--radius-xl);padding:22px 20px;max-width:430px;width:100%;box-shadow:var(--shadow-lg);}
-.a2hsheet__card h4{font-family:var(--font-display);font-size:19px;margin:0 0 10px;color:var(--text-strong);}
-.a2hsheet__card p{margin:0 0 10px;color:var(--text-body);font-size:14.5px;line-height:1.55;}
-.a2hsheet__card b{color:var(--magenta-300);}
-.a2hsheet__close{margin-top:6px;width:100%;font-family:var(--font-sans);font-weight:700;font-size:15px;color:#fff;background:var(--brand);border:0;border-radius:var(--radius-pill);padding:12px;cursor:pointer;}
-@media(min-width:861px){.a2hs{display:none!important;}}
-
-/* ===== ČÁST A: světlý/tmavý režim + reels + přepínač vzhledu ===== */
-html{background:var(--color-bg);}
 :root[data-theme="light"]{
   --color-bg:#ffffff;--color-surface:#fbf5f9;--color-surface-2:#f3e9f0;
   --text-strong:#1a1016;--text-body:#3a2f37;--text-muted:#6e5f69;--text-faint:#9c8d97;
@@ -753,1162 +82,277 @@ html{background:var(--color-bg);}
   --shadow-md:0 8px 22px -8px rgba(60,20,45,.18),0 2px 6px -2px rgba(60,20,45,.12);
   --shadow-lg:0 26px 56px -16px rgba(60,20,45,.22),0 8px 18px -10px rgba(60,20,45,.16);
 }
-@media (prefers-color-scheme: light){ :root:not([data-theme]){ --color-bg:#ffffff;--text-body:#3a2f37; } }
-:root[data-theme="light"] :is(.ddyk__more,.tlflights,.secaction,.secsub a,.kamitem a,.kamnote a,.rights a){color:#1a1016 !important;text-decoration-color:rgba(0,0,0,.4) !important;}
-:root[data-theme="light"] :is(.ddyk__more,.tlflights,.secaction,.secsub a,.kamitem a,.kamnote a,.rights a):hover{color:#000 !important;text-decoration-color:rgba(0,0,0,.85) !important;}
-#q247-reels{position:fixed;inset:0;z-index:9999;background:var(--color-bg);display:none;overflow-y:auto;scroll-snap-type:y mandatory;-webkit-overflow-scrolling:touch;}
-#q247-reels.is-open{display:block;}
-.q247-reel{min-height:100svh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;padding:24px;box-sizing:border-box;}
-#q247-reels-close{position:fixed;top:14px;right:14px;z-index:10000;width:40px;height:40px;border:none;border-radius:50%;font-size:24px;line-height:40px;cursor:pointer;background:rgba(127,127,127,.25);color:var(--text-strong);}
-@media (min-width:769px){#q247-reels{display:none !important;}}
-
-/* v42 — světlý režim čitelnost + intro velikost + tip scrim + reels */
-.world p.intro{font-size:16px;}
-.tip__overlay{background:linear-gradient(100deg,rgba(12,7,12,.93),rgba(12,7,12,.82) 55%,rgba(12,7,12,.64)) !important;}
-.tip h3,.tip p,.tip .eyebrow{color:#fff !important;}
-.tip a{color:#fff !important;text-decoration-color:rgba(255,255,255,.55) !important;}
-:root[data-theme="light"] .ddyk{background:linear-gradient(90deg,#fdeef6,#f6ecf3);}
-:root[data-theme="light"] .t-success{background:#e3f7ec;color:#0f7a47;}
-:root[data-theme="light"] .qtime.is-brand{background:#fbe0ef;border-color:#f0b9d8;}
-:root[data-theme="light"] .qtime.is-brand .day{color:#b0156f;}
-:root[data-theme="light"] .qtime.is-brand .tm{color:#b0156f;}
-:root[data-theme="light"] .world{color:#1a1016;}
-:root[data-theme="light"] .world h3{color:#1a1016;}
-:root[data-theme="light"] .world p.intro{color:#5a4a55;}
-:root[data-theme="light"] .worldmap{background:radial-gradient(120% 120% at 50% 0%,#f6e9f1,#ffffff);border-color:#e7dbe5;}
-
-
-
-:root[data-theme="light"] .wpin text{fill:#3a2f37;}
-
-/* v43 — světlý režim: čitelné chipy řemesel (Nabízíte služby) */
-:root[data-theme="light"] .svcchip{color:#b0156f;background:#fbe0ef;border-color:#f0b9d8;}
-:root[data-theme="light"] .svcchip--more{color:#6e5f69;background:#fff;border-color:#e7dbe5;}
-
-/* v44 — světlý režim: čitelná mapa (světlejší pevnina) */
-:root[data-theme="light"] .worldmap g[fill="#3a2b36"]{fill:#e7d6e4;}
-
-/* v45 — přepínač vzhledu jako textový odkaz + reels vodorovně/celá obrazovka */
-#q247-reels{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;}
-#q247-reels.is-open{display:flex;flex-wrap:nowrap;}
-.q247-reel{flex:0 0 100vw;width:100vw;height:100svh;min-height:100svh;scroll-snap-align:start;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:0;overflow:hidden;background-size:cover;background-position:center;background-color:var(--color-surface-2);}
-.q247-reel__media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
-.q247-reel__scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(8,4,8,.12) 0%,rgba(8,4,8,.28) 45%,rgba(8,4,8,.9) 100%);}
-.q247-reel__content{position:relative;z-index:2;width:100%;max-width:600px;padding:0 26px calc(56px + env(safe-area-inset-bottom)) 26px;color:#fff;box-sizing:border-box;}
-.q247-reel__eyebrow{font-family:var(--font-mono);font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#ffd24d;display:inline-block;background:rgba(0,0,0,.4);padding:5px 11px;border-radius:999px;}
-.q247-reel__title{font-family:var(--font-display);font-weight:800;font-size:clamp(34px,9vw,54px);letter-spacing:-.02em;line-height:1.02;color:#fff;margin:16px 0 8px;text-shadow:0 2px 20px rgba(0,0,0,.55);}
-.q247-reel__sub{font-family:var(--font-mono);font-size:15px;color:#f2e9ef;margin:0 0 22px;text-shadow:0 1px 12px rgba(0,0,0,.6);}
-.q247-reel__link{display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:15px;padding:13px 22px;border-radius:999px;text-decoration:none;}
-#q247-reels-close{position:fixed;top:calc(12px + env(safe-area-inset-top));right:14px;z-index:10001;width:auto;height:auto;padding:9px 15px;border:none;border-radius:999px;font-family:var(--font-sans);font-size:14px;font-weight:700;line-height:1;cursor:pointer;background:rgba(0,0,0,.55);color:#fff;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);display:inline-flex;align-items:center;gap:7px;}
-.q247-reels-hint{position:fixed;z-index:10001;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translateX(-50%);background:rgba(0,0,0,.55);color:#fff;font-family:var(--font-mono);font-size:12px;font-weight:700;letter-spacing:.06em;padding:9px 15px;border-radius:999px;display:none;align-items:center;gap:8px;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);}
-#q247-reels.is-open .q247-reels-hint.show{display:inline-flex;animation:q247swipe 1.5s ease-in-out infinite;}
-@keyframes q247swipe{0%,100%{transform:translateX(-50%);}50%{transform:translateX(calc(-50% + 9px));}}
-
-/* v46 — A1 přepínač motivů jako blok „Sekce" + A2 gradientové odkazy + A3/A4 obrysová tlačítka + A5 štítky light */
+.langsw{display:inline-flex;align-items:center;gap:2px;margin-left:8px;font-family:var(--font-mono);font-size:12px;font-weight:700;flex:none;}
+.langsw a,.langsw span{padding:4px 7px;border-radius:8px;text-decoration:none;color:var(--text-muted);}
+.langsw a:hover{color:var(--text-brand);background:var(--brand-tint);}
+.langsw .is-on{background:var(--brand);color:#fff;}
+.foot{border-top:1.5px solid var(--border);margin-top:64px;padding:52px 0 40px;}
+.foot__top{display:flex;gap:48px;flex-wrap:wrap;justify-content:space-between;margin-bottom:36px;}
+.foot__brand{max-width:300px;}
+.foot__brand p{font-size:14px;line-height:1.6;color:var(--text-muted);margin:0;}
+.foot__logo{display:flex;align-items:center;gap:11px;margin-bottom:14px;}
+.foot__logo .mark{width:30px;height:30px;border-radius:8px;overflow:hidden;}
+.foot__logo span{font-family:var(--font-display);font-weight:800;font-size:20px;letter-spacing:-.03em;color:var(--text-strong);}
+.mark svg{width:100%;height:100%;display:block;}
+.foot__cols{display:flex;gap:56px;flex-wrap:wrap;}
+.foot__col h4{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin:0 0 14px;}
+.foot__col a{display:block;font-size:14.5px;color:var(--text-body);text-decoration:none;margin-bottom:10px;}
 .foot__col .foot__theme{display:block;font-family:var(--font-sans);font-size:14.5px;color:var(--text-body);text-decoration:none;margin-bottom:10px;background:none;border:none;padding:0;cursor:pointer;text-align:left;}
-.foot__col .foot__theme:hover{color:var(--text-brand);}
+.foot__theme{display:block;font-family:var(--font-sans);font-size:14.5px;color:var(--text-body);text-decoration:none;margin-bottom:10px;background:none;border:none;padding:0;cursor:pointer;text-align:left;}
+.foot__theme:hover{color:var(--text-brand);}
 .foot__col .foot__theme.is-active{color:var(--text-brand);font-weight:700;}
-.foot__col .foot__theme.is-active::before{content:"✓ ";}
-/* A2 — textové odkazy: modrá→fialová→magenta gradient (background-clip:text) */
-.ddyk__more,.tlflights,.secaction,.secsub a,.kamitem a,.kamnote a,.rights a{
-  background:linear-gradient(90deg,#3b82f6,#8b5cf6,#ec4899) !important;-webkit-background-clip:text !important;background-clip:text !important;-webkit-text-fill-color:transparent !important;color:#8a7dff !important;text-decoration-color:#8b5cf6 !important;}
-:root[data-theme="light"] :is(.ddyk__more,.tlflights,.secaction,.secsub a,.kamitem a,.kamnote a,.rights a){
-  background:linear-gradient(90deg,#2563eb,#7c3aed,#db2777) !important;-webkit-background-clip:text !important;background-clip:text !important;-webkit-text-fill-color:transparent !important;color:#6d28d9 !important;text-decoration-color:#7c3aed !important;}
-/* A3 — YouTube tlačítka: jen červený obrys */
-.yt{background:transparent !important;color:#FF0000 !important;border:1.5px solid #FF0000 !important;}
-.yt:hover{background:rgba(255,0,0,.08) !important;}
-/* A4 — Spotify tlačítka: jen zelený obrys */
-.sp{background:transparent !important;color:#1DB954 !important;border:1.5px solid #1DB954 !important;}
-.sp svg{fill:#1DB954 !important;color:#1DB954 !important;}
-.sp:hover{background:rgba(29,185,84,.10) !important;}
-/* A5 — štítky Gold/Silver/Bronze ve světlém motivu */
-:root[data-theme="light"] .emptier--gold{background:#b8860b;color:#fff;}
-:root[data-theme="light"] .emptier--silver{background:#6b7280;color:#fff;}
-:root[data-theme="light"] .emptier--bronze{background:#9a5b2d;color:#fff;}
-:root[data-theme="light"] .emptier::before{background:rgba(255,255,255,.85);}
-
-/* v47 — A6 dvoufázové zavírání instalačního banneru + A9 patičkový odkaz */
-.a2hs__msg{font-family:var(--font-sans);font-size:13.5px;line-height:1.35;}
-.a2hs__close{font-family:var(--font-sans);font-size:13.5px;font-weight:700;text-decoration:underline;cursor:pointer;margin-left:auto;color:inherit;background:none;border:none;}
+.copy{font-family:var(--font-mono);font-size:12px;color:var(--text-faint);margin-top:26px;}
+.a2hsheet{position:fixed;inset:0;z-index:60;display:flex;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.55);padding:0 14px 22px;}
+.a2hsheet__card{background:var(--color-surface);border:1.5px solid var(--border-strong);border-radius:var(--radius-xl);padding:22px 20px;max-width:430px;width:100%;box-shadow:var(--shadow-lg);}
+.a2hsheet__card h4{font-family:var(--font-display);font-size:19px;margin:0 0 10px;color:var(--text-strong);}
+.a2hsheet__card p{margin:0 0 10px;color:var(--text-body);font-size:14.5px;line-height:1.55;}
+.a2hsheet__card b{color:var(--magenta-300);}
+.a2hsheet__close{margin-top:6px;width:100%;font-family:var(--font-sans);font-weight:700;font-size:15px;color:#fff;background:var(--brand);border:0;border-radius:var(--radius-pill);padding:12px;cursor:pointer;}
 .a2hs-footer-link{display:inline-block;margin-top:14px;font-family:var(--font-sans);font-size:14.5px;font-weight:700;color:var(--text-brand);text-decoration:underline;cursor:pointer;}
-
-/* v48 — pevné logo q247.live v reelsech (společné pro všechny karty) */
-.q247-reels-logo{position:fixed;top:calc(16px + env(safe-area-inset-top));left:28px;z-index:10001;display:flex;align-items:center;gap:9px;text-decoration:none;}
-.q247-reels-logo__mark{width:30px;height:30px;border-radius:8px;overflow:hidden;display:block;flex:none;box-shadow:0 2px 10px rgba(0,0,0,.45);}
-.q247-reels-logo__mark svg{width:100%;height:100%;display:block;}
-.q247-reels-logo__word{font-family:var(--font-display);font-weight:800;font-size:20px;letter-spacing:-.03em;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.55);}
-.q247-reels-logo__word .dot{color:var(--brand-strong);}
-
-/* v49 — instalační odkaz jako footer + gating; reels svisle + auto-zavření + DNES; PWA safe-area */
-.a2hs-footer-link{display:inline-block;margin-top:10px;font-family:var(--font-sans);font-size:14.5px;font-weight:400;color:var(--text-body);text-decoration:none;cursor:pointer;}
 .a2hs-footer-link:hover{color:var(--text-brand);}
 .a2hs-footer-link[hidden]{display:none !important;}
-.head{padding-top:env(safe-area-inset-top);}
-#q247-reels{overflow-x:hidden;overflow-y:auto;scroll-snap-type:y mandatory;}
-#q247-reels.is-open{display:block;}
-.q247-reel{flex:none;width:100%;height:100svh;min-height:100svh;}
-#q247-reels.is-open .q247-reels-hint.show{animation:q247swipeY 1.5s ease-in-out infinite !important;}
-@keyframes q247swipeY{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(-9px);}}
-.q247-reel .dnesbadge{position:absolute;top:calc(60px + env(safe-area-inset-top));right:14px;z-index:4;}
 
-/* v50 — reels logo přesně jako v hlavičce + zavření „přibité" na vršek */
-.q247-reels-logo{top:calc(17px + env(safe-area-inset-top));left:28px;gap:11px;}
-.q247-reels-logo__mark{width:34px;height:34px;border-radius:9px;}
-.q247-reels-logo__word{font-size:23px;letter-spacing:-.03em;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden;scroll-padding-top:80px}
+body{margin:0;background:var(--color-bg);color:var(--text-body);font-family:var(--font-sans);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+a{color:inherit}
+svg{vertical-align:middle}
+img{max-width:100%}
+header{position:sticky;top:0;z-index:30;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--color-bg) 82%,transparent);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;height:66px;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;flex:none;text-decoration:none}
+.qmark{display:block;overflow:hidden}
+.brand .qmark{width:32px;height:32px;border-radius:9px}
+.screen .logo .qmark{width:22px;height:22px;border-radius:7px}
+.brand b{font-family:var(--font-display);font-weight:800;font-size:21px;letter-spacing:-.03em;color:var(--text-strong)}
+.brand .dot{color:var(--text-brand)}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.btn{display:inline-flex;align-items:center;gap:9px;border:0;cursor:pointer;text-decoration:none;font-family:var(--font-sans);font-weight:700;border-radius:999px;transition:.16s;white-space:nowrap}
+.btn-primary{background:var(--brand);color:#fff;padding:12px 22px;font-size:15px;box-shadow:0 12px 30px -10px rgba(214,36,140,.6)}
+.btn-primary:hover{background:var(--magenta-600)}
+.btn-pride{background:linear-gradient(120deg,#d6248c,#6a3ce0);color:#fff;padding:15px 28px;font-size:17px;box-shadow:0 16px 40px -12px rgba(214,36,140,.6)}
+.btn-pride:hover{filter:brightness(1.07)}
+.btn-ghost{background:var(--color-surface-2);color:var(--text-strong);padding:14px 24px;font-size:16px;border:1px solid var(--border)}
+.btn-ghost:hover{background:var(--color-surface)}
+.btn-outline{background:transparent;color:var(--text-strong);padding:14px 26px;font-size:16px;border:1.5px solid var(--border-strong)}
+.btn-outline:hover{border-color:var(--text-strong);background:var(--color-surface-2)}
+.hero{position:relative;padding:64px 0 40px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(720px 460px at 12% -10%,rgba(214,36,140,.28),transparent 60%),radial-gradient(680px 520px at 96% 6%,rgba(106,60,224,.24),transparent 58%)}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text-brand);margin-bottom:22px}
+.eyebrow .rule{width:30px;height:3px;border-radius:3px;background:linear-gradient(90deg,#e40b3a,#ff7a18,#ffce00,#15a05a,#1763e8,#7a1fa2)}
+h1{font-family:var(--font-display);font-weight:800;letter-spacing:-.035em;line-height:.98;font-size:clamp(40px,6vw,68px);margin:0 0 20px;color:var(--text-strong);text-wrap:balance}
+h1 em{font-style:normal;color:var(--text-brand)}
+.lead{font-size:19px;line-height:1.55;color:var(--text-muted);margin:0 0 28px;max-width:44ch}
+.cta-row{display:flex;gap:13px;flex-wrap:wrap;align-items:center}
+.microcopy{margin-top:18px;display:flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:12.5px;color:var(--text-faint)}
+.microcopy .ok{color:#15a05a}
+.phone-stage{display:flex;justify-content:center}
+.phone{width:286px;height:580px;border-radius:42px;background:#000;padding:10px;position:relative;box-shadow:0 50px 100px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.08);flex:none}
+.phone .island{position:absolute;top:20px;left:50%;transform:translateX(-50%);width:96px;height:28px;border-radius:20px;background:#000;z-index:5}
+.screen{width:100%;height:100%;border-radius:33px;overflow:hidden;position:relative;background:linear-gradient(155deg,#2a1020,#6a1746 52%,#d6248c)}
+.screen .glyph{position:absolute;top:18%;left:50%;transform:translateX(-50%);opacity:.14;color:#fff}
+.screen .scrim{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(8,4,8,.86))}
+.screen .logo{position:absolute;top:22px;left:18px;display:flex;align-items:center;gap:7px;z-index:3}
+.screen .logo b{font-family:var(--font-display);font-weight:800;font-size:16px;color:#fff;letter-spacing:-.03em}
+.screen .content{position:absolute;left:18px;right:18px;bottom:30px;z-index:3;color:#fff}
+.screen .badge{display:inline-block;font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.1em;background:#d6248c;color:#fff;padding:4px 9px;border-radius:999px;margin-bottom:12px}
+.screen .title{font-family:var(--font-display);font-weight:800;font-size:26px;line-height:1.04;letter-spacing:-.03em;margin:0 0 8px}
+.screen .sub{font-size:13px;color:rgba(255,255,255,.85);margin:0 0 16px}
+.screen .pill{display:inline-block;background:#fff;color:#160d13;font-weight:700;font-size:13px;padding:9px 16px;border-radius:999px}
+.screen .dots{position:absolute;top:54px;left:16px;right:16px;display:flex;gap:5px;z-index:3}
+.screen .dots i{flex:1;height:3px;border-radius:3px;background:rgba(255,255,255,.3)}
+.screen .dots i:first-child{background:#fff}
+section{position:relative}
+.band{padding:60px 0}
+.sec-head{text-align:center;max-width:680px;margin:0 auto 40px}
+.sec-head .eyebrow{justify-content:center}
+h2{font-family:var(--font-display);font-weight:800;letter-spacing:-.03em;font-size:clamp(28px,4vw,42px);margin:0 0 14px;color:var(--text-strong);text-wrap:balance}
+.sec-head p{font-size:17px;line-height:1.55;color:var(--text-muted);margin:0}
+.safe{background:var(--color-surface-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.safe-badge{display:inline-flex;align-items:center;gap:9px;background:rgba(21,160,90,.14);color:#5fd496;border:1px solid rgba(21,160,90,.3);padding:8px 16px;border-radius:999px;font-family:var(--font-mono);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:22px}
+.safe-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--color-surface);border:1px solid var(--border);border-radius:18px;padding:24px}
+.card .ico{width:44px;height:44px;border-radius:12px;background:var(--brand-tint);display:flex;align-items:center;justify-content:center;color:var(--text-brand);margin-bottom:16px}
+.card h3{font-family:var(--font-display);font-weight:700;font-size:19px;letter-spacing:-.01em;margin:0 0 8px;color:var(--text-strong)}
+.card p{font-size:14.5px;line-height:1.55;color:var(--text-muted);margin:0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.step{text-align:center;padding:0 8px}
+.step .num{width:46px;height:46px;border-radius:999px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:800;font-size:20px;color:#fff;background:linear-gradient(120deg,#d6248c,#6a3ce0)}
+.step h3{font-family:var(--font-display);font-weight:700;font-size:18px;margin:0 0 7px;color:var(--text-strong)}
+.step p{font-size:14.5px;line-height:1.5;color:var(--text-muted);margin:0}
+.inside-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.feat{background:var(--color-surface);border:1px solid var(--border);border-radius:18px;padding:22px;text-align:left}
+.feat .ico{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;color:#fff}
+.feat h3{font-family:var(--font-display);font-weight:700;font-size:17px;margin:0 0 6px;color:var(--text-strong)}
+.feat p{font-size:13.5px;line-height:1.5;color:var(--text-muted);margin:0}
+.web{background:var(--color-surface-2);border-top:1px solid var(--border)}
+.web-box{display:flex;align-items:center;gap:28px;background:var(--color-surface);border:1px solid var(--border);border-radius:24px;padding:32px 36px;flex-wrap:wrap}
+.web-box .web-ico{width:56px;height:56px;border-radius:16px;flex:none;display:flex;align-items:center;justify-content:center;background:var(--color-surface-2);color:var(--text-muted)}
+.web-box .web-txt{flex:1;min-width:240px}
+.web-box h3{font-family:var(--font-display);font-weight:800;font-size:23px;letter-spacing:-.02em;margin:0 0 6px;color:var(--text-strong)}
+.web-box p{font-size:15px;line-height:1.5;color:var(--text-muted);margin:0}
+.final{background:linear-gradient(135deg,#1a0d18,#2a1020);border:1px solid rgba(255,255,255,.08);border-radius:32px;padding:56px 40px;text-align:center;position:relative;overflow:hidden}
+.final::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#e40b3a,#ff7a18,#ffce00,#15a05a,#1763e8,#7a1fa2)}
+.final h2{font-size:clamp(30px,4.4vw,46px);color:#fff}
+.final p{font-size:18px;color:#c8b9c4;margin:0 0 28px;max-width:40ch;margin-left:auto;margin-right:auto}
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:36px}
+  .phone-stage{order:-1}
+  .safe-grid,.steps{grid-template-columns:1fr}
+  .inside-grid{grid-template-columns:1fr 1fr}
+  .web-box{text-align:center;justify-content:center}
+}
+@media (max-width:540px){.inside-grid{grid-template-columns:1fr}.final{padding:40px 22px}.nav-right .btn span{display:none}}
+
 </style>
 </head>
-<body>
-<div id="q247-reels" aria-hidden="true">
-  <a class="q247-reels-logo" href="#top" aria-label="q247.live"><span class="q247-reels-logo__mark"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="120" height="20" y="0" fill="#e40b3a"/><rect width="120" height="20" y="20" fill="#ff7a18"/><rect width="120" height="20" y="40" fill="#ffce00"/><rect width="120" height="20" y="60" fill="#15a05a"/><rect width="120" height="20" y="80" fill="#1763e8"/><rect width="120" height="20" y="100" fill="#7a1fa2"/></svg></span><span class="q247-reels-logo__word">q247<span class="dot">.live</span></span></a>
-  <button id="q247-reels-close" type="button" aria-label="✕ Zavřít">✕ Zavřít</button>
-  <div id="q247-reels-hint" class="q247-reels-hint">Posuň nahoru ↑</div>
-  <!-- DENNÍ RUTINA: jeden <section class="q247-reel"> na KAŽDOU dnešní akci z „Příštích 5 dní" -->
-  <section class="q247-reel" style="background:radial-gradient(130% 90% at 12% 0%,rgba(124,92,246,.55),transparent 58%),radial-gradient(120% 95% at 100% 100%,rgba(236,72,153,.5),transparent 55%),radial-gradient(90% 70% at 85% 8%,rgba(59,130,246,.4),transparent 60%),linear-gradient(155deg,#241048,#120a1e 72%)">
-    <div class="q247-reel__scrim"></div>
-    <span class="dnesbadge">DNES</span>
-    <div class="q247-reel__content">
-      <span class="q247-reel__eyebrow">DNES · 22:00</span>
-      <h2 class="q247-reel__title">Connection party</h2>
-      <p class="q247-reel__sub">Friends Club · Praha</p>
-      <a class="q247-reel__link" href="https://friendsclub.cz/program/2026-06-17-connection-party-by-nad-zda-diason" target="_blank" rel="noopener">Zobrazit detail →</a>
+<body id="top">
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top"><svg class="qmark" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="q247.live"><rect width="120" height="20" y="0" fill="#e40b3a"/><rect width="120" height="20" y="20" fill="#ff7a18"/><rect width="120" height="20" y="40" fill="#ffce00"/><rect width="120" height="20" y="60" fill="#15a05a"/><rect width="120" height="20" y="80" fill="#1763e8"/><rect width="120" height="20" y="100" fill="#7a1fa2"/></svg><b>q247<span class="dot">.live</span></b></a>
+      <div class="langsw"><span class="is-on">CZ</span><a href="/en.html" data-lang="en">EN</a></div>
+      <div class="nav-right">
+        <a class="btn btn-primary" href="/web/" target="_blank" rel="noopener"><i data-lucide="smartphone"></i> <span>Otevřít appku</span></a>
+      </div>
     </div>
-  </section>
-</div>
+  </header>
 
-<!-- HEADER -->
-<header class="head">
-  <div class="wrap head__bar">
-    <a class="head__logo" href="#top">
-      <span class="mark"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="q247.live"><rect width="120" height="20" y="0" fill="#e40b3a"/><rect width="120" height="20" y="20" fill="#ff7a18"/><rect width="120" height="20" y="40" fill="#ffce00"/><rect width="120" height="20" y="60" fill="#15a05a"/><rect width="120" height="20" y="80" fill="#1763e8"/><rect width="120" height="20" y="100" fill="#7a1fa2"/></svg></span>
-      <span class="head__word">q247<span class="dot">.live</span></span>
-    </a>
-        <div class="langsw"><span class="is-on">CZ</span><a href="en.html" data-lang="en">EN</a></div>
-    <nav class="head__nav">
-      <a class="head__link" href="#akce">Právě teď</a>
-      <a class="head__link" href="#svet">Ve světě</a>
-      <a class="head__link" href="#videt">Co vidět</a>
-      <a class="head__link" href="#slyset">Co slyšet</a>
-      <a class="head__link" href="#cist">Co číst</a>
-      <a class="head__link" href="#kam">Kam zajít</a>
-      
-    </nav>
-    <span class="head__spacer"></span>
-    <a class="gcal" href="https://calendar.google.com/calendar/u/0?cid=ZTIxNDBkZmRkNjViYWNlYjdhYzljMGIwMzdmMTcyZjg3NzhlYmIxZmQyZDlhMzA5ZjNkMGQ0YjVjZWQ5ZjA2YUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=64&domain=calendar.google.com" alt="Google Kalendář" width="18" height="18"><span>Odebírat kalendář</span></a>
-    
-  </div>
-</header>
-
-<!-- v41 — „Přidat na plochu" (jen mobil + kompatibilní zařízení; zobrazí JS) -->
-<div id="a2hs" class="a2hs">
-  <button id="a2hsBtn" class="a2hs__btn" type="button">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V5"/><path d="m8 9 4-4 4 4"/><rect x="5" y="15" width="14" height="5" rx="1.5"/></svg>
-    <span>Přidat q247.live na plochu</span>
-  </button>
-  <span id="a2hsMsg" class="a2hs__msg" hidden>Odkaz na instalaci aplikace najdete dole na konci stránky.</span>
-  <button id="a2hsX" class="a2hs__x" type="button" aria-label="Skrýt">✕</button>
-  <a id="a2hsClose" class="a2hs__close" href="#a2hs-footer" hidden>Zavřít</a>
-</div>
-<div id="a2hsHelp" class="a2hsheet" hidden>
-  <div class="a2hsheet__card">
-    <h4>Přidat na plochu</h4>
-    <p id="a2hsHelpText">Otevři menu prohlížeče a zvol „Přidat na plochu".</p>
-    <p>Hotovo! q247.live pak budeš mít jako appku s vlastní ikonou. 🌈</p>
-    <button id="a2hsHelpClose" class="a2hsheet__close" type="button">Rozumím</button>
-  </div>
-</div>
-
-<main id="top">
-<div class="wrap">
-
-  <!-- HERO + FEATURED -->
   <section class="hero">
-    <div>
-      <p class="hero__eyebrow">Středa 17. června 2026</p>
-      <h1 class="hero__title">Pride Month běží naplno a teplá středa zve do města — na Connection party ve Friends, kde se z jiskry snadno stane spojení, nebo prostě ven mezi lidi. Ať žije <em>Pride Month.</em></h1>
-      <p class="hero__lead">Živý průvodce queer komunitou v Česku — akce, kluby, kavárny a kultura. Aktualizováno každý den, psané pro lidi.</p>
-      <div class="hero__cta">
-        <a class="qbtn qbtn--pride qbtn--lg" href="#akce"><i data-lucide="calendar-heart"></i> Dnešní program</a>
-        <a class="qbtn qbtn--secondary qbtn--lg" href="#kam">Kam zajít</a>
-      </div>
-      <p class="hero__updated"><span class="dotlive"></span>Naživo · poslední aktualizace dnes v 20:43</p>
-    </div>
-
-    <article class="feat">
-      <div class="feat__photo" style="background-image:url('https://friendsclub.cz/uploads/events/bannery/2026/05/2026-06-17-connection-party-by-nadezda-diason.webp');background-size:cover;background-position:center"></div>
-      <div class="feat__body">
-        <div class="feat__row">
-          <span class="qbadge qbadge--pride qbadge--md">TIP DNE</span>
-          <span class="qbadge t-neutral qbadge--md">Seznámení</span>
-        </div>
-        <p class="feat__lead">Středeční noc nebude o náhodách, ale o jiskrách. Connection party s Naděždou Diason rozjede parket, barevný color-code (červená–oranžová–zelená podle nálady) a DJ set, co se nezastaví až do rána. Ideální večer, kdy se z tance stane nečekané spojení.</p>
-        <h3 class="feat__title">Connection party</h3>
-        <div class="feat__meta">
-          <span class="feat__metaItem"><i data-lucide="calendar"></i>St 17. 6.</span>
-          <span class="feat__metaItem"><i data-lucide="clock"></i>22:00–06:00</span>
-          <span class="feat__metaItem"><i data-lucide="map-pin"></i>Friends Club, Praha</span>
-        </div>
-        <div class="feat__foot">
-          <div class="feat__hosts">
-            <span class="qav qav--sm">FC</span>
-            <span class="feat__hostlabel">Friends Club · Connection party s Naděždou Diason</span>
-          </div>
-          <a class="qbtn qbtn--primary qbtn--sm" href="https://friendsclub.cz/program/2026-06-17-connection-party-by-nad-zda-diason" target="_blank" rel="noopener">Detail akce <i data-lucide="arrow-right"></i></a>
-        </div>
-      </div>
-    </article>
-  </section>
-
-  <!-- "Věděli jste, že…" pásek: generuje se POUZE ve dny významně spjaté s LGBT+ komunitou (cca 1–2× týdně). Denní task rozhoduje podle data; jinak se pásek vynechá. Dnes (17. 6.) bez konkrétní vazby → vynecháno. -->
-
-  <!-- PŘÍŠTÍCH 5 DNÍ -->
-  <section class="sec" id="akce">
-    <div class="sechead">
+    <div class="wrap hero-grid">
       <div>
-        <p class="eyebrow">Akce · nejbližších 5 dní</p>
-        <h2 class="sectitle">Příštích 5 dní</h2>
+        <span class="eyebrow"><span class="rule"></span> Queer Česko · 24/7</span>
+        <h1>Celá scéna<br>v kapse. <em>Bez instalace.</em></h1>
+        <p class="lead">q247.live je živý průvodce queer akcemi, kluby a kulturou po celém Česku. Přidej si ho na plochu telefonu a měj dnešní program vždy po ruce.</p>
+        <div class="cta-row">
+          <button class="btn btn-pride" id="lp-install" type="button"><i data-lucide="download"></i> Nainstalovat na plochu</button>
+          <a class="btn btn-ghost" href="#jak">Jak to funguje</a>
+        </div>
+        <p class="microcopy"><i data-lucide="shield-check" class="ok"></i> Žádná registrace · žádné osobní údaje · nic se nikam neodesílá</p>
       </div>
-      <a class="secaction" href="#mesicni">Celý kalendář <i data-lucide="arrow-right"></i></a>
-    </div>
-    <div class="tl tl5">
-        <div class="tlcol">
-          <div class="tldate"><span class="tlwd">STŘEDA</span><span class="tlnum"><span class="tlday">17</span><span class="tlmo">ČVN</span></span></div>
-          <div class="tlcard">
-            <span class="tlcard__time">22:00</span>
-            <a class="tlcard__name" href="https://friendsclub.cz/program/2026-06-17-connection-party-by-nad-zda-diason" target="_blank" rel="noopener">Connection party</a>
-            <span class="tlcard__sub">Friends Club · Praha</span>
-          </div>
-        </div>
-        <div class="tlcol">
-          <div class="tldate"><span class="tlwd">ČTVRTEK</span><span class="tlnum"><span class="tlday">18</span><span class="tlmo">ČVN</span></span></div>
-          <div class="tlcard">
-            <span class="tlcard__time">15:00 · Zdarma</span>
-            <a class="tlcard__name" href="https://www.praguepride.com/kc-program/otevreny-ctvrtek-cz-en/2026-06-18/" target="_blank" rel="noopener">Otevřený čtvrtek</a>
-            <span class="tlcard__sub">Komunitní centrum · Praha</span>
-          </div>
-          <div class="tlcard">
-            <span class="tlcard__time">18:00</span>
-            <a class="tlcard__name" href="https://www.praguepride.com/kc-program/make-up-tipy-a-triky-s-m%c2%b7a%c2%b7c-make-up-tips-and-tricks-with-m%c2%b7a%c2%b7c-cz-en/" target="_blank" rel="noopener">Make-up tipy a triky s M·A·C</a>
-            <span class="tlcard__sub">Komunitní centrum · Praha</span>
-          </div>
-          <div class="tlcard">
-            <span class="tlcard__time">19:00 · Zdarma</span>
-            <a class="tlcard__name" href="https://www.instagram.com/out_a_run/" target="_blank" rel="noopener">Out and Run</a>
-            <span class="tlcard__sub">Výstaviště · běh 5 km · Praha</span>
-          </div>
-          <div class="tlcard">
-            <span class="tlcard__time">21:00</span>
-            <a class="tlcard__name" href="https://friendsclub.cz/program/2026-06-18-drag-travesto-show-by-smokeekween-kimberley" target="_blank" rel="noopener">Drag &amp; Travesti show</a>
-            <span class="tlcard__sub">Friends Club · Praha</span>
-          </div>
-        </div>
-        <div class="tlcol">
-          <div class="tldate"><span class="tlwd">PÁTEK</span><span class="tlnum"><span class="tlday">19</span><span class="tlmo">ČVN</span></span></div>
-          <div class="tlcard">
-            <span class="tlcard__time">17:00 · Zdarma</span>
-            <a class="tlcard__name" href="https://www.praguepride.com/kc-program/deskohrani-cz-en-3/2026-06-19/" target="_blank" rel="noopener">Deskohraní</a>
-            <span class="tlcard__sub">Komunitní centrum · Praha</span>
-          </div>
-          <div class="tlcard">
-            <span class="tlcard__time">21:00</span>
-            <a class="tlcard__name" href="https://friendsclub.cz/program/2026-06-19-hot-navigaytion-night" target="_blank" rel="noopener">Hot NaviGAYtion night</a>
-            <span class="tlcard__sub">Friends Club · Praha</span>
-          </div>
-        </div>
-        <div class="tlcol">
-          <div class="tldate"><span class="tlwd">SOBOTA</span><span class="tlnum"><span class="tlday">20</span><span class="tlmo">ČVN</span></span></div>
-          <div class="tlcard">
-            <span class="tlcard__time">11:04 · Zdarma</span>
-            <a class="tlcard__name" href="https://www.logoscr.cz/l/prochazka-s-logosem-cerven-2026/" target="_blank" rel="noopener">Procházka s Logosem</a>
-            <span class="tlcard__sub">sraz Milovice → Na Skále</span>
-          </div>
-          <div class="tlcard">
-            <span class="tlcard__time">21:00</span>
-            <a class="tlcard__name" href="https://friendsclub.cz/program/2026-06-20-oldies-but-not-old-enough" target="_blank" rel="noopener">Oldies but not old enough! 🔥</a>
-            <span class="tlcard__sub">Friends Club · Praha</span>
-          </div>
-        </div>
-        <div class="tlcol">
-          <div class="tldate"><span class="tlwd">NEDĚLE</span><span class="tlnum"><span class="tlday">21</span><span class="tlmo">ČVN</span></span></div>
-          <div class="tlcard">
-            <span class="tlcard__time">21:00</span>
-            <a class="tlcard__name" href="https://friendsclub.cz/program/2026-06-21-sunday-chill" target="_blank" rel="noopener">Sunday Chill</a>
-            <span class="tlcard__sub">Friends Club · Praha</span>
-          </div>
-        </div>
-      </div>
-  </section>
-
-  <!-- TIP DNE -->
-  <section class="sec">
-    <div class="tip">
-      <div class="tip__bg" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Praha,_Bubene%C4%8D,_Stromovka,_vrby_u_rybn%C3%ADka.JPG');background-size:cover;background-position:center"></div>
-      <div class="tip__overlay"></div>
-      <p class="eyebrow">Tip dne · jak a kde se seznámit</p>
-      <h3>Středa pod mrakem? O důvod víc vyrazit mezi lidi než zůstat doma.</h3>
-      <p>Pražská středa je zatažená, ale příjemných ~24 °C — počasí, co přímo zve na večerní procházku. Po práci se dá zajít na kafe nebo skleničku do Vinohrad či Vršovic, projít se Stromovkou nebo Riegrovými sady a jen tak začít s někým řeč. V Pride Month je atmosféra ve městě otevřená — využij to.</p>
-      <p>Nejlepší tip dne pro seznámení naživo: od 22:00 rozjíždí Friends Club <a href="https://friendsclub.cz/program/2026-06-17-connection-party-by-nad-zda-diason" target="_blank" rel="noopener">Connection party</a> s Naděždou Diason — barevný color-code napoví, kdo je single, a u baru je seznámení skoro samozřejmost. A kdo radši online, najde nejvíc lidí na <a href="https://www.grindr.com" target="_blank" rel="noopener">Grindru</a>, <a href="https://bumble.com" target="_blank" rel="noopener">Bumble</a> nebo <a href="https://tinder.com" target="_blank" rel="noopener">Tinderu</a> — ale dnes to ven fakt stojí. 💛</p>
-    </div>
-  </section>
-
-  <!-- PRAVIDELNĚ -->
-  <section class="sec">
-    <div class="sechead">
-      <div>
-        <p class="eyebrow">Pravidelně · každý týden</p>
-        <h2 class="sectitle">Akce, na které se dá vždycky spolehnout</h2>
-      </div>
-    </div>
-    <div class="reggrid">
-      <a class="regcard" href="https://www.instagram.com/out_a_run/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">ČT</span><span class="tm">19:00</span></span><span class="rl"><b>Out and Run</b><span>Výstaviště · Praha · běh 5 km</span></span><span class="ext"><i data-lucide="chevron-right"></i></span></a>
-      <a class="regcard" href="https://friendsclub.cz/program" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">PO</span><span class="tm">21h</span></span><span class="rl"><b>Student Monday</b><span>Friends Club · Praha</span></span><span class="ext"><i data-lucide="chevron-right"></i></span></a>
-      <a class="regcard" href="https://friendsclub.cz/program" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">ÚT</span><span class="tm">21h</span></span><span class="rl"><b>Karaoke Night</b><span>Friends Club · Praha</span></span><span class="ext"><i data-lucide="chevron-right"></i></span></a>
-      <a class="regcard" href="https://www.qalendar.cz/series/queer-sensitive-joga/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">ÚT</span><span class="tm">17:40</span></span><span class="rl"><b>Queer Sensitive Jóga</b><span>Komunitní centrum · Praha</span></span><span class="ext"><i data-lucide="chevron-right"></i></span></a>
-      <a class="regcard" href="https://friendsclub.cz/program" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">ST</span><span class="tm">21h</span></span><span class="rl"><b>Connection party</b><span>Friends Club · Praha</span></span><span class="ext"><i data-lucide="chevron-right"></i></span></a>
-      <a class="regcard" href="https://www.praguepride.com/series/otevreny-ctvrtek-cz-en/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">ČT</span><span class="tm">15–21</span></span><span class="rl"><b>Otevřený čtvrtek</b><span>Komunitní centrum · Praha</span></span><span class="ext"><i data-lucide="chevron-right"></i></span></a>
-      <a class="regcard" href="https://friendsclub.cz/program" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">ČT</span><span class="tm">21h</span></span><span class="rl"><b>Drag &amp; Travesti show</b><span>Friends Club · Praha</span></span><span class="ext"><i data-lucide="chevron-right"></i></span></a>
-      <a class="regcard" href="https://heaven.cz/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">víkendy</span><span class="day sm">PÁ/SO</span><span class="tm">noc</span></span><span class="rl"><b>Víkendové párty</b><span>Heaven · Praha</span></span><span class="ext"><i data-lucide="chevron-right"></i></span></a>
-      <a class="regcard" href="https://club-termix.cz/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">víkendy</span><span class="day sm">PÁ/SO</span><span class="tm">noc</span></span><span class="rl"><b>Disko víkendy</b><span>Club Termix · Praha</span></span><span class="ext"><i data-lucide="chevron-right"></i></span></a>
-      <a class="regcard" href="https://friendsclub.cz/program" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">SO</span><span class="tm">21h</span></span><span class="rl"><b>Oldies Party</b><span>Friends Club · Praha</span></span><span class="ext"><i data-lucide="chevron-right"></i></span></a>
-      <a class="regcard" href="https://friendsclub.cz/program" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">NE</span><span class="tm">21h</span></span><span class="rl"><b>Sunday Chill</b><span>Friends Club · Praha</span></span><span class="ext"><i data-lucide="chevron-right"></i></span></a>
-      <a class="regcard" href="https://www.qalendar.cz/series/tanecni-lekce/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">2×/měs</span><span class="day">ST</span></span><span class="rl"><b>Taneční lekce</b><span>Komunitní centrum · Praha</span></span><span class="ext"><i data-lucide="chevron-right"></i></span></a>
-      <a class="regcard" href="https://www.logoscr.cz/praha/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">1./měs</span><span class="day">NE</span><span class="tm">15h</span></span><span class="rl"><b>Setkání Logosu</b><span>U Jákobova žebříku · Praha</span></span><span class="ext"><i data-lucide="chevron-right"></i></span></a>
-      <a class="regcard" href="https://www.kluci-na-kole.cz/dalsi" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">měs.</span><span class="day">SO</span><span class="tm">9:00</span></span><span class="rl"><b>Kluci na kole — výlet</b><span>Brno / Morava</span></span><span class="ext"><i data-lucide="chevron-right"></i></span></a>
-      <a class="regcard" href="https://jsmetransparent.cz/podpurne-skupiny/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">několikrát</span><span class="day sm">↻</span><span class="tm">online</span></span><span class="rl"><b>Trans*parent — podpůrné skupiny</b><span>Praha &amp; online</span></span><span class="ext"><i data-lucide="chevron-right"></i></span></a>
-    </div>
-  </section>
-  <!-- MĚSÍČNÍ PŘEHLEDY -->
-  <section class="sec" id="mesicni">
-    <div class="sechead">
-      <div>
-        <p class="eyebrow">Kalendář · co se chystá</p>
-        <h2 class="sectitle">Měsíc po měsíci, akce po akci</h2>
-      </div>
-    </div>
-
-    <div class="month__head">
-      <span class="month__name">🌧️ Červen 2026</span>
-      <span class="month__quip">Léto v komunitě i na parketu: podpůrné skupiny, deskovky, make-up workshop, knižní klub, procházka s Logosem i drag noci ve Friends.</span>
-    </div>
-    <div class="monthgroup">
-      <a class="qevent" href="https://www.praguepride.com/kc-program/make-up-tipy-a-triky-s-m%c2%b7a%c2%b7c-make-up-tips-and-tricks-with-m%c2%b7a%c2%b7c-cz-en/" target="_blank" rel="noopener">
-        <span class="qtime"><span class="wd">ČT</span><span class="day">18</span><span class="mo">ČVN</span><span class="tm">18:00</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Make-up tipy a triky s M·A·C</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Komunitní centrum · Praha</span><div class="qevent__tags"><span class="qbadge t-neutral">Workshop</span><span class="qbadge t-neutral">Beauty</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-      <a class="qevent" href="https://www.praguepride.com/kc-program/deskohrani-cz-en-3/2026-06-19/" target="_blank" rel="noopener">
-        <span class="qtime"><span class="wd">PÁ</span><span class="day">19</span><span class="mo">ČVN</span><span class="tm">17:00</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Deskohraní</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Komunitní centrum · Praha</span><div class="qevent__tags"><span class="qbadge t-success">Zdarma</span><span class="qbadge t-neutral">Hry</span><span class="qbadge t-neutral">Komunita</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-      <a class="qevent" href="https://friendsclub.cz/program/2026-06-19-hot-navigaytion-night" target="_blank" rel="noopener">
-        <span class="qtime"><span class="wd">PÁ</span><span class="day">19</span><span class="mo">ČVN</span><span class="tm">21:00</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Hot NaviGAYtion night</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span><div class="qevent__tags"><span class="qbadge t-neutral">Párty</span><span class="qbadge t-neutral">DJ set</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-      <a class="qevent" href="https://www.logoscr.cz/l/prochazka-s-logosem-cerven-2026/" target="_blank" rel="noopener">
-        <span class="qtime"><span class="wd">SO</span><span class="day">20</span><span class="mo">ČVN</span><span class="tm">11:04</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Procházka s Logosem</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>sraz Milovice → Na Skále</span><div class="qevent__tags"><span class="qbadge t-success">Zdarma</span><span class="qbadge t-neutral">Výlet</span><span class="qbadge t-neutral">Příroda</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-      <a class="qevent" href="https://www.praguepride.com/kc-program/kkql-knizni-klub-queer-literatury-cz/2026-06-24/" target="_blank" rel="noopener">
-        <span class="qtime"><span class="wd">ST</span><span class="day">24</span><span class="mo">ČVN</span><span class="tm">17:00</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">KKQL — Knižní klub queer literatury</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Komunitní centrum · Praha</span><div class="qevent__tags"><span class="qbadge t-success">Zdarma</span><span class="qbadge t-neutral">Knihy</span><span class="qbadge t-neutral">Klub</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-      <a class="qevent" href="https://friendsclub.cz/program/2026-06-26-celebration-of-summer-w-dj-deny-leah" target="_blank" rel="noopener">
-        <span class="qtime"><span class="wd">PÁ</span><span class="day">26</span><span class="mo">ČVN</span><span class="tm">21:00</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Celebration of Summer w/ DJ Deny Leah</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span><div class="qevent__tags"><span class="qbadge t-neutral">Párty</span><span class="qbadge t-neutral">DJ set</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-      <a class="qevent" href="https://www.praguepride.com/kc-program/dracak-dungeons-dragons-cz-en/2026-06-26/" target="_blank" rel="noopener">
-        <span class="qtime"><span class="wd">PÁ</span><span class="day">26</span><span class="mo">ČVN</span><span class="tm">18:30</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Dračák / Dungeons &amp; Dragons</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Komunitní centrum · Praha</span><div class="qevent__tags"><span class="qbadge t-success">Zdarma</span><span class="qbadge t-neutral">Hry</span><span class="qbadge t-neutral">RPG</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-      <a class="qevent" href="https://www.praguepride.com/kc-program/chit-chat-chill-26-45-cz-en-2/2026-06-28/" target="_blank" rel="noopener">
-        <span class="qtime"><span class="wd">NE</span><span class="day">28</span><span class="mo">ČVN</span><span class="tm">16:30</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Chit-Chat-Chill 26–45</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Komunitní centrum · Praha</span><div class="qevent__tags"><span class="qbadge t-success">Zdarma</span><span class="qbadge t-neutral">Seznámení</span><span class="qbadge t-neutral">Komunita</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-      <a class="qevent" href="https://www.praguepride.com/kc-program/podpurna-skupina-najdi-svou-barvu-i-cz/2026-06-29/" target="_blank" rel="noopener">
-        <span class="qtime"><span class="wd">PO</span><span class="day">29</span><span class="mo">ČVN</span><span class="tm">18:00</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Podpůrná skupina – Najdi svou barvu I</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Komunitní centrum · Praha</span><div class="qevent__tags"><span class="qbadge t-success">Zdarma</span><span class="qbadge t-neutral">Podpora</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-    </div>
-
-    <div class="month__head">
-      <span class="month__name">☀️ Červenec 2026</span>
-      <span class="month__quip">Co červenec neuvaří, srpen nedopeče — a my se pečeme na parketu i na kole. Megastar noci a rozjezd k Pride.</span>
-    </div>
-    <div class="monthgroup">
-      <a class="qevent" href="https://friendsclub.cz/program/2026-07-03-madonna-confessions-ii-release-party" target="_blank" rel="noopener">
-        <span class="qtime"><span class="wd">PÁ</span><span class="day">03</span><span class="mo">ČVC</span><span class="tm">21:00</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">MADONNA: Confessions II Release Party</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span><div class="qevent__tags"><span class="qbadge t-neutral">Párty</span><span class="qbadge t-neutral">Pop</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-      <a class="qevent" href="https://www.instagram.com/buddy.hiking.club/" target="_blank" rel="noopener">
-        <span class="qtime"><span class="wd">SO</span><span class="day">04</span><span class="mo">ČVC</span><span class="tm">čas na IG</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Buddy Hiking Club — výlet</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>sraz Brno · turistický výlet</span><div class="qevent__tags"><span class="qbadge t-neutral">Turistika</span><span class="qbadge t-neutral">Výlet</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-      <a class="qevent" href="https://www.kluci-na-kole.cz/dalsi" target="_blank" rel="noopener">
-        <span class="qtime"><span class="wd">SO</span><span class="day">11</span><span class="mo">ČVC</span><span class="tm">09:00</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Kluci na kole #191 — výlet</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>sraz Brno / Morava</span><div class="qevent__tags"><span class="qbadge t-success">Zdarma</span><span class="qbadge t-neutral">Cyklovýlet</span><span class="qbadge t-neutral">Morava</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-      <a class="qevent" href="https://friendsclub.cz/program/2026-07-17-czech-slovak-night" target="_blank" rel="noopener">
-        <span class="qtime"><span class="wd">PÁ</span><span class="day">17</span><span class="mo">ČVC</span><span class="tm">21:00</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Czech-Slovak Night</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span><div class="qevent__tags"><span class="qbadge t-neutral">Párty</span><span class="qbadge t-neutral">Retro</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-      <a class="qevent" href="https://www.instagram.com/buddy.hiking.club/" target="_blank" rel="noopener">
-        <span class="qtime"><span class="wd">SO</span><span class="day">18</span><span class="mo">ČVC</span><span class="tm">čas na IG</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Buddy Hiking Club — výlet</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>sraz Praha · turistický výlet</span><div class="qevent__tags"><span class="qbadge t-neutral">Turistika</span><span class="qbadge t-neutral">Výlet</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-      <a class="qevent" href="https://friendsclub.cz/program/2026-07-31-what-is-pride" target="_blank" rel="noopener">
-        <span class="qtime"><span class="wd">PÁ</span><span class="day">31</span><span class="mo">ČVC</span><span class="tm">21:00</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">What is PRIDE???</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span><div class="qevent__tags"><span class="qbadge t-neutral">Pride</span><span class="qbadge t-neutral">Párty</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-    </div>
-
-    <div class="month__head">
-      <span class="month__name">🌈 Srpen 2026</span>
-      <span class="month__quip">Prague Pride — festival 3.–9. 8. a velký průvod v sobotu. Týden, kdy patří celé město nám.</span>
-    </div>
-    <div class="monthgroup">
-      <a class="qevent" href="https://friendsclub.cz/program/2026-08-03-welcome-prague-pride-party" target="_blank" rel="noopener">
-        <span class="qtime is-brand"><span class="wd">PO</span><span class="day">03</span><span class="mo">SRP</span><span class="tm">21:00</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Welcome Prague Pride Party</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span><div class="qevent__tags"><span class="qbadge t-brand">Pride</span><span class="qbadge t-neutral">Párty</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-      <a class="qevent" href="https://friendsclub.cz/program/2026-08-05-pride-connection-party" target="_blank" rel="noopener">
-        <span class="qtime is-brand"><span class="wd">ST</span><span class="day">05</span><span class="mo">SRP</span><span class="tm">21:00</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">PRIDE Connection Party</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span><div class="qevent__tags"><span class="qbadge t-brand">Pride</span><span class="qbadge t-neutral">Networking</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-      <a class="qevent" href="https://festival.praguepride.com/program/?d=2026-08-08" target="_blank" rel="noopener">
-        <span class="qtime is-brand"><span class="wd">SO</span><span class="day">08</span><span class="mo">SRP</span><span class="tm">12:00</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Prague Pride — velký průvod</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Václavské nám. → Štvanice · Praha</span><div class="qevent__tags"><span class="qbadge t-success">Zdarma</span><span class="qbadge t-brand">Průvod</span><span class="qbadge t-neutral">Festival</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-      <a class="qevent" href="https://www.instagram.com/buddy.hiking.club/" target="_blank" rel="noopener">
-        <span class="qtime"><span class="wd">SO</span><span class="day">08</span><span class="mo">SRP</span><span class="tm">čas na IG</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Buddy Hiking Club — výlet</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>sraz Praha · turistický výlet</span><div class="qevent__tags"><span class="qbadge t-neutral">Turistika</span><span class="qbadge t-neutral">Výlet</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-      <a class="qevent" href="https://www.kluci-na-kole.cz/dalsi" target="_blank" rel="noopener">
-        <span class="qtime"><span class="wd">SO</span><span class="day">15</span><span class="mo">SRP</span><span class="tm">09:00</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Kluci na kole #192 — Z Třebíče do Ivančic</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>sraz Třebíč / Morava</span><div class="qevent__tags"><span class="qbadge t-success">Zdarma</span><span class="qbadge t-neutral">Cyklovýlet</span><span class="qbadge t-neutral">Morava</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-      <a class="qevent" href="https://friendsclub.cz/program/2026-08-29-last-summer-disco" target="_blank" rel="noopener">
-        <span class="qtime"><span class="wd">SO</span><span class="day">29</span><span class="mo">SRP</span><span class="tm">21:00</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Last Summer Disco</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span><div class="qevent__tags"><span class="qbadge t-neutral">Disko</span><span class="qbadge t-neutral">Párty</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-      <a class="qevent" href="https://www.instagram.com/buddy.hiking.club/" target="_blank" rel="noopener">
-        <span class="qtime"><span class="wd">SO</span><span class="day">29</span><span class="mo">SRP</span><span class="tm">čas na IG</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Buddy Hiking Club — výlet</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>sraz Bratislava · turistický výlet</span><div class="qevent__tags"><span class="qbadge t-neutral">Turistika</span><span class="qbadge t-neutral">Výlet</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-    </div>
-
-    <div class="month__head">
-      <span class="month__name">🍂 Září 2026</span>
-      <span class="month__quip">Konec léta, ale scéna jede dál. Friends Awards a poslední letní výlety s partou.</span>
-    </div>
-    <div class="monthgroup">
-      <a class="qevent" href="https://www.kluci-na-kole.cz/dalsi" target="_blank" rel="noopener">
-        <span class="qtime"><span class="wd">SO</span><span class="day">12</span><span class="mo">ZÁŘ</span><span class="tm">09:00</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Kluci na kole #193 — Z Křenovic do Brna-Líšně</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>sraz Křenovice / Morava</span><div class="qevent__tags"><span class="qbadge t-success">Zdarma</span><span class="qbadge t-neutral">Cyklovýlet</span><span class="qbadge t-neutral">Morava</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-      <a class="qevent" href="https://www.instagram.com/buddy.hiking.club/" target="_blank" rel="noopener">
-        <span class="qtime"><span class="wd">SO</span><span class="day">12</span><span class="mo">ZÁŘ</span><span class="tm">čas na IG</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Buddy Hiking Club — výlet</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>sraz Ostrava · turistický výlet</span><div class="qevent__tags"><span class="qbadge t-neutral">Turistika</span><span class="qbadge t-neutral">Výlet</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-      <a class="qevent" href="https://www.instagram.com/buddy.hiking.club/" target="_blank" rel="noopener">
-        <span class="qtime"><span class="wd">SO</span><span class="day">19</span><span class="mo">ZÁŘ</span><span class="tm">čas na IG</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Buddy Hiking Club — výlet</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>sraz Praha · turistický výlet</span><div class="qevent__tags"><span class="qbadge t-neutral">Turistika</span><span class="qbadge t-neutral">Výlet</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-      <a class="qevent" href="https://friendsclub.cz/program/2026-09-25-friends-awards-2026" target="_blank" rel="noopener">
-        <span class="qtime is-brand"><span class="wd">PÁ</span><span class="day">25</span><span class="mo">ZÁŘ</span><span class="tm">21:00</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Friends Awards 2026</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span><div class="qevent__tags"><span class="qbadge t-brand">Ocenění</span><span class="qbadge t-neutral">Párty</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-    </div>
-
-    <div class="month__head">
-      <span class="month__name">🍁 Říjen 2026</span>
-      <span class="month__quip">Babí léto a poslední výšlapy, než se scéna přesune do klubů a kin.</span>
-    </div>
-    <div class="monthgroup">
-      <a class="qevent" href="https://www.kluci-na-kole.cz/dalsi" target="_blank" rel="noopener">
-        <span class="qtime"><span class="wd">SO</span><span class="day">10</span><span class="mo">ŘÍJ</span><span class="tm">09:00</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Kluci na kole #194 — Z Dolních Louček do Tišnova</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>sraz Dolní Loučky · pěšky</span><div class="qevent__tags"><span class="qbadge t-success">Zdarma</span><span class="qbadge t-neutral">Turistika</span><span class="qbadge t-neutral">Příroda</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-    </div>
-
-    <div class="month__head">
-      <span class="month__name">🎬 Listopad 2026</span>
-      <span class="month__quip">Mezipatra! Největší queer filmový festival rozsvítí podzim — Praha i Brno.</span>
-    </div>
-    <div class="monthgroup">
-      <a class="qevent" href="https://www.mezipatra.cz/" target="_blank" rel="noopener">
-        <span class="qtime is-brand"><span class="wd">ČT</span><span class="day">05</span><span class="mo">LIS</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Mezipatra — queer filmový festival</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Praha · 5.–12. 11.</span><div class="qevent__tags"><span class="qbadge t-neutral-out">Vstupné</span><span class="qbadge t-brand">Festival</span><span class="qbadge t-neutral">Film</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-      <a class="qevent" href="https://www.kluci-na-kole.cz/dalsi" target="_blank" rel="noopener">
-        <span class="qtime"><span class="wd">SO</span><span class="day">07</span><span class="mo">LIS</span><span class="tm">09:00</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Kluci na kole #195 — k Velkým Pavlovicím</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>sraz Kobylí · pěšky</span><div class="qevent__tags"><span class="qbadge t-success">Zdarma</span><span class="qbadge t-neutral">Turistika</span><span class="qbadge t-neutral">Morava</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-      <a class="qevent" href="https://www.mezipatra.cz/" target="_blank" rel="noopener">
-        <span class="qtime is-brand"><span class="wd">PÁ</span><span class="day">13</span><span class="mo">LIS</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Mezipatra — queer filmový festival</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Brno · 13.–20. 11.</span><div class="qevent__tags"><span class="qbadge t-neutral-out">Vstupné</span><span class="qbadge t-brand">Festival</span><span class="qbadge t-neutral">Film</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
-    </div>
-  </section>
-
-  <!-- VE SVĚTĚ -->
-  <section class="sec" id="svet">
-    <div class="sechead">
-      <div>
-        <p class="eyebrow">Pride v Evropě</p>
-        <h2 class="sectitle">Největší Pride a queer akce v Evropě</h2>
-      </div>
-    </div>
-    <div class="world">
-      <div class="world__rule"></div>
-      <p class="intro">Od Vídně přes Madrid až po Amsterdam — kde a kdy se letos v Evropě slaví největší Pride. V roce 2026 hostí Amsterdam <b>WorldPride</b> a slaví 25 let manželství pro všechny.</p>
-
-      <div class="worldmap">
-        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mapa Evropy s vyznačenými Pride akcemi">
-          <g fill="#3a2b36" opacity="0.9">
-            <ellipse cx="168" cy="102" rx="58" ry="40"/>
-            <ellipse cx="232" cy="88" rx="58" ry="46"/>
-            <ellipse cx="95" cy="142" rx="33" ry="24"/>
-            <ellipse cx="126" cy="73" rx="19" ry="25"/>
-            <ellipse cx="104" cy="80" rx="10" ry="13"/>
-            <ellipse cx="205" cy="44" rx="30" ry="30"/>
-            <ellipse cx="255" cy="126" rx="36" ry="26"/>
-            <ellipse cx="206" cy="122" rx="11" ry="26"/>
-          </g>
-          <g stroke="#4a3744" stroke-width="0.4" opacity="0.5">
-            <line x1="0" y1="66" x2="400" y2="66"/><line x1="0" y1="133" x2="400" y2="133"/>
-            <line x1="133" y1="0" x2="133" y2="200"/><line x1="266" y1="0" x2="266" y2="200"/>
-          </g>
-          <g class="wpin"><circle class="halo" cx="251" cy="96" r="3"/><circle class="core" cx="251" cy="96" r="3"/><text x="251" y="110" text-anchor="middle">Vídeň/Vienna</text></g>
-          <g class="wpin"><circle class="halo" cx="138" cy="92" r="3"/><circle class="core" cx="138" cy="92" r="3"/><text x="138" y="106" text-anchor="middle">Paříž/Paris</text></g>
-          <g class="wpin"><circle class="halo" cx="90" cy="140" r="3"/><circle class="core" cx="90" cy="140" r="3"/><text x="90" y="154" text-anchor="middle">Madrid</text></g>
-          <g class="wpin"><circle class="halo" cx="119" cy="78" r="3"/><circle class="core" cx="119" cy="78" r="3"/><text x="116" y="70" text-anchor="middle">Londýn/London</text></g>
-          <g class="wpin"><circle class="halo" cx="227" cy="72" r="3"/><circle class="core" cx="227" cy="72" r="3"/><text x="227" y="64" text-anchor="middle">Berlín/Berlin</text></g>
-          <g class="wpin"><circle class="halo" cx="159" cy="71" r="3"/><circle class="core" cx="159" cy="71" r="3"/><text x="165" y="64" text-anchor="middle">Amsterdam</text></g>
-          <g class="wpin home"><circle class="halo" cx="235" cy="85" r="3.4"/><circle class="core" cx="235" cy="85" r="3.4"/><text x="239" y="99" text-anchor="middle">Praha/Prague</text></g>
-        </svg>
-      </div>
-
-      <div class="tl">
-        <div class="tlcol">
-          <div class="tldate"><span class="tlwd">SOBOTA</span><span class="tlnum"><span class="tlday">20</span><span class="tlmo">ČVN</span></span></div>
-          <div class="tlcard">
-            <img class="flagimg" src="https://flagcdn.com/fr.svg" alt="Francie">
-            <a class="tlcard__name" href="https://www.inter-lgbt.org/" target="_blank" rel="noopener">Marche des Fiertés</a><span class="tlcard__sub">průvod 27. 6.</span>
-            <span class="tlcard__when">20.–27. 6. 2026 · Paříž</span>
-            <a class="tlflights" href="https://www.kiwi.com/en/search/results/prague-czechia/paris-france/2026-06-19/2026-06-28/" target="_blank" rel="noopener"><i data-lucide="plane"></i> Ověřit ceny letenek</a>
-          </div>
-        </div>
-        <div class="tlcol">
-          <div class="tldate"><span class="tlwd">ČTVRTEK</span><span class="tlnum"><span class="tlday">25</span><span class="tlmo">ČVN</span></span></div>
-          <div class="tlcard">
-            <img class="flagimg" src="https://flagcdn.com/es.svg" alt="Španělsko">
-            <a class="tlcard__name" href="https://madridorgullo.com" target="_blank" rel="noopener">MADO — Orgullo</a><span class="tlcard__sub">průvod 4. 7.</span>
-            <span class="tlcard__when">25. 6. – 5. 7. 2026 · Madrid</span>
-            <a class="tlflights" href="https://www.kiwi.com/en/search/results/prague-czechia/madrid-spain/2026-06-24/2026-07-06/" target="_blank" rel="noopener"><i data-lucide="plane"></i> Ověřit ceny letenek</a>
-          </div>
-        </div>
-        <div class="tlcol">
-          <div class="tldate"><span class="tlwd">SOBOTA</span><span class="tlnum"><span class="tlday">4</span><span class="tlmo">ČVC</span></span></div>
-          <div class="tlcard">
-            <img class="flagimg" src="https://flagcdn.com/gb.svg" alt="Velká Británie">
-            <a class="tlcard__name" href="https://prideinlondon.org/" target="_blank" rel="noopener">Pride in London</a>
-            <span class="tlcard__when">4. 7. 2026 · Londýn</span>
-            <a class="tlflights" href="https://www.kiwi.com/en/search/results/prague-czechia/london-united-kingdom/2026-07-03/2026-07-05/" target="_blank" rel="noopener"><i data-lucide="plane"></i> Ověřit ceny letenek</a>
-          </div>
-        </div>
-        <div class="tlcol">
-          <div class="tldate"><span class="tlwd">SOBOTA</span><span class="tlnum"><span class="tlday">25</span><span class="tlmo">ČVC</span></span></div>
-          <div class="tlcard">
-            <img class="flagimg" src="https://flagcdn.com/de.svg" alt="Německo">
-            <a class="tlcard__name" href="https://www.csd-berlin.de/" target="_blank" rel="noopener">CSD Berlin</a>
-            <span class="tlcard__when">25. 7. 2026 · Berlín</span>
-            <a class="tlflights" href="https://www.kiwi.com/en/search/results/prague-czechia/berlin-germany/2026-07-24/2026-07-26/" target="_blank" rel="noopener"><i data-lucide="plane"></i> Ověřit ceny letenek</a>
-          </div>
-        </div>
-        <div class="tlcol">
-          <div class="tldate"><span class="tlwd">SOBOTA</span><span class="tlnum"><span class="tlday">25</span><span class="tlmo">ČVC</span></span></div>
-          <div class="tlcard">
-            <img class="flagimg" src="https://flagcdn.com/nl.svg" alt="Nizozemsko">
-            <a class="tlcard__name" href="https://pride.amsterdam/en/worldpride/" target="_blank" rel="noopener">WorldPride</a><span class="tlcard__sub">téma UNITY</span>
-            <span class="tlcard__when">25. 7. – 8. 8. 2026 · Amsterdam</span>
-            <a class="tlflights" href="https://www.kiwi.com/en/search/results/prague-czechia/amsterdam-netherlands/2026-07-24/2026-08-09/" target="_blank" rel="noopener"><i data-lucide="plane"></i> Ověřit ceny letenek</a>
-          </div>
-        </div>
-        <div class="tlcol">
-          <div class="tldate"><span class="tlwd">PONDĚLÍ</span><span class="tlnum"><span class="tlday">3</span><span class="tlmo">SRP</span></span></div>
-          <div class="tlcard">
-            <img class="flagimg" src="https://flagcdn.com/cz.svg" alt="Česko">
-            <a class="tlcard__name" href="https://www.praguepride.cz" target="_blank" rel="noopener">Prague Pride</a><span class="tlcard__sub">náš domácí</span>
-            <span class="tlcard__when">3. – 9. 8. 2026 · Praha</span>
-            <span class="tlflights tlflights--home">domácí akce</span>
+      <div class="phone-stage">
+        <div class="phone">
+          <div class="island"></div>
+          <div class="screen">
+            <div class="dots"><i></i><i></i><i></i></div>
+            <div class="logo"><svg class="qmark" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="q247.live"><rect width="120" height="20" y="0" fill="#e40b3a"/><rect width="120" height="20" y="20" fill="#ff7a18"/><rect width="120" height="20" y="40" fill="#ffce00"/><rect width="120" height="20" y="60" fill="#15a05a"/><rect width="120" height="20" y="80" fill="#1763e8"/><rect width="120" height="20" y="100" fill="#7a1fa2"/></svg><b>q247.live</b></div>
+            <div class="glyph"><i data-lucide="sparkles" style="width:150px;height:150px"></i></div>
+            <div class="scrim"></div>
+            <div class="content">
+              <span class="badge">DNES · 20:00</span>
+              <h3 class="title">Drag Bingo:<br>Pride Edition</h3>
+              <p class="sub">📍 Friends Club · Praha</p>
+              <span class="pill">Zobrazit detail →</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CO VIDĚT -->
-  <section class="sec" id="videt">
-    <div class="sechead">
-      <div>
-        <p class="eyebrow">TV · filmy · seriály</p>
-        <h2 class="sectitle">Co vidět</h2>
-        <p class="secsub">Namícháno z toho, co právě trenduje, i z klasiky, co pořád platí. U každého trailer, hodnocení a kde se dá film vidět.</p>
+  <section class="band safe">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="safe-badge"><i data-lucide="lock"></i> 100% bezpečné</span>
+        <h2>Žádný software. Žádné riziko.</h2>
+        <p>q247.live není aplikace z obchodu. Je to obyčejná webová stránka, kterou si jen uložíš na plochu. Nemá přístup k ničemu ve tvém telefonu.</p>
       </div>
-    </div>
-
-    <article class="media1">
-      <div class="media1__img"><img src="https://a.ltrbxd.com/resized/sm/upload/oq/ge/iu/1v/all%20of%20us%20t-1200-1200-675-675-crop-000000.jpg" alt="All of Us Strangers" loading="lazy">
-        <i data-lucide="clapperboard"></i>
-      </div>
-      <span class="hotbadge">🔥 Nejvíc trendy</span>
-      <div class="media1__b">
-        <span class="media1__rank">▲ 1 · právě trenduje</span>
-        <h3 class="media1__title">All of Us Strangers</h3>
-        <p class="media1__sub">
-          <span>2023 · drama / romance · A. Haigh</span>
-          <span class="rate rate--csfd">ČSFD 73 %</span>
-          <span class="rate rate--imdb">IMDb 7,6</span>
-        </p>
-        <p class="media1__desc">Scenárista se vrací do dětského pokoje a potkává své dávno zesnulé rodiče — a souseda, do kterého se zamiluje. Křehký, magický a srdcervoucí film o samotě a lásce.</p>
-        <div class="media1__foot">
-          <a class="yt" href="https://www.youtube.com/watch?v=gT_uY56mCcg" target="_blank" rel="noopener"><img class="btnfav" src="https://www.google.com/s2/favicons?sz=64&domain=youtube.com" alt=""> Přehrát trailer</a>
-          <a class="detail" href="https://www.csfd.cz/film/1412545-all-of-us-strangers/" target="_blank" rel="noopener"><img class="dbico" src="https://www.google.com/s2/favicons?sz=64&domain=csfd.cz" alt="">ČSFD</a>
-          <a class="detail" href="https://www.imdb.com/title/tt23561236/" target="_blank" rel="noopener"><img class="dbico" src="https://www.google.com/s2/favicons?sz=64&domain=imdb.com" alt="">IMDb</a>
-        </div>
-        <div class="media1__foot vods">
-          <span class="lbl">k vidění:</span>
-          <a class="vod" href="https://www.hbomax.com" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=64&domain=max.com" alt="">HBO Max</a>
-          <a class="vod" href="https://www.oneplay.cz" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=64&domain=oneplay.cz" alt="">Oneplay</a>
-        </div>
-      </div>
-    </article>
-
-    <div class="mediagrid">
-      <div class="mediacard mediacard--film">
-        <div class="mediacard__thumb"><img src="https://img.youtube.com/vi/FRoEjAlhmsw/mqdefault.jpg" alt="" onerror="this.remove()"><i data-lucide="clapperboard"></i></div>
-        <div class="mediacard__b">
-          <span class="mediacard__rank">▲ 2 · trenduje</span>
-          <h4 class="mediacard__title">Heartstopper (3. série)</h4>
-          <p class="mediacard__sub">2024 · seriál · <span class="rate rate--imdb">IMDb 8,4</span></p>
-          <div class="mediacard__foot">
-            <a class="yt" href="https://www.youtube.com/watch?v=FRoEjAlhmsw" target="_blank" rel="noopener"><img class="btnfav" src="https://www.google.com/s2/favicons?sz=64&domain=youtube.com" alt=""> Trailer</a>
-            <a class="vod" href="https://www.netflix.com/title/81059939" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=64&domain=netflix.com" alt="">Netflix</a>
-            <a class="detail" href="https://www.imdb.com/title/tt12057108/" target="_blank" rel="noopener"><img class="dbico" src="https://www.google.com/s2/favicons?sz=64&domain=imdb.com" alt="">IMDb</a>
-          </div>
-        </div>
-      </div>
-      <div class="mediacard mediacard--film">
-        <div class="mediacard__thumb"><img src="https://img.youtube.com/vi/QXwxIk0am8c/mqdefault.jpg" alt="" onerror="this.remove()"><i data-lucide="clapperboard"></i></div>
-        <div class="mediacard__b">
-          <span class="mediacard__rank">▲ 3 · trenduje</span>
-          <h4 class="mediacard__title">I Wish You All the Best</h4>
-          <p class="mediacard__sub">2024 · drama · <span class="rate rate--imdb">IMDb 5,5</span></p>
-          <div class="mediacard__foot">
-            <a class="yt" href="https://www.youtube.com/watch?v=QXwxIk0am8c" target="_blank" rel="noopener"><img class="btnfav" src="https://www.google.com/s2/favicons?sz=64&domain=youtube.com" alt=""> Trailer</a>
-            <a class="vod" href="https://www.primevideo.com" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=64&domain=primevideo.com" alt="">Prime</a>
-            <a class="detail" href="https://www.imdb.com/title/tt22525442/" target="_blank" rel="noopener"><img class="dbico" src="https://www.google.com/s2/favicons?sz=64&domain=imdb.com" alt="">IMDb</a>
-          </div>
-        </div>
-      </div>
-      <div class="mediacard mediacard--film">
-        <div class="mediacard__thumb"><img src="https://img.youtube.com/vi/KKGaYVfvyrA/mqdefault.jpg" alt="" onerror="this.remove()"><i data-lucide="clapperboard"></i></div>
-        <div class="mediacard__b">
-          <span class="mediacard__rank">▲ 4 · trenduje</span>
-          <h4 class="mediacard__title">Červená, bílá &amp; královsky modrá</h4>
-          <p class="mediacard__sub">2023 · romcom · <span class="rate rate--csfd">ČSFD 66 %</span></p>
-          <div class="mediacard__foot">
-            <a class="yt" href="https://www.youtube.com/watch?v=KKGaYVfvyrA" target="_blank" rel="noopener"><img class="btnfav" src="https://www.google.com/s2/favicons?sz=64&domain=youtube.com" alt=""> Trailer</a>
-            <a class="vod" href="https://www.primevideo.com" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=64&domain=primevideo.com" alt="">Prime</a>
-            <a class="detail" href="https://www.csfd.cz/film/1367714-cervena-bila-a-kralovsky-modra/" target="_blank" rel="noopener"><img class="dbico" src="https://www.google.com/s2/favicons?sz=64&domain=csfd.cz" alt="">ČSFD</a>
-          </div>
-        </div>
-      </div>
-      <div class="mediacard mediacard--film">
-        <div class="mediacard__thumb"><img src="https://img.youtube.com/vi/a8wqihJu1zg/mqdefault.jpg" alt="" onerror="this.remove()"><i data-lucide="clapperboard"></i></div>
-        <div class="mediacard__b">
-          <span class="mediacard__rank">◆ klasika</span>
-          <h4 class="mediacard__title">Zkrocená hora</h4>
-          <p class="mediacard__sub">2005 · Ang Lee · <span class="rate rate--csfd">ČSFD 79 %</span></p>
-          <div class="mediacard__foot">
-            <a class="yt" href="https://www.youtube.com/watch?v=a8wqihJu1zg" target="_blank" rel="noopener"><img class="btnfav" src="https://www.google.com/s2/favicons?sz=64&domain=youtube.com" alt=""> Trailer</a>
-            <a class="vod" href="https://www.oneplay.cz" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=64&domain=oneplay.cz" alt="">Oneplay</a>
-            <a class="detail" href="https://www.csfd.cz/film/176253-zkrocena-hora/" target="_blank" rel="noopener"><img class="dbico" src="https://www.google.com/s2/favicons?sz=64&domain=csfd.cz" alt="">ČSFD</a>
-          </div>
-        </div>
-      </div>
-      <div class="mediacard mediacard--film">
-        <div class="mediacard__thumb"><img src="https://img.youtube.com/vi/Z9AYPxH5NTM/mqdefault.jpg" alt="" onerror="this.remove()"><i data-lucide="clapperboard"></i></div>
-        <div class="mediacard__b">
-          <span class="mediacard__rank">◆ klasika</span>
-          <h4 class="mediacard__title">Dej mi své jméno</h4>
-          <p class="mediacard__sub">2017 · Guadagnino · <span class="rate rate--imdb">IMDb 7,8</span></p>
-          <div class="mediacard__foot">
-            <a class="yt" href="https://www.youtube.com/watch?v=Z9AYPxH5NTM" target="_blank" rel="noopener"><img class="btnfav" src="https://www.google.com/s2/favicons?sz=64&domain=youtube.com" alt=""> Trailer</a>
-            <a class="vod" href="https://www.primevideo.com" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=64&domain=primevideo.com" alt="">Prime</a>
-            <a class="detail" href="https://www.csfd.cz/film/477659-call-me-by-your-name/" target="_blank" rel="noopener"><img class="dbico" src="https://www.google.com/s2/favicons?sz=64&domain=csfd.cz" alt="">ČSFD</a>
-            <a class="detail" href="https://www.imdb.com/title/tt5726616/" target="_blank" rel="noopener"><img class="dbico" src="https://www.google.com/s2/favicons?sz=64&domain=imdb.com" alt="">IMDb</a>
-          </div>
-        </div>
-      </div>
-      <div class="mediacard mediacard--film">
-        <div class="mediacard__thumb"><img src="https://img.youtube.com/vi/EH3zcuRQXNo/mqdefault.jpg" alt="" onerror="this.remove()"><i data-lucide="clapperboard"></i></div>
-        <div class="mediacard__b">
-          <span class="mediacard__rank">◆ klasika</span>
-          <h4 class="mediacard__title">Carol</h4>
-          <p class="mediacard__sub">2015 · Todd Haynes · <span class="rate rate--csfd">ČSFD 64 %</span></p>
-          <div class="mediacard__foot">
-            <a class="yt" href="https://www.youtube.com/watch?v=EH3zcuRQXNo" target="_blank" rel="noopener"><img class="btnfav" src="https://www.google.com/s2/favicons?sz=64&domain=youtube.com" alt=""> Trailer</a>
-            <a class="vod" href="https://www.kviff.tv" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=64&domain=kviff.tv" alt="">KVIFF.TV</a>
-            <a class="detail" href="https://www.csfd.cz/film/318488-carol/" target="_blank" rel="noopener"><img class="dbico" src="https://www.google.com/s2/favicons?sz=64&domain=csfd.cz" alt="">ČSFD</a>
-          </div>
-        </div>
-      </div>
-      <div class="mediacard mediacard--film">
-        <div class="mediacard__thumb"><img src="https://img.youtube.com/vi/9NJj12tJzqc/mqdefault.jpg" alt="" onerror="this.remove()"><i data-lucide="clapperboard"></i></div>
-        <div class="mediacard__b">
-          <span class="mediacard__rank">◆ klasika</span>
-          <h4 class="mediacard__title">Moonlight</h4>
-          <p class="mediacard__sub">2016 · Oscar za film · <span class="rate rate--imdb">IMDb 7,4</span></p>
-          <div class="mediacard__foot">
-            <a class="yt" href="https://www.youtube.com/watch?v=9NJj12tJzqc" target="_blank" rel="noopener"><img class="btnfav" src="https://www.google.com/s2/favicons?sz=64&domain=youtube.com" alt=""> Trailer</a>
-            <a class="vod" href="https://www.netflix.com" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=64&domain=netflix.com" alt="">Netflix</a>
-            <a class="detail" href="https://www.csfd.cz/film/443928-moonlight/" target="_blank" rel="noopener"><img class="dbico" src="https://www.google.com/s2/favicons?sz=64&domain=csfd.cz" alt="">ČSFD</a>
-          </div>
-        </div>
-      </div>
-      <div class="mediacard mediacard--film">
-        <div class="mediacard__thumb"><img src="https://img.youtube.com/vi/vsFY0wHpR5o/mqdefault.jpg" alt="" onerror="this.remove()"><i data-lucide="clapperboard"></i></div>
-        <div class="mediacard__b">
-          <span class="mediacard__rank">◆ klasika</span>
-          <h4 class="mediacard__title">Pride</h4>
-          <p class="mediacard__sub">2014 · feel-good · <span class="rate rate--csfd">ČSFD 77 %</span></p>
-          <div class="mediacard__foot">
-            <a class="yt" href="https://www.youtube.com/watch?v=vsFY0wHpR5o" target="_blank" rel="noopener"><img class="btnfav" src="https://www.google.com/s2/favicons?sz=64&domain=youtube.com" alt=""> Trailer</a>
-            <a class="vod" href="https://www.dafilms.cz" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=64&domain=dafilms.cz" alt="">DAFilms</a>
-            <a class="detail" href="https://www.csfd.cz/film/379671-pride/" target="_blank" rel="noopener"><img class="dbico" src="https://www.google.com/s2/favicons?sz=64&domain=csfd.cz" alt="">ČSFD</a>
-          </div>
-        </div>
+      <div class="safe-grid">
+        <div class="card"><div class="ico"><i data-lucide="package-x"></i></div><h3>Nic se neinstaluje</h3><p>Je to statická HTML stránka — žádný balík, žádné aktualizace na pozadí, žádná aplikace běžící v systému.</p></div>
+        <div class="card"><div class="ico"><i data-lucide="user-x"></i></div><h3>Bez registrace</h3><p>Nepotřebuješ účet, e-mail ani heslo. Otevřeš a používáš. Nesbíráme o tobě vůbec nic.</p></div>
+        <div class="card"><div class="ico"><i data-lucide="ban"></i></div><h3>Žádný přístup k systému</h3><p>Nevidí tvoje kontakty, polohu, fotky ani soubory. Běží v prohlížeči, oddělená od zbytku telefonu.</p></div>
+        <div class="card"><div class="ico"><i data-lucide="wifi-off"></i></div><h3>Nic se neodesílá</h3><p>Žádná data neputují na žádné servery. Tvoje volby (motiv, jazyk) zůstávají jen u tebe v zařízení.</p></div>
+        <div class="card"><div class="ico"><i data-lucide="eye-off"></i></div><h3>Žádné sledování</h3><p>Žádné reklamní cookies ani trackery. Jen obsah, kvůli kterému jsi přišel/přišla.</p></div>
+        <div class="card"><div class="ico"><i data-lucide="trash-2"></i></div><h3>Smažeš jedním tahem</h3><p>Nelíbí? Stačí smazat ikonu z plochy. Žádné odinstalování, žádné zbytky v systému.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- CO SLYŠET -->
-  <section class="sec" id="slyset">
-    <div class="sechead">
-      <div>
-        <p class="eyebrow">Poslouchej · čerstvé epizody</p>
-        <h2 class="sectitle">Co slyšet</h2>
-        <p class="secsub">Nejnovější díly queer podcastů z různých sérií (CZ, SK i EN) — i epizody běžných podcastů, které se týkají LGBT+ témat. Nahoře nejčerstvější.</p>
+  <section class="band" id="jak">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow"><span class="rule"></span> Tři klepnutí</span>
+        <h2>Na ploše za 10 vteřin</h2>
       </div>
-    </div>
-
-    <article class="media1">
-      <div class="media1__img">
-        <img src="https://image-cdn-fa.spotifycdn.com/image/ab67656300005f1f4235a4e6fd268e08b33f95c9" alt="" onerror="this.remove()">
-        <i data-lucide="mic"></i>
-      </div>
-      <span class="hotbadge">✨ Nejnovější</span>
-      <div class="media1__b">
-        <span class="media1__rank">▲ tento týden · čerstvá epizoda</span>
-        <h3 class="media1__title">KYDY — #54 Sexuální asistence</h3>
-        <p class="media1__sub"><img class="flagimg sm" src="https://flagcdn.com/cz.svg" alt="CZ"> česky · podcast KYDY · čerstvý díl</p>
-        <p class="media1__desc">Kuba a Paprik tentokrát o tématu, o kterém se moc nemluví — sexuální asistenci a intimitě pro lidi, co to mají složitější. Otevřeně a bez příkras.</p>
-        <div class="media1__foot">
-          <a class="sp" href="https://open.spotify.com/episode/4XrtKD7J28D5w3Ks5IsIYT" target="_blank" rel="noopener"><img class="btnfav" src="https://www.google.com/s2/favicons?sz=64&domain=spotify.com" alt=""> Přehrát epizodu</a>
-        </div>
-      </div>
-    </article>
-
-    <div class="mediagrid">
-      <div class="mediacard">
-        <div class="mediacard__thumb sq"><img src="https://image-cdn-fa.spotifycdn.com/image/ab67656300005f1f1f7427d3c08e721d6076bea4" alt="" onerror="this.remove()"></div>
-        <div class="mediacard__b">
-          <span class="mediacard__rank"><img class="flagimg sm" src="https://flagcdn.com/sk.svg" alt="SK"> před 4 dny · Teplá vlna</span>
-          <h4 class="mediacard__title">B-Complex: rodová identita v době bez internetu</h4>
-          <p class="mediacard__sub">epizoda · slovensky</p>
-          <div class="mediacard__foot"><a class="sp" href="https://open.spotify.com/episode/5tFW8dQsWFNkQ47wKcHCm3" target="_blank" rel="noopener"><img class="btnfav" src="https://www.google.com/s2/favicons?sz=64&domain=spotify.com" alt=""> Přehrát</a></div>
-        </div>
-      </div>
-      <div class="mediacard">
-        <div class="mediacard__thumb sq"><img src="https://image-cdn-fa.spotifycdn.com/image/ab67656300005f1fb807ccceec83119a50f89010" alt="" onerror="this.remove()"></div>
-        <div class="mediacard__b">
-          <span class="mediacard__rank"><img class="flagimg sm" src="https://flagcdn.com/gb.svg" alt="GB"> před 5 dny · Making Gay History</span>
-          <h4 class="mediacard__title">Dr. Evelyn Hooker</h4>
-          <p class="mediacard__sub">epizoda · anglicky</p>
-          <div class="mediacard__foot"><a class="sp" href="https://open.spotify.com/episode/7EYNeYFTAxOxfBowpiSVQQ" target="_blank" rel="noopener"><img class="btnfav" src="https://www.google.com/s2/favicons?sz=64&domain=spotify.com" alt=""> Přehrát</a></div>
-        </div>
-      </div>
-      <div class="mediacard">
-        <div class="mediacard__thumb sq"><img src="https://image-cdn-ak.spotifycdn.com/image/ab67656300005f1f10fe0a08586b74008f34e451" alt="" onerror="this.remove()"></div>
-        <div class="mediacard__b">
-          <span class="mediacard__rank"><img class="flagimg sm" src="https://flagcdn.com/gb.svg" alt="GB"> před 6 dny · Bad Gays</span>
-          <h4 class="mediacard__title">Magnus Hirschfeld</h4>
-          <p class="mediacard__sub">epizoda · anglicky</p>
-          <div class="mediacard__foot"><a class="sp" href="https://open.spotify.com/episode/0PWg7R8qHbKTTVpKcuNBfd" target="_blank" rel="noopener"><img class="btnfav" src="https://www.google.com/s2/favicons?sz=64&domain=spotify.com" alt=""> Přehrát</a></div>
-        </div>
-      </div>
-      <div class="mediacard">
-        <div class="mediacard__thumb sq"><img src="https://image-cdn-ak.spotifycdn.com/image/ab67656300005f1f52cbd2ebbce6b177f3660b48" alt="" onerror="this.remove()"></div>
-        <div class="mediacard__b">
-          <span class="mediacard__rank"><img class="flagimg sm" src="https://flagcdn.com/gb.svg" alt="GB"> tento týden · Queer Collective</span>
-          <h4 class="mediacard__title">First Queer Loves, Breakups &amp; Heartbreak</h4>
-          <p class="mediacard__sub">epizoda · anglicky</p>
-          <div class="mediacard__foot"><a class="sp" href="https://open.spotify.com/episode/0XYVj3ByVnpoF33fuu8Nwk" target="_blank" rel="noopener"><img class="btnfav" src="https://www.google.com/s2/favicons?sz=64&domain=spotify.com" alt=""> Přehrát</a></div>
-        </div>
+      <div class="steps">
+        <div class="step"><div class="num">1</div><h3>Otevři q247.live</h3><p>Klepni na tlačítko výše — appka se načte rovnou v prohlížeči, nic se nestahuje.</p></div>
+        <div class="step"><div class="num">2</div><h3>Přidat na plochu</h3><p>V nabídce prohlížeče zvol „Přidat na plochu“. iOS i Android to umí nativně.</p></div>
+        <div class="step"><div class="num">3</div><h3>Hotovo</h3><p>Ikona q247.live je na ploše jako každá appka. Otevírá se na celou obrazovku.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- CO ČÍST -->
-  <section class="sec" id="cist">
-    <div class="sechead">
-      <div>
-        <p class="eyebrow">Ke čtení</p>
-        <h2 class="sectitle">Co číst</h2>
-        <p class="secsub">Dva tipy na queer čtení — od antických hrdinů po současné romány. U každého krátká anotace a odkaz, kde knihu koupit. Každý den nový výběr.</p>
+  <section class="band" style="padding-top:20px">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow"><span class="rule"></span> Co je uvnitř</span>
+        <h2>Všechno na jednom místě</h2>
       </div>
-    </div>
-
-    <div class="bookgrid2">
-      <article class="bookbig">
-        <a class="bookbig__cover" href="https://www.kosmas.cz/knihy/504370/posledni-stanice/" target="_blank" rel="noopener"><img src="https://obalky.kosmas.cz/ArticleCovers/504/370_base.jpg" alt="Poslední stanice" loading="lazy"></a>
-        <div class="bookbig__body">
-          <h3 class="bookbig__title">Poslední stanice</h3>
-          <p class="bookbig__author">Casey McQuiston</p>
-          <p class="bookbig__desc">Nevšední LGBTQ+ romance od autorky bestselleru Červená, bílá a královsky modrá. August potká v newyorském metru dívku jako z jiné doby — a zamiluje se. Vtipné, něžné a plné kouzla.</p>
-          <a class="bookbig__buy" href="https://www.kosmas.cz/knihy/504370/posledni-stanice/" target="_blank" rel="noopener"><i data-lucide="shopping-bag"></i> Koupit za 449 Kč</a>
-        </div>
-      </article>
-      <article class="bookbig">
-        <a class="bookbig__cover" href="https://www.kosmas.cz/knihy/553438/stul-pro-dva/" target="_blank" rel="noopener"><img src="https://obalky.kosmas.cz/ArticleCovers/553/438_base.jpg" alt="Stůl pro dva" loading="lazy"></a>
-        <div class="bookbig__body">
-          <h3 class="bookbig__title">Stůl pro dva</h3>
-          <p class="bookbig__author">Casey McQuiston</p>
-          <p class="bookbig__desc">Theo a Kit se znají od dětství — z nejlepších přátel se stali milenci a pak přišel příšerný rozchod. Teď spolu uvíznou na společné cestě. Druhá šance jako sladkokyselá komedie.</p>
-          <a class="bookbig__buy" href="https://www.kosmas.cz/knihy/553438/stul-pro-dva/" target="_blank" rel="noopener"><i data-lucide="shopping-bag"></i> Koupit za 199 Kč</a>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- KAM ZAJÍT -->
-  <section class="sec" id="kam">
-    <div class="sechead">
-      <div>
-        <p class="eyebrow">Kam zajít · kde se potkat</p>
-        <h2 class="sectitle">Kam zajít</h2>
-        <p class="secsub">Podniky, spolky a komunity, kde tě vezmou takového, jaký jsi. U každého odkaz na oficiální web.</p>
-      </div>
-    </div>
-
-    <div class="kamgrid">
-      <div class="kamcat">
-        <h3 class="kamcat__h">☕ Přes den na kafe</h3>
-        <div class="kamlist">
-          <div class="kamitem"><a href="https://www.cafecafe.cz/" target="_blank" rel="noopener">Café Cafe</a> <span class="kammeta">— Praha-Staré Město · designová kavárna, dorty 🍰</span></div>
-          <div class="kamitem"><a href="https://www.cafefelix.cz/en/" target="_blank" rel="noopener">Café Felix</a> <span class="kammeta">— Praha-Vinohrady · brunch kavárna 🥐</span></div>
-          <div class="kamitem"><a href="https://www.patrakrymska.cz/" target="_blank" rel="noopener">Patra</a> <span class="kammeta">— Praha-Vršovice · kavárna, bar &amp; galerie 🎨</span></div>
-          <div class="kamitem"><a href="http://q-cafe.cz/" target="_blank" rel="noopener">Q Café</a> <span class="kammeta">— Praha-Staré Město · malý LGBT café-bar ☕</span></div>
-          <div class="kamitem"><a href="https://www.yocafe.cz/" target="_blank" rel="noopener">YoCafé</a> <span class="kammeta">— Praha-Vinohrady · queer kavárna-bar ☕</span></div>
-        </div>
-      </div>
-      <div class="kamcat">
-        <h3 class="kamcat__h">🪩 Noční zábava</h3>
-        <div class="kamlist">
-          <div class="kamitem"><a href="https://club-termix.cz/" target="_blank" rel="noopener">Club Termix / TerMAX</a> <span class="kammeta">— Praha-Vinohrady · disko víkendy 🪩</span></div>
-          <div class="kamitem"><a href="https://www.friendsclub.cz/" target="_blank" rel="noopener">Friends Club</a> <span class="kammeta">— Praha · ikonický klub, drag &amp; karaoke 🎤</span></div>
-          <div class="kamitem"><b>Háčko / H46</b> <span class="kammeta">— Brno · gay/lesbi klub 🌈</span></div>
-          <div class="kamitem"><a href="https://heaven.cz/" target="_blank" rel="noopener">Heaven</a> <span class="kammeta">— Praha · velký gay klub &amp; párty 🕺</span></div>
-          <div class="kamitem"><a href="https://www.facebook.com/Klub21Prague" target="_blank" rel="noopener">Klub 21</a> <span class="kammeta">— Praha-Vinohrady · sklepní bar 🍻</span></div>
-          <div class="kamitem"><b>Klub Fiesta</b> <span class="kammeta">— Ostrava · nejstarší klub, drag show 👑</span></div>
-          <div class="kamitem"><a href="http://piano-bar.cz/" target="_blank" rel="noopener">Piano Bar</a> <span class="kammeta">— Praha-Vinohrady · drag bingo, jukebox 🎶</span></div>
-          <div class="kamitem"><b>Rio Bar</b> <span class="kammeta">— Ostrava · gay bar 🍸</span></div>
-          <div class="kamitem"><a href="https://www.facebook.com/TheSaintsBar" target="_blank" rel="noopener">The Saints</a> <span class="kammeta">— Praha-Vinohrady · pohodový bar 🌈</span></div>
-          <div class="kamitem"><a href="http://www.updownbarprague.cz/en/home/" target="_blank" rel="noopener">UpDown Bar</a> <span class="kammeta">— Praha-Žižkov · lounge + klub 🕺</span></div>
-        </div>
-      </div>
-      <div class="kamcat">
-        <h3 class="kamcat__h">🏃 Sport a turistika</h3>
-        <div class="kamlist">
-          <div class="kamitem"><a href="https://www.alcedopraha.cz/" target="_blank" rel="noopener">Alcedo Praha</a> <span class="kammeta">— Praha · největší LGBT sport. klub 🏸</span></div>
-          <div class="kamitem"><a href="http://aquamen.eu/" target="_blank" rel="noopener">Aquamen</a> <span class="kammeta">— Praha · LGBT plavecký oddíl 🏊</span></div>
-          <div class="kamitem"><a href="https://www.instagram.com/buddy.hiking.club/" target="_blank" rel="noopener">Buddy Hiking Club</a> <span class="kammeta">— online · queer turistika &amp; výlety · Instagram 🥾</span></div>
-          <div class="kamitem"><a href="http://gaysport.cz/" target="_blank" rel="noopener">GaySport.cz</a> <span class="kammeta">— Praha · neformální parta, různé sporty 🤾</span></div>
-          <div class="kamitem"><a href="https://www.nakluky.cz/organizace/item/67-gfc-prague-friends/" target="_blank" rel="noopener">GFC Prague Friends</a> <span class="kammeta">— Praha · gay fotbalový klub ⚽</span></div>
-          <div class="kamitem"><a href="https://www.nakluky.cz/organizace/item/20-go-outdoor-praha/" target="_blank" rel="noopener">Go outdoor Praha</a> <span class="kammeta">— Praha · kolo, běžky, treky, voda 🏕️</span></div>
-          <div class="kamitem"><a href="https://www.nakluky.cz/organizace/item/21-golfsky-proud/" target="_blank" rel="noopener">Golfský proud</a> <span class="kammeta">— Brno · plavání 🏊</span></div>
-          <div class="kamitem"><a href="https://www.kluci-na-kole.cz/" target="_blank" rel="noopener">Kluci na kole</a> <span class="kammeta">— Brno/Morava · cyklovýlety &amp; výlety 🚲</span></div>
-          <div class="kamitem"><a href="https://www.instagram.com/out_a_run/" target="_blank" rel="noopener">Out a run</a> <span class="kammeta">— Praha · queer běžecká skupina · Instagram 🏃</span></div>
-          <div class="kamitem"><a href="https://www.nakluky.cz/organizace/item/53-prague-friendly-tennis-open/" target="_blank" rel="noopener">Prague Friendly Tennis</a> <span class="kammeta">— Praha · tenis, GLTA 🎾</span></div>
-          <div class="kamitem"><a href="https://praguerainbow.eu/" target="_blank" rel="noopener">Prague Rainbow Spring</a> <span class="kammeta">— Praha · LGBT sportovní víkend 🏅</span></div>
-        </div>
-      </div>
-      <div class="kamcat">
-        <h3 class="kamcat__h">🧘 Jóga, tanec, víra &amp; kultura</h3>
-        <div class="kamlist">
-          <div class="kamitem"><a href="https://www.nakluky.cz/organizace/item/2-galibi/" target="_blank" rel="noopener">Galibi</a> <span class="kammeta">— Praha · VŠ LGBT klub (kultura, výlety) 🎓</span></div>
-          <div class="kamitem"><a href="https://www.nakluky.cz/organizace/item/4-gate/" target="_blank" rel="noopener">GaTe (STUD Brno)</a> <span class="kammeta">— Brno · mladí v coming outu 🌱</span></div>
-          <div class="kamitem"><a href="https://www.jsmefer.cz/" target="_blank" rel="noopener">Jsme fér</a> <span class="kammeta">— ČR · manželství pro všechny 💍</span></div>
-          <div class="kamitem"><a href="https://www.qalendar.cz/series/setkani-logosu-v-praze/" target="_blank" rel="noopener">Logos</a> <span class="kammeta">— Praha · společenství queer křesťanů 🙏</span></div>
-          <div class="kamitem"><a href="https://www.mezipatra.cz/" target="_blank" rel="noopener">Mezipatra</a> <span class="kammeta">— ČR · queer filmový festival 🎬</span></div>
-          <div class="kamitem"><a href="https://www.praguepride.cz/" target="_blank" rel="noopener">Prague Pride</a> <span class="kammeta">— Praha · komunitní centrum, knižní klub, deskovky 🌈</span></div>
-          <div class="kamitem"><a href="https://www.queerball.cz/" target="_blank" rel="noopener">Queer Ball</a> <span class="kammeta">— Praha · queer ples 🪩</span></div>
-          <div class="kamitem"><a href="https://www.queergeography.cz/" target="_blank" rel="noopener">Queer Geography</a> <span class="kammeta">— ČR · queer dějiny &amp; vzdělávání 📚</span></div>
-          <div class="kamitem"><a href="https://www.qalendar.cz/series/queer-sensitive-joga/" target="_blank" rel="noopener">Queer Sensitive Jóga</a> <span class="kammeta">— Komunitní centrum, Praha · jóga 🧘</span></div>
-          <div class="kamitem"><a href="https://www.sbarvouven.cz/" target="_blank" rel="noopener">S barvou ven</a> <span class="kammeta">— ČR · online · poradna &amp; komunita 🌈</span></div>
-          <div class="kamitem"><a href="https://www.stud.cz/" target="_blank" rel="noopener">STUD Brno</a> <span class="kammeta">— Brno · LGBT spolek 🌈</span></div>
-          <div class="kamitem"><a href="https://www.qalendar.cz/series/tanecni-lekce/" target="_blank" rel="noopener">Taneční lekce</a> <span class="kammeta">— Komunitní centrum, Praha · tanec 💃</span></div>
-          <div class="kamitem"><a href="https://jsmetransparent.cz/" target="_blank" rel="noopener">Trans*parent</a> <span class="kammeta">— Praha &amp; online · spolek trans* lidí, podpůrné skupiny 🤝</span></div>
-        </div>
-      </div>
-      <div class="kamcat" id="zdravi">
-        <h3 class="kamcat__h">🩺 Jak zůstat zdraví</h3>
-        <div class="kamlist">
-          <div class="kamitem"><a href="https://www.hiv-testovani.cz/checkpoint-dum-svetla-praha" target="_blank" rel="noopener">Checkpoint — Dům světla</a> <span class="kammeta">— Praha-Karlín · anonymní testování HIV/STI zdarma, Po 16–19h, St 9–12h, Čt 15–18h 🛡️</span></div>
-          <div class="kamitem"><a href="https://www.hiv-testovani.cz" target="_blank" rel="noopener">HIV Checkpoint Brno</a> <span class="kammeta">— Brno · testování, FN Brno-Bohunice, Pavilon B 🩺</span></div>
-          <div class="kamitem"><a href="https://www.chciprep.cz" target="_blank" rel="noopener">PrEP Point — Dům světla ČSAP</a> <span class="kammeta">— Praha · poradenství a získání PrEP na předpis 💊</span></div>
-          <div class="kamitem"><a href="https://www.sbarvouven.cz" target="_blank" rel="noopener">Sbarvouven — poradna &amp; podpora</a> <span class="kammeta">— celé ČR · online poradenství a bezpečný prostor ☎️</span></div>
-          <div class="kamnote">Checkpointy i v Ostravě, Olomouci, Č. Budějovicích, Hradci Králové, Ústí, Liberci a Plzni — přehled na <a href="https://www.hiv-testovani.cz" target="_blank" rel="noopener">hiv-testovani.cz</a>.</div>
-        </div>
-      </div>
-      <div class="kamcat">
-        <h3 class="kamcat__h">💼 Kde pracovat</h3>
-        <div class="kamlist">
-          <div class="kamitem"><a href="https://www.vodafone.cz/o-vodafonu/kariera/" target="_blank" rel="noopener">Vodafone</a> <span class="kammeta">— <span class="emptier emptier--gold">Gold · 94,5 %</span></span></div>
-          <div class="kamitem"><a href="https://jobs.msd.com/" target="_blank" rel="noopener">MSD</a> <span class="kammeta">— <span class="emptier emptier--gold">Gold</span></span></div>
-          <div class="kamitem"><a href="https://www.novartis.com/careers" target="_blank" rel="noopener">Novartis</a> <span class="kammeta">— <span class="emptier emptier--silver">Silver · 86</span></span></div>
-          <div class="kamitem"><a href="https://www.ikea.com/cz/cs/this-is-ikea/work-with-us/" target="_blank" rel="noopener">IKEA</a> <span class="kammeta">— <span class="emptier emptier--silver">Silver · 81</span></span></div>
-          <div class="kamitem"><a href="https://www.accenture.com/cz-cs/careers" target="_blank" rel="noopener">Accenture</a> <span class="kammeta">— <span class="emptier emptier--silver">Silver · 81</span></span></div>
-          <div class="kamitem"><a href="https://www.sap.com/cz/about/careers.html" target="_blank" rel="noopener">SAP</a> <span class="kammeta">— <span class="emptier emptier--silver">Silver · 80,5</span></span></div>
-          <div class="kamitem"><a href="https://www.generaliceska.cz/" target="_blank" rel="noopener">Generali Česká</a> <span class="kammeta">— <span class="emptier emptier--silver">Silver</span></span></div>
-          <div class="kamitem"><a href="https://www.skoda-kariera.cz/" target="_blank" rel="noopener">Škoda Auto</a> <span class="kammeta">— <span class="emptier emptier--bronze">Bronze · 75,5</span></span></div>
-          <div class="kamitem"><a href="https://kariera.itesco.cz/" target="_blank" rel="noopener">Tesco</a> <span class="kammeta">— <span class="emptier emptier--bronze">Bronze · 71</span></span></div>
-        </div>
-        <div class="kamnote">Firmy oceněné <a href="https://www.pridebusinessforum.com/oceneni-lgbtq-friendly-employer/" target="_blank" rel="noopener">Pride Business Forum</a> jako LGBTQ+ Friendly Employer (2025) — s hodnocením inkluze na pracovišti. Otevřené pozice najdeš na jejich kariérních stránkách; inkluzivní nabídky i na <a href="https://www.mygwork.com/" target="_blank" rel="noopener">myGwork</a>.</div>
+      <div class="inside-grid">
+        <div class="feat"><div class="ico" style="background:linear-gradient(120deg,#d6248c,#6a3ce0)"><i data-lucide="zap"></i></div><h3>Právě teď</h3><p>Tip dne a vizuální přehled akcí na příštích 5 dní — přejížděj a vybírej.</p></div>
+        <div class="feat"><div class="ico" style="background:linear-gradient(120deg,#1763e8,#6a3ce0)"><i data-lucide="calendar-days"></i></div><h3>Později</h3><p>Celý kalendář komunity. Měsíční i týdenní rozložení jako v Google Kalendáři.</p></div>
+        <div class="feat"><div class="ico" style="background:linear-gradient(120deg,#15a05a,#1763e8)"><i data-lucide="map-pin"></i></div><h3>Kam zajít</h3><p>Adresář klubů, kaváren, spolků a sportovních skupin po celém Česku.</p></div>
+        <div class="feat"><div class="ico" style="background:linear-gradient(120deg,#ff7a18,#d6248c)"><i data-lucide="clapperboard"></i></div><h3>Co vidět a slyšet</h3><p>Tipy na nejnovější queer filmy, podcasty a knihy. Každý den čerstvé.</p></div>
       </div>
     </div>
   </section>
-  <!-- NABÍZÍTE SLUŽBY -->
-  <section class="sec" id="sluzby">
-    <div class="sechead">
-      <div>
-        <p class="eyebrow">Pro poskytovatele</p>
-        <h2 class="sectitle">Nabízíte služby pro queer lidi?</h2>
-        <p class="secsub">Ozvěte se a dejte o sobě vědět — rádi vás zařadíme mezi tipy pro komunitu.</p>
+
+  <section class="band web">
+    <div class="wrap">
+      <div class="web-box">
+        <div class="web-ico"><i data-lucide="globe" style="width:26px;height:26px"></i></div>
+        <div class="web-txt"><h3>Nechceš nic přidávat na plochu?</h3><p>V pohodě. Úplně stejný obsah najdeš i na klasickém webu — otevře se rovnou v prohlížeči, bez jakéhokoli přidávání na plochu.</p></div>
+        <a class="btn btn-outline" href="/web/" target="_blank" rel="noopener">Pokračovat na web q247.live <i data-lucide="arrow-right"></i></a>
       </div>
     </div>
-    <div class="svcph">
-        <span class="svcph__cut"><i data-lucide="scissors"></i> Místo pro vás</span>
-        <p class="svcph__lead">Hledáme spolehlivé, friendly profíky napříč obory:</p>
-        <div class="svcchips">
-          <div class="svcrow"><span class="svcchip">Finanční poradci</span><span class="svcchip">Makléři</span><span class="svcchip">Maséři</span><span class="svcchip">Barbeři</span></div>
-          <div class="svcrow"><span class="svcchip">Architekti</span><span class="svcchip">Hodinoví manželé</span><span class="svcchip">Daňoví poradci</span><span class="svcchip">Trenéři</span></div>
-          <div class="svcrow"><span class="svcchip">Terapeuti</span><span class="svcchip">Dentální hygienici</span><span class="svcchip">Zubaři</span><span class="svcchip svcchip--more">a další…</span></div>
-        </div>
-        <a class="svccta__btn" href="mailto:ahoj@q247.live?subject=Nab%C3%ADzím%20slu%C5%BEby%20pro%20queer%20lidi">Ozvěte se <i data-lucide="mail"></i></a>
-      </div>
   </section>
 
-  <div class="rights">
-      Ne všude je duha samozřejmost. Ve velké části světa jsou stejnopohlavní vztahy dodnes nezákonné a v desítkách zemí za ně hrozí vězení i trest smrti. To, co je tady v Evropě běžné, je jinde odvaha. Mrkni do <a href="https://database.ilga.org/en" target="_blank" rel="noopener">databáze LGBT práv ILGA World</a> nebo na <a href="https://rainbowmap.ilga-europe.org/" target="_blank" rel="noopener">Rainbow Map Evropy</a> — a buďme na sebe a k sobě navzájem laskaví. A hrdí.
-    </div>
-
-</div><!-- /wrap -->
-
-<footer class="foot">
-  <div class="wrap">
-    <div class="foot__top">
-      <div class="foot__brand">
-        <div class="foot__logo"><span class="mark"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="q247.live"><rect width="120" height="20" y="0" fill="#e40b3a"/><rect width="120" height="20" y="20" fill="#ff7a18"/><rect width="120" height="20" y="40" fill="#ffce00"/><rect width="120" height="20" y="60" fill="#15a05a"/><rect width="120" height="20" y="80" fill="#1763e8"/><rect width="120" height="20" y="100" fill="#7a1fa2"/></svg></span><span>q247<span style="color:var(--brand-strong)">.live</span></span></div>
-        <p>Queer Česko 24/7 — co vidět, slyšet a číst, kam vyrazit a koho potkat. Od dneška dál.</p>
-      </div>
-      <div class="foot__cols">
-        <div class="foot__col">
-          <h4>Sekce</h4>
-          <a href="#akce">Právě teď</a>
-          <a href="#svet">Ve světě</a>
-          <a href="#videt">Co vidět</a>
-          <a href="#slyset">Co slyšet</a>
-        </div>
-        <div class="foot__col">
-          <h4>&nbsp;</h4>
-          <a href="#cist">Co číst</a>
-          <a href="#kam">Kam zajít</a>
-          
-        </div>
-      
-        <div class="foot__col">
-          <h4>Motivy</h4>
-          <button type="button" class="foot__theme" data-mode="system">Podle systému</button>
-          <button type="button" class="foot__theme" data-mode="auto-time">Podle času</button>
-          <button type="button" class="foot__theme" data-mode="light">Světlý</button>
-          <button type="button" class="foot__theme" data-mode="dark">Tmavý</button>
-        </div>
+  <section class="band">
+    <div class="wrap">
+      <div class="final">
+        <h2>Připoj se ke scéně.</h2>
+        <p>Jeden tap a máš queer Česko 24/7 vždy po ruce. Bez účtu, bez rizika, zdarma.</p>
+        <button class="btn btn-pride" id="lp-install2" type="button"><i data-lucide="download"></i> Nainstalovat q247.live</button>
+        <p style="margin-top:18px;font-family:var(--font-mono);font-size:12.5px;color:#9a8595">🏳️‍🌈 Buďme na sebe a k sobě navzájem laskaví — a hrdí.</p>
       </div>
     </div>
-    
-    <p class="copy">© 2026 q247.live · psáno s láskou pro queer Česko · aktualizováno denně</p>
-    <p style="margin-top:8px"><a id="a2hs-footer" class="a2hs-footer-link" href="#" hidden>Instalovat aplikaci</a></p>
+  </section>
+
+  <div id="a2hsHelp" class="a2hsheet" hidden>
+    <div class="a2hsheet__card">
+      <h4>Přidat na plochu</h4>
+      <p id="a2hsHelpText">Otevři menu prohlížeče a zvol „Přidat na plochu“.</p>
+      <p>Hotovo! q247.live pak budeš mít jako appku s vlastní ikonou. 🌈</p>
+      <button id="a2hsHelpClose" class="a2hsheet__close" type="button">Rozumím</button>
+    </div>
   </div>
-</footer>
-</main>
 
-<script>
-/* v40 — pravidelné akce: pořadí začíná vždy DNEŠNÍM dnem v týdnu (auto dle data) */
-(function(){
-  function run(){
-    var grid=document.querySelector('.reggrid'); if(!grid)return;
-    var today=new Date().getDay(); // 0=NE..6=SO
-    var WD={'NE':0,'PO':1,'ÚT':2,'ST':3,'ČT':4,'PÁ':5,'SO':6};
-    function key(card){
-      var dy=card.querySelector('.qtime--reg .day'); if(!dy)return 99;
-      var parts=(dy.textContent||'').toUpperCase().split('/').map(function(x){return x.trim();});
-      var best=99;
-      parts.forEach(function(p){ if(WD.hasOwnProperty(p)){ var k=((WD[p]-today)+7)%7; if(k<best)best=k; } });
-      return best;
-    }
-    var cards=Array.prototype.slice.call(grid.querySelectorAll(':scope > .regcard'));
-    cards.map(function(c,i){return {c:c,k:key(c),i:i};})
-         .sort(function(a,b){return (a.k-b.k)||(a.i-b.i);})
-         .forEach(function(o){grid.appendChild(o.c);});
-  }
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();
-})();
-</script>
-<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
-<script>if (window.lucide) lucide.createIcons();</script>
-<script>
-(function(){
-  function run(){
-    var now=new Date();
-    var wd=now.getDay(); // 0=NE..6=SO
-    var dnum=now.getDate(), mnum=now.getMonth()+1;
-    function pad(n){return (n<10?'0':'')+n;}
-    var todayISO=now.getFullYear()+'-'+pad(mnum)+'-'+pad(dnum);
-    var MO={'LED':1,'ÚNO':2,'BŘE':3,'DUB':4,'KVĚ':5,'ČVN':6,'ČVC':7,'SRP':8,'ZÁŘ':9,'ŘÍJ':10,'LIS':11,'PRO':12};
-    var WD={0:'NE',1:'PO',2:'ÚT',3:'ST',4:'ČT',5:'PÁ',6:'SO'};
-    function badge(el){
-      if(!el||el.querySelector(':scope > .dnesbadge'))return;
-      if(getComputedStyle(el).position==='static')el.style.position='relative';
-      var b=document.createElement('span');b.className='dnesbadge';b.textContent='DNES';
-      el.appendChild(b);
-    }
-    // A) měsíční výpis .qevent — datum z odkazu
-    document.querySelectorAll('a.qevent').forEach(function(a){
-      var m=(a.getAttribute('href')||'').match(/(\d{4}-\d{2}-\d{2})/);
-      if(m&&m[1]===todayISO)badge(a);
-    });
-    // B) timeline (#akce i #svet) — sloupec, jehož datum == dnes
-    document.querySelectorAll('.tlcol').forEach(function(col){
-      var dd=col.querySelector('.tlday'), mm=col.querySelector('.tlmo');
-      if(!dd||!mm)return;
-      var day=parseInt(dd.textContent,10), mo=MO[(mm.textContent||'').trim().toUpperCase()];
-      if(day===dnum && mo===mnum){
-        col.querySelectorAll('.tlcard, a.qevent').forEach(badge);
-      }
-    });
-    // C) pravidelné akce — jen týdně/víkendy, shoda dne v týdnu
-    document.querySelectorAll('.regcard').forEach(function(c){
-      var fr=c.querySelector('.qtime--reg .wd'), dy=c.querySelector('.qtime--reg .day');
-      if(!fr||!dy)return;
-      var f=(fr.textContent||'').toLowerCase();
-      if(f.indexOf('týdně')<0 && f.indexOf('víkend')<0)return;
-      var days=(dy.textContent||'').toUpperCase().split('/').map(function(x){return x.trim();});
-      if(days.indexOf(WD[wd])>=0)badge(c);
-    });
-    // D) featured "tip dne" — datum z odkazu na detail
-    document.querySelectorAll('.feat').forEach(function(f){
-      var a=f.querySelector('a[href]');
-      var m=a&&(a.getAttribute('href')||'').match(/(\d{4}-\d{2}-\d{2})/);
-      if(m&&m[1]===todayISO)badge(f);
-    });
-    // E) tip "kde se seznámit" — generuje se pro dnešek
-    document.querySelectorAll('.tip').forEach(badge);
-  }
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();
-})();
-</script>
-<script>
-/* v41 — „Přidat na plochu": tlačítko jen na mobilu a jen když to zařízení/prohlížeč umí */
-(function(){
-  var bar=document.getElementById('a2hs'),
-      btn=document.getElementById('a2hsBtn'),
-      x=document.getElementById('a2hsX'),
-      help=document.getElementById('a2hsHelp'),
-      helpClose=document.getElementById('a2hsHelpClose');
-  if(!bar||!btn)return;
-  var deferred=null;
-  var ua=navigator.userAgent||'';
-  var isAndroid=/android/i.test(ua);
-  var isIOS=/iphone|ipad|ipod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
-  var inApp=/FBAN|FBAV|Instagram|Line|Twitter|MicroMessenger|GSA/i.test(ua); /* in-app prohlížeče instalaci neumí */
-  var iosOther=/CriOS|FxiOS|EdgiOS|OPiOS|mercury/i.test(ua); /* na iOS umí A2HS jen Safari */
-  function standalone(){ return (window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches)||window.navigator.standalone===true; }
-  function isMobile(){ return (window.matchMedia&&(window.matchMedia('(max-width: 860px)').matches||window.matchMedia('(pointer: coarse)').matches)); }
-  function compatible(){ if(inApp)return false; if(isIOS)return !iosOther; if(isAndroid)return true; return false; }
-  function dismissed(){ try{var t=localStorage.getItem('a2hs_hidden_v2');return t&&(Date.now()-(+t))<6048e5;}catch(e){return false;} }
-  function hide(){ bar.classList.add('is-off'); }
-  function evaluate(){ if(!compatible()||!isMobile()||standalone()||dismissed()) hide(); }
-  function openHelp(){
-    if(!help)return;
-    var t=document.getElementById('a2hsHelpText');
-    if(t)t.innerHTML=isIOS
-      ? 'Klepni dole na ikonu <b>Sdílet</b> (čtvereček se šipkou nahoru) a zvol <b>„Přidat na plochu"</b>.'
-      : 'Otevři <b>menu prohlížeče</b> (tři tečky ⋮ vpravo nahoře) a zvol <b>„Instalovat aplikaci"</b> nebo <b>„Přidat na plochu"</b>.';
-    help.hidden=false;
-  }
-  /* Android Chrome: zachytíme nativní prompt, jakmile přijde */
-  window.addEventListener('beforeinstallprompt',function(e){ e.preventDefault(); deferred=e; });
-  /* proužek je na mobilu vidět už z CSS; JS ho jen schová tam, kde nedává smysl */
-  evaluate();
-  btn.addEventListener('click',function(){
-    if(deferred){
-      deferred.prompt();
-      (deferred.userChoice||Promise.resolve()).then(function(c){ if(c&&c.outcome==='accepted')hide(); deferred=null; });
-    }else{ openHelp(); }
-  });
-  var a2hsMsg=document.getElementById('a2hsMsg'),a2hsClose=document.getElementById('a2hsClose'),a2hsFooter=document.getElementById('a2hs-footer');
-  function installAction(e){ if(e)e.preventDefault(); if(deferred){ deferred.prompt(); (deferred.userChoice||Promise.resolve()).then(function(c){ if(c&&c.outcome==='accepted')hide(); deferred=null; }); } else { openHelp(); } }
-  if(x)x.addEventListener('click',function(){ if(btn)btn.hidden=true; x.hidden=true; if(a2hsMsg)a2hsMsg.hidden=false; if(a2hsClose)a2hsClose.hidden=false; });
-  if(a2hsClose)a2hsClose.addEventListener('click',function(e){ e.preventDefault(); hide(); try{localStorage.setItem('a2hs_hidden_v2',String(Date.now()));}catch(_e){} });
-  if(a2hsFooter && compatible() && isMobile() && !standalone()){ a2hsFooter.hidden=false; a2hsFooter.addEventListener('click', installAction); }
-  if(helpClose)helpClose.addEventListener('click',function(){ help.hidden=true; });
-  if(help)help.addEventListener('click',function(e){ if(e.target===help)help.hidden=true; });
-  window.addEventListener('appinstalled',function(){ hide(); try{localStorage.setItem('a2hs_hidden_v2',String(Date.now()));}catch(e){} });
-  /* service worker — kvůli instalovatelnosti (beforeinstallprompt) + lehký offline */
-  if('serviceWorker' in navigator){ window.addEventListener('load',function(){ navigator.serviceWorker.register('sw.js').catch(function(){}); }); }
-})();
-</script>
-<script>
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot__top">
+        <div class="foot__brand">
+          <div class="foot__logo"><span class="mark"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="q247.live"><rect width="120" height="20" y="0" fill="#e40b3a"/><rect width="120" height="20" y="20" fill="#ff7a18"/><rect width="120" height="20" y="40" fill="#ffce00"/><rect width="120" height="20" y="60" fill="#15a05a"/><rect width="120" height="20" y="80" fill="#1763e8"/><rect width="120" height="20" y="100" fill="#7a1fa2"/></svg></span><span>q247<span style="color:var(--brand-strong)">.live</span></span></div>
+          <p>Queer Česko 24/7 — co vidět, slyšet a číst, kam vyrazit a koho potkat. Od dneška dál.</p>
+        </div>
+        <div class="foot__cols">
+          <div class="foot__col">
+            <h4>Motivy</h4>
+            <button type="button" class="foot__theme" data-mode="system">Podle systému</button>
+            <button type="button" class="foot__theme" data-mode="auto-time">Podle času</button>
+            <button type="button" class="foot__theme" data-mode="light">Světlý</button>
+            <button type="button" class="foot__theme" data-mode="dark">Tmavý</button>
+          </div>
+        </div>
+      </div>
+      <p class="copy">© 2026 q247.live · psáno s láskou pro queer Česko · aktualizováno denně</p>
+      <p style="margin-top:8px"><a id="a2hs-footer" class="a2hs-footer-link" href="#" hidden>Instalovat aplikaci</a></p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+  <script>
+
 (function () {
   var T = window.__q247theme; if (!T) return;
   var root = document.documentElement;
@@ -1936,26 +380,35 @@ html{background:var(--color-bg);}
 document.querySelectorAll('[data-lang]').forEach(function(a){
   a.addEventListener('click', function(){ try{ localStorage.setItem('q247-lang', a.getAttribute('data-lang')); }catch(e){} });
 });
+
+
 (function(){
-  var reels = document.getElementById('q247-reels'); if(!reels) return;
-  var isMobile = matchMedia('(max-width:768px)').matches;
-  var key = 'q247-reels-' + new Date().toISOString().slice(0,10);
-  var cards = reels.querySelectorAll('.q247-reel');
-  function close(){ reels.classList.remove('is-open'); var b=document.body, d=document.documentElement; window.scrollTo(0,0); if(d)d.scrollTop=0; if(b)b.scrollTop=0; b.style.position='fixed'; b.style.top='0'; b.style.left='0'; b.style.right='0'; b.style.width='100%'; b.style.overflow='hidden'; var done=false; function unlock(){ if(done)return; done=true; b.style.position=''; b.style.top=''; b.style.left=''; b.style.right=''; b.style.width=''; b.style.overflow=''; window.scrollTo(0,0); window.removeEventListener('touchstart',oi); window.removeEventListener('wheel',oi); window.removeEventListener('keydown',oi); } function oi(){ unlock(); } setTimeout(function(){ window.addEventListener('touchstart',oi,{passive:true}); window.addEventListener('wheel',oi,{passive:true}); window.addEventListener('keydown',oi); }, 350); setTimeout(unlock, 6000); try{ localStorage.setItem(key,'1'); }catch(e){} }
-  if (isMobile && cards.length) {  /* TESTING: zobrazit pokaždé */
-    reels.classList.add('is-open'); document.body.style.overflow='hidden';
-    var x = document.getElementById('q247-reels-close'); if (x) x.addEventListener('click', close);
-    var hint = document.getElementById('q247-reels-hint');
-    if (hint && cards.length>1) hint.classList.add('show');
-    function atEnd(){ return (reels.scrollTop + reels.clientHeight) >= (reels.scrollHeight - 4); }
-    reels.addEventListener('scroll', function(){ if(hint) hint.classList.remove('show'); }, {passive:true});
-    reels.addEventListener('wheel', function(e){ if(e.deltaY>0 && atEnd()) close(); }, {passive:true});
-    var ty=0;
-    reels.addEventListener('touchstart', function(e){ ty=e.touches[0].clientY; }, {passive:true});
-    reels.addEventListener('touchend', function(e){ var ey=(e.changedTouches&&e.changedTouches[0])?e.changedTouches[0].clientY:ty; if((ty-ey)>40 && atEnd()) close(); }, {passive:true});
-  }
+  var help=document.getElementById('a2hsHelp'),
+      helpClose=document.getElementById('a2hsHelpClose'),
+      helpText=document.getElementById('a2hsHelpText'),
+      footer=document.getElementById('a2hs-footer'),
+      btns=[document.getElementById('lp-install'),document.getElementById('lp-install2')];
+  var deferred=null;
+  var ua=navigator.userAgent||'';
+  var isAndroid=/android/i.test(ua);
+  var isIOS=/iphone|ipad|ipod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  var inApp=/FBAN|FBAV|Instagram|Line|Twitter|MicroMessenger|GSA/i.test(ua);
+  var iosOther=/CriOS|FxiOS|EdgiOS|OPiOS|mercury/i.test(ua);
+  function standalone(){ return (window.matchMedia&&matchMedia('(display-mode: standalone)').matches)||navigator.standalone===true; }
+  function isMobile(){ return window.matchMedia&&(matchMedia('(max-width:860px)').matches||matchMedia('(pointer:coarse)').matches); }
+  function compatible(){ if(inApp)return false; if(isIOS)return !iosOther; if(isAndroid)return true; return false; }
+  function openHelp(){ if(!help)return; if(helpText)helpText.innerHTML=isIOS?'Klepni dole na ikonu <b>Sdílet</b> (čtvereček se šipkou nahoru) a zvol <b>„Přidat na plochu“</b>.':'Otevři <b>menu prohlížeče</b> (tři tečky ⋮ vpravo nahoře) a zvol <b>„Instalovat aplikaci“</b> nebo <b>„Přidat na plochu“</b>.'; help.hidden=false; }
+  function installAction(e){ if(e)e.preventDefault(); if(deferred){ deferred.prompt(); (deferred.userChoice||Promise.resolve()).then(function(){ deferred=null; }); } else { openHelp(); } }
+  window.addEventListener('beforeinstallprompt',function(e){ e.preventDefault(); deferred=e; });
+  btns.forEach(function(b){ if(b)b.addEventListener('click',installAction); });
+  if(footer && compatible() && isMobile() && !standalone()){ footer.hidden=false; footer.addEventListener('click',installAction); }
+  if(helpClose)helpClose.addEventListener('click',function(){ help.hidden=true; });
+  if(help)help.addEventListener('click',function(e){ if(e.target===help)help.hidden=true; });
+  window.addEventListener('appinstalled',function(){ if(help)help.hidden=true; });
+  if('serviceWorker' in navigator){ window.addEventListener('load',function(){ navigator.serviceWorker.register('sw.js').catch(function(){}); }); }
 })();
-</script>
+
+  if(window.lucide)lucide.createIcons();
+  </script>
 </body>
 </html>
-                                                                                                
