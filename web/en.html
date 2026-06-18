@@ -854,6 +854,7 @@ html{background:var(--color-bg);}
 .q247-reels-logo__word{font-size:23px;letter-spacing:-.03em;}
 .q247-reel__desc{margin:0 0 20px;max-width:32ch;font-size:15.5px;line-height:1.45;color:#f2e9ef;text-shadow:0 1px 12px rgba(0,0,0,.6);}.q247-reel__desc ul{margin:0;padding:0;list-style:none;}.q247-reel__desc li{position:relative;padding-left:16px;margin:0 0 5px;}.q247-reel__desc li:last-child{margin-bottom:0;}.q247-reel__desc li::before{content:"\203A";position:absolute;left:0;color:var(--brand-strong);font-weight:700;}
 .addev{display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:var(--text-on-brand);font-family:var(--font-sans);font-weight:700;font-size:13px;padding:7px 14px;border-radius:var(--radius-pill);border:0;cursor:pointer;flex:none;margin-left:8px;transition:background .15s;}.addev:hover{background:var(--magenta-600);}.addev svg{width:16px;height:16px;display:block;}.recurflag{display:inline-flex;align-items:center;justify-content:center;width:1em;height:1em;color:var(--text-brand);flex:none;vertical-align:-2px;margin-left:5px;}.recurflag svg{width:100%;height:100%;display:block;}.q247-reel .recurflag{color:#fff;width:1.05em;height:1.05em;}.recurbar{display:flex;justify-content:flex-end;margin:-4px 0 16px;}.recurtoggle{display:inline-flex;align-items:center;gap:7px;color:var(--text-muted);font-family:var(--font-sans);font-size:12.5px;font-weight:600;cursor:pointer;user-select:none;white-space:nowrap;}.recurtoggle:hover{color:var(--text-brand);}.recurtoggle__cb{accent-color:var(--brand);width:15px;height:15px;cursor:pointer;margin:0;flex:none;}.recurtoggle .recurflag{margin-left:0;width:1em;height:1em;}:root[data-hiderecur="1"] #akce .tlcard.is-recurring,:root[data-hiderecur="1"] #mesicni .qevent.is-recurring{display:none !important;}
+.tlfly{display:flex;flex-direction:column;gap:1px;margin-top:5px;align-items:flex-start;}.tlfly__price{font-family:var(--font-mono);font-size:11.5px;color:var(--text-muted);}
 </style>
 </head>
 <body>
@@ -1408,7 +1409,7 @@ html{background:var(--color-bg);}
             <img class="flagimg" src="https://flagcdn.com/fr.svg" alt="France">
             <a class="tlcard__name" href="https://www.inter-lgbt.org/" target="_blank" rel="noopener">Marche des Fiertés</a><span class="tlcard__sub">parade 27 Jun</span>
             <span class="tlcard__when">20–27 Jun 2026 · Paris</span>
-            <a class="tlflights" href="https://www.kiwi.com/en/search/results/prague-czechia/paris-france/2026-06-19/2026-06-28/" target="_blank" rel="noopener"><i data-lucide="plane"></i> Check flight prices</a>
+            <div class="tlfly"><span class="tlfly__price">Flights ~5 800–6 600 CZK</span><a class="tlflights" href="https://www.kiwi.com/en/search/results/prague-czechia/paris-france/2026-06-19/2026-06-28/" target="_blank" rel="noopener">Search flights</a></div>
           </div>
         </div>
         <div class="tlcol">
@@ -1417,7 +1418,7 @@ html{background:var(--color-bg);}
             <img class="flagimg" src="https://flagcdn.com/es.svg" alt="Spain">
             <a class="tlcard__name" href="https://madridorgullo.com" target="_blank" rel="noopener">MADO — Orgullo</a><span class="tlcard__sub">parade 4 Jul</span>
             <span class="tlcard__when">25 Jun – 5 Jul 2026 · Madrid</span>
-            <a class="tlflights" href="https://www.kiwi.com/en/search/results/prague-czechia/madrid-spain/2026-06-24/2026-07-06/" target="_blank" rel="noopener"><i data-lucide="plane"></i> Check flight prices</a>
+            <div class="tlfly"><span class="tlfly__price">Flights ~4 800–6 600 CZK</span><a class="tlflights" href="https://www.kiwi.com/en/search/results/prague-czechia/madrid-spain/2026-06-24/2026-07-06/" target="_blank" rel="noopener">Search flights</a></div>
           </div>
         </div>
         <div class="tlcol">
@@ -1426,7 +1427,7 @@ html{background:var(--color-bg);}
             <img class="flagimg" src="https://flagcdn.com/gb.svg" alt="UK">
             <a class="tlcard__name" href="https://prideinlondon.org/" target="_blank" rel="noopener">Pride in London</a>
             <span class="tlcard__when">4 Jul 2026 · London</span>
-            <a class="tlflights" href="https://www.kiwi.com/en/search/results/prague-czechia/london-united-kingdom/2026-07-03/2026-07-05/" target="_blank" rel="noopener"><i data-lucide="plane"></i> Check flight prices</a>
+            <div class="tlfly"><span class="tlfly__price">Flights ~3 700–4 800 CZK</span><a class="tlflights" href="https://www.kiwi.com/en/search/results/prague-czechia/london-united-kingdom/2026-07-03/2026-07-05/" target="_blank" rel="noopener">Search flights</a></div>
           </div>
         </div>
         <div class="tlcol">
@@ -1435,7 +1436,7 @@ html{background:var(--color-bg);}
             <img class="flagimg" src="https://flagcdn.com/de.svg" alt="Germany">
             <a class="tlcard__name" href="https://www.csd-berlin.de/" target="_blank" rel="noopener">CSD Berlin</a>
             <span class="tlcard__when">25 Jul 2026 · Berlin</span>
-            <a class="tlflights" href="https://www.kiwi.com/en/search/results/prague-czechia/berlin-germany/2026-07-24/2026-07-26/" target="_blank" rel="noopener"><i data-lucide="plane"></i> Check flight prices</a>
+            <div class="tlfly"><span class="tlfly__price">Flights ~4 700–6 800 CZK</span><a class="tlflights" href="https://www.kiwi.com/en/search/results/prague-czechia/berlin-germany/2026-07-24/2026-07-26/" target="_blank" rel="noopener">Search flights</a></div>
           </div>
         </div>
         <div class="tlcol">
@@ -1444,7 +1445,7 @@ html{background:var(--color-bg);}
             <img class="flagimg" src="https://flagcdn.com/nl.svg" alt="Netherlands">
             <a class="tlcard__name" href="https://pride.amsterdam/en/worldpride/" target="_blank" rel="noopener">WorldPride</a><span class="tlcard__sub">theme UNITY</span>
             <span class="tlcard__when">25 Jul – 8 Aug 2026 · Amsterdam</span>
-            <a class="tlflights" href="https://www.kiwi.com/en/search/results/prague-czechia/amsterdam-netherlands/2026-07-24/2026-08-09/" target="_blank" rel="noopener"><i data-lucide="plane"></i> Check flight prices</a>
+            <div class="tlfly"><span class="tlfly__price">Flights ~5 200–6 900 CZK</span><a class="tlflights" href="https://www.kiwi.com/en/search/results/prague-czechia/amsterdam-netherlands/2026-07-24/2026-08-09/" target="_blank" rel="noopener">Search flights</a></div>
           </div>
         </div>
         <div class="tlcol">
