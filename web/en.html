@@ -477,12 +477,6 @@ img{max-width:100%;display:block;}
   border:1.5px solid var(--border);
   border-radius:var(--radius-lg);
   box-shadow:none;
-  transition:transform .15s ease, box-shadow .18s ease, border-color .18s ease;
-}
-.qevent:hover,.regcard:hover,.mediacard:hover{
-  transform:translateY(-2px);
-  box-shadow:var(--shadow-md);
-  border-color:var(--border-brand);
 }
 /* feature cards: one tier up, consistent radius + resting shadow */
 .feat,.media1{
@@ -855,6 +849,10 @@ html{background:var(--color-bg);}
 .q247-reel__desc{margin:0 0 20px;max-width:32ch;font-size:15.5px;line-height:1.45;color:#f2e9ef;text-shadow:0 1px 12px rgba(0,0,0,.6);}.q247-reel__desc ul{margin:0;padding:0;list-style:none;}.q247-reel__desc li{position:relative;padding-left:16px;margin:0 0 5px;}.q247-reel__desc li:last-child{margin-bottom:0;}.q247-reel__desc li::before{content:"\203A";position:absolute;left:0;color:var(--brand-strong);font-weight:700;}
 .addev{display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:var(--text-on-brand);font-family:var(--font-sans);font-weight:700;font-size:13px;padding:7px 14px;border-radius:var(--radius-pill);border:0;cursor:pointer;flex:none;margin-left:8px;transition:background .15s;}.addev:hover{background:var(--magenta-600);}.addev svg{width:16px;height:16px;display:block;}.recurflag{display:inline-flex;align-items:center;justify-content:center;width:1em;height:1em;color:var(--text-brand);flex:none;vertical-align:-2px;margin-left:5px;}.recurflag svg{width:100%;height:100%;display:block;}.q247-reel .recurflag{color:#fff;width:1.05em;height:1.05em;}.recurbar{display:flex;justify-content:flex-end;margin:-4px 0 16px;}.recurtoggle{display:inline-flex;align-items:center;gap:7px;color:var(--text-muted);font-family:var(--font-sans);font-size:12.5px;font-weight:600;cursor:pointer;user-select:none;white-space:nowrap;}.recurtoggle:hover{color:var(--text-brand);}.recurtoggle__cb{accent-color:var(--brand);width:15px;height:15px;cursor:pointer;margin:0;flex:none;}.recurtoggle .recurflag{margin-left:0;width:1em;height:1em;}:root[data-hiderecur="1"] #akce .tlcard.is-recurring,:root[data-hiderecur="1"] #mesicni .qevent.is-recurring{display:none !important;}
 .tlfly{display:flex;flex-direction:column;gap:1px;margin-top:5px;align-items:flex-start;}.tlfly__price{font-family:var(--font-mono);font-size:11.5px;color:var(--text-muted);}
+#tipsheet{align-items:center;}
+/* scroll reveal — adresář "Kam zajít": sloupce postupně (opacity, bez transformace) */
+.kamgrid.kam-reveal .kamcat{opacity:0;}
+.kamgrid.kam-reveal .kamcat.kam-in{opacity:1;transition:opacity .6s ease;}
 </style>
 </head>
 <body>
@@ -2032,6 +2030,27 @@ document.querySelectorAll('[data-lang]').forEach(function(a){
   function st(h){ try{localStorage.setItem(K,h?'1':'0');}catch(e){} ap(h); }
   document.querySelectorAll('[data-recur-toggle]').forEach(function(cb){ cb.addEventListener('change',function(){ st(!cb.checked); }); });
   ap(g());
+})();
+</script>
+<script>
+/* v42 — postupný reveal sloupců adresáře "Kam zajít" (vlevo -> uprostred -> vpravo) */
+(function(){
+  var grid=document.querySelector('#kam .kamgrid');
+  if(!grid) return;
+  var cats=[].slice.call(grid.querySelectorAll('.kamcat'));
+  if(!cats.length||!('IntersectionObserver' in window)) return;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  grid.classList.add('kam-reveal');
+  function revealColumns(){
+    var groups={};
+    cats.forEach(function(c){var x=Math.round(c.getBoundingClientRect().left);(groups[x]=groups[x]||[]).push(c);});
+    var xs=Object.keys(groups).map(Number).sort(function(a,b){return a-b;});
+    xs.forEach(function(x,ci){groups[x].forEach(function(c){setTimeout(function(){c.classList.add('kam-in');},ci*180);});});
+  }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){revealColumns();io.disconnect();}});
+  },{threshold:0.12});
+  io.observe(grid);
 })();
 </script>
 </body>
