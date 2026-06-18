@@ -35,6 +35,20 @@
   }
   if (want !== PAGE_LANG && URLS[want]) location.replace(URLS[want]);
 })();</script>
+<script>
+(function(){
+  try{
+    var ua=navigator.userAgent||'';
+    var isAndroid=/android/i.test(ua);
+    var isIOS=/iphone|ipad|ipod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+    var inApp=/FBAN|FBAV|Instagram|Line|Twitter|MicroMessenger|GSA/i.test(ua);
+    var isSafari=/safari/i.test(ua)&&!/chrome|crios|fxios|edgios|opios|android/i.test(ua);
+    var standalone=(window.matchMedia&&matchMedia('(display-mode: standalone)').matches)||navigator.standalone===true;
+    var compatible=(isAndroid&&!inApp)||(isIOS&&isSafari&&!inApp);
+    if(standalone||!compatible){ location.replace('/web/'); }
+  }catch(e){}
+})();
+</script>
 <title>q247.live — install the app</title>
 <meta name="description" content="q247.live — your live guide to queer Czechia, 24/7. Add the app to your home screen: no sign-up, no tracking, nothing leaves your device.">
 <link rel="icon" href="favicon.ico" sizes="any">
@@ -103,6 +117,8 @@
 .foot__col .foot__theme.is-active{color:var(--text-brand);font-weight:700;}
 .copy{font-family:var(--font-mono);font-size:12px;color:var(--text-faint);margin-top:26px;}
 .a2hsheet{position:fixed;inset:0;z-index:60;display:flex;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.55);padding:0 14px 22px;}
+.a2hsheet[hidden]{display:none!important;}
+.btn[hidden]{display:none!important;}
 .a2hsheet__card{background:var(--color-surface);border:1.5px solid var(--border-strong);border-radius:var(--radius-xl);padding:22px 20px;max-width:430px;width:100%;box-shadow:var(--shadow-lg);}
 .a2hsheet__card h4{font-family:var(--font-display);font-size:19px;margin:0 0 10px;color:var(--text-strong);}
 .a2hsheet__card p{margin:0 0 10px;color:var(--text-body);font-size:14.5px;line-height:1.55;}
@@ -227,7 +243,6 @@ h2{font-family:var(--font-display);font-weight:800;letter-spacing:-.03em;font-si
         <p class="lead">q247.live is a live guide to queer events, clubs and culture across Czechia. Add it to your home screen and keep today’s programme always at hand.</p>
         <div class="cta-row">
           <button class="btn btn-pride" id="lp-install" type="button"><i data-lucide="download"></i> Add to home screen</button>
-          <a class="btn btn-pride" id="lp-open" href="/web/" target="_blank" rel="noopener" hidden><i data-lucide="smartphone"></i> Open the app</a>
           <a class="btn btn-ghost" href="#jak">How it works</a>
         </div>
         <p class="microcopy"><i data-lucide="shield-check" class="ok"></i> No sign-up · no personal data · nothing leaves your device</p>
@@ -315,7 +330,6 @@ h2{font-family:var(--font-display);font-weight:800;letter-spacing:-.03em;font-si
         <h2>Join the scene.</h2>
         <p>One tap and you’ve got queer Czechia 24/7 always at hand. No account, no risk, free.</p>
         <button class="btn btn-pride" id="lp-install2" type="button"><i data-lucide="download"></i> Install q247.live</button>
-        <a class="btn btn-pride" id="lp-open2" href="/web/" target="_blank" rel="noopener" hidden><i data-lucide="smartphone"></i> Open the app</a>
         <p style="margin-top:18px;font-family:var(--font-mono);font-size:12.5px;color:#9a8595">🏳️‍🌈 Let’s be kind to ourselves and to each other — and proud.</p>
       </div>
     </div>
@@ -390,26 +404,18 @@ document.querySelectorAll('[data-lang]').forEach(function(a){
       helpText=document.getElementById('a2hsHelpText'),
       footer=document.getElementById('a2hs-footer'),
       btns=[document.getElementById('lp-install'),document.getElementById('lp-install2')];
-  var deferred=null;
   var ua=navigator.userAgent||'';
-  var isAndroid=/android/i.test(ua);
   var isIOS=/iphone|ipad|ipod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
-  var inApp=/FBAN|FBAV|Instagram|Line|Twitter|MicroMessenger|GSA/i.test(ua);
-  var iosOther=/CriOS|FxiOS|EdgiOS|OPiOS|mercury/i.test(ua);
-  function standalone(){ return (window.matchMedia&&matchMedia('(display-mode: standalone)').matches)||navigator.standalone===true; }
-  function isMobile(){ return window.matchMedia&&(matchMedia('(max-width:860px)').matches||matchMedia('(pointer:coarse)').matches); }
-  function compatible(){ if(inApp)return false; if(isIOS)return !iosOther; if(isAndroid)return true; return false; }
-  function installable(){ return compatible()&&isMobile()&&!standalone(); }
-  function openHelp(){ if(!help)return; if(helpText)helpText.innerHTML=isIOS?'Tap the <b>Share</b> icon at the bottom (square with an up arrow) and choose <b>“Add to Home Screen”</b>.':'Open the <b>browser menu</b> (three dots ⋮ at the top right) and choose <b>“Install app”</b> or <b>“Add to Home screen”</b>.'; help.hidden=false; }
-  function installAction(e){ if(e)e.preventDefault(); if(deferred){ deferred.prompt(); (deferred.userChoice||Promise.resolve()).then(function(){ deferred=null; }); } else { openHelp(); } }
+  var deferred=null;
   window.addEventListener('beforeinstallprompt',function(e){ e.preventDefault(); deferred=e; });
-  var canInstall=installable();
-  btns.forEach(function(b){ if(!b)return; if(canInstall){ b.addEventListener('click',installAction); } else { b.hidden=true; } });
-  [document.getElementById('lp-open'),document.getElementById('lp-open2')].forEach(function(b){ if(b)b.hidden=canInstall; });
-  if(footer && canInstall){ footer.hidden=false; footer.addEventListener('click',installAction); }
-  if(helpClose)helpClose.addEventListener('click',function(){ help.hidden=true; });
-  if(help)help.addEventListener('click',function(e){ if(e.target===help)help.hidden=true; });
-  window.addEventListener('appinstalled',function(){ if(help)help.hidden=true; });
+  function openHelp(){ if(!help)return; if(helpText)helpText.innerHTML=isIOS?"Tap the <b>Share</b> icon at the bottom (the square with an up arrow) and choose <b>“Add to Home Screen”</b>.":"Open the <b>browser menu</b> (three dots ⋮ at the top right) and choose <b>“Install app”</b> or <b>“Add to Home Screen”</b>."; help.hidden=false; }
+  function closeHelp(){ if(help)help.hidden=true; }
+  function installAction(e){ if(e)e.preventDefault(); if(deferred){ deferred.prompt(); (deferred.userChoice||Promise.resolve()).then(function(){ deferred=null; }); } else { openHelp(); } }
+  btns.forEach(function(b){ if(b)b.addEventListener('click',installAction); });
+  if(footer){ footer.hidden=false; footer.addEventListener('click',installAction); }
+  if(helpClose)helpClose.addEventListener('click',closeHelp);
+  if(help)help.addEventListener('click',function(e){ if(e.target===help)closeHelp(); });
+  window.addEventListener('appinstalled',closeHelp);
   if('serviceWorker' in navigator){ window.addEventListener('load',function(){ navigator.serviceWorker.register('sw.js').catch(function(){}); }); }
 })();
 
