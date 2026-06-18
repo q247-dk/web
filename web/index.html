@@ -38,12 +38,12 @@
 </script>
 <title>q247.live — queer Česko 24/7</title>
 <meta name="description" content="Queer Česko 24/7: co vidět, slyšet a číst, kam vyrazit a koho potkat. Akce, kluby, kavárny, filmy, podcasty a kultura — aktualizováno každý den.">
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
 
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -722,17 +722,14 @@ html{overflow-x:clip;}
 .dnesbadge::before{content:"";width:6px;height:6px;border-radius:50%;background:#e0153a;box-shadow:0 0 0 3px rgba(224,21,58,.22);}
 .feat .dnesbadge,.tip .dnesbadge{right:14px;top:14px;font-size:11.5px;padding:5px 12px;}
 /* v41 — „Přidat na plochu" (A2HS): proužek jen na mobilu a jen když to zařízení/prohlížeč umí (řízeno JS) */
-.a2hs{display:flex;align-items:center;gap:10px;justify-content:center;padding:9px 14px;
-  background:linear-gradient(120deg,var(--magenta-600),var(--violet-600));border-bottom:1.5px solid var(--border-brand);}
-.a2hs[hidden]{display:none;}
-.a2hs.is-off{display:none!important;}
-.a2hs__btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-sans);font-weight:700;font-size:15px;
-  color:#fff;background:rgba(0,0,0,.22);border:1.5px solid rgba(255,255,255,.4);border-radius:var(--radius-pill);
-  padding:9px 18px;cursor:pointer;-webkit-tap-highlight-color:transparent;}
-.a2hs__btn svg{width:18px;height:18px;flex:none;}
-.a2hs__btn:active{transform:translateY(1px);}
-.a2hs__x{background:transparent;border:0;color:rgba(255,255,255,.85);font-size:17px;line-height:1;padding:6px 9px;cursor:pointer;border-radius:50%;flex:none;}
-.a2hs__x:active{background:rgba(0,0,0,.22);}
+
+
+
+
+
+
+
+
 .a2hsheet{position:fixed;inset:0;z-index:60;display:flex;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.55);padding:0 14px 22px;}
 .a2hsheet[hidden]{display:none;}
 .a2hsheet__card{background:var(--color-surface);border:1.5px solid var(--border-strong);border-radius:var(--radius-xl);padding:22px 20px;max-width:430px;width:100%;box-shadow:var(--shadow-lg);}
@@ -740,7 +737,7 @@ html{overflow-x:clip;}
 .a2hsheet__card p{margin:0 0 10px;color:var(--text-body);font-size:14.5px;line-height:1.55;}
 .a2hsheet__card b{color:var(--magenta-300);}
 .a2hsheet__close{margin-top:6px;width:100%;font-family:var(--font-sans);font-weight:700;font-size:15px;color:#fff;background:var(--brand);border:0;border-radius:var(--radius-pill);padding:12px;cursor:pointer;}
-@media(min-width:861px){.a2hs{display:none!important;}}
+@media(min-width:861px){}
 
 /* ===== ČÁST A: světlý/tmavý režim + reels + přepínač vzhledu ===== */
 html{background:var(--color-bg);}
@@ -811,9 +808,9 @@ html{background:var(--color-bg);}
 .foot__col .foot__theme.is-active::before{content:"✓ ";}
 /* A2 — textové odkazy: modrá→fialová→magenta gradient (background-clip:text) */
 .ddyk__more,.tlflights,.secaction,.secsub a,.kamitem a,.kamnote a,.rights a{
-  background:linear-gradient(90deg,#3b82f6,#8b5cf6,#ec4899) !important;-webkit-background-clip:text !important;background-clip:text !important;-webkit-text-fill-color:transparent !important;color:#8a7dff !important;text-decoration-color:#8b5cf6 !important;}
+  background:linear-gradient(90deg,#7ea2f0,#a294ee,#c69ad9) !important;-webkit-background-clip:text !important;background-clip:text !important;-webkit-text-fill-color:transparent !important;color:#8a7dff !important;text-decoration-color:#8b5cf6 !important;}
 :root[data-theme="light"] :is(.ddyk__more,.tlflights,.secaction,.secsub a,.kamitem a,.kamnote a,.rights a){
-  background:linear-gradient(90deg,#2563eb,#7c3aed,#db2777) !important;-webkit-background-clip:text !important;background-clip:text !important;-webkit-text-fill-color:transparent !important;color:#6d28d9 !important;text-decoration-color:#7c3aed !important;}
+  background:linear-gradient(90deg,#4a78d4,#7d63cf,#a861b4) !important;-webkit-background-clip:text !important;background-clip:text !important;-webkit-text-fill-color:transparent !important;color:#6d28d9 !important;text-decoration-color:#7c3aed !important;}
 /* A3 — YouTube tlačítka: jen červený obrys */
 .yt{background:transparent !important;color:#FF0000 !important;border:1.5px solid #FF0000 !important;}
 .yt:hover{background:rgba(255,0,0,.08) !important;}
@@ -828,8 +825,8 @@ html{background:var(--color-bg);}
 :root[data-theme="light"] .emptier::before{background:rgba(255,255,255,.85);}
 
 /* v47 — A6 dvoufázové zavírání instalačního banneru + A9 patičkový odkaz */
-.a2hs__msg{font-family:var(--font-sans);font-size:13.5px;line-height:1.35;}
-.a2hs__close{font-family:var(--font-sans);font-size:13.5px;font-weight:700;text-decoration:underline;cursor:pointer;margin-left:auto;color:inherit;background:none;border:none;}
+
+
 .a2hs-footer-link{display:inline-block;margin-top:14px;font-family:var(--font-sans);font-size:14.5px;font-weight:700;color:var(--text-brand);text-decoration:underline;cursor:pointer;}
 
 /* v48 — pevné logo q247.live v reelsech (společné pro všechny karty) */
@@ -856,6 +853,7 @@ html{background:var(--color-bg);}
 .q247-reels-logo__mark{width:34px;height:34px;border-radius:9px;}
 .q247-reels-logo__word{font-size:23px;letter-spacing:-.03em;}
 .q247-reel__desc{margin:0 0 20px;max-width:32ch;font-size:15.5px;line-height:1.45;color:#f2e9ef;text-shadow:0 1px 12px rgba(0,0,0,.6);}.q247-reel__desc ul{margin:0;padding:0;list-style:none;}.q247-reel__desc li{position:relative;padding-left:16px;margin:0 0 5px;}.q247-reel__desc li:last-child{margin-bottom:0;}.q247-reel__desc li::before{content:"\203A";position:absolute;left:0;color:var(--brand-strong);font-weight:700;}
+.addev{display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:var(--text-on-brand);font-family:var(--font-sans);font-weight:700;font-size:13px;padding:7px 14px;border-radius:var(--radius-pill);border:0;cursor:pointer;flex:none;margin-left:8px;transition:background .15s;}.addev:hover{background:var(--magenta-600);}.addev svg{width:16px;height:16px;display:block;}.recurflag{display:inline-flex;align-items:center;justify-content:center;width:1em;height:1em;color:var(--text-brand);flex:none;vertical-align:-2px;margin-left:5px;}.recurflag svg{width:100%;height:100%;display:block;}.q247-reel .recurflag{color:#fff;width:1.05em;height:1.05em;}.recurbar{display:flex;justify-content:flex-end;margin:-4px 0 16px;}.recurtoggle{display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid var(--border-strong);color:var(--text-muted);font-family:var(--font-sans);font-size:12.5px;font-weight:600;padding:6px 13px;border-radius:var(--radius-pill);cursor:pointer;flex:none;white-space:nowrap;transition:color .15s,border-color .15s;}.recurtoggle:hover{color:var(--text-brand);border-color:var(--border-brand);}.recurtoggle .recurflag{margin-left:0;width:1em;height:1em;}:root[data-hiderecur="1"] #akce .tlcard.is-recurring,:root[data-hiderecur="1"] #mesicni .qevent.is-recurring{display:none !important;}
 </style>
 </head>
 <body>
@@ -869,7 +867,7 @@ html{background:var(--color-bg);}
     <span class="dnesbadge">DNES</span>
     <div class="q247-reel__content">
       <span class="q247-reel__eyebrow">DNES · 15:00</span>
-      <h2 class="q247-reel__title">Otevřený čtvrtek</h2>
+      <h2 class="q247-reel__title">Otevřený čtvrtek <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h2>
       <p class="q247-reel__sub">Komunitní centrum · Praha</p>
       <a class="q247-reel__link" href="https://www.praguepride.com/kc-program/otevreny-ctvrtek-cz-en/2026-06-18/" target="_blank" rel="noopener">Zobrazit detail →</a>
     </div>
@@ -889,7 +887,7 @@ html{background:var(--color-bg);}
     <span class="dnesbadge">DNES</span>
     <div class="q247-reel__content">
       <span class="q247-reel__eyebrow">DNES · 19:00</span>
-      <h2 class="q247-reel__title">Out and Run</h2>
+      <h2 class="q247-reel__title">Out and Run <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h2>
       <p class="q247-reel__sub">Výstaviště · běh 5 km · Praha</p>
       <a class="q247-reel__link" href="https://www.instagram.com/out_a_run/" target="_blank" rel="noopener">Zobrazit detail →</a>
     </div>
@@ -899,7 +897,7 @@ html{background:var(--color-bg);}
     <span class="dnesbadge">DNES</span>
     <div class="q247-reel__content">
       <span class="q247-reel__eyebrow">DNES · 22:00</span>
-      <h2 class="q247-reel__title">Drag &amp; Travesti show</h2>
+      <h2 class="q247-reel__title">Drag &amp; Travesti show <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h2>
       <p class="q247-reel__sub">Friends Club · Praha</p>
       <a class="q247-reel__link" href="https://friendsclub.cz/program/2026-06-18-drag-travesto-show-by-smokeekween-kimberley" target="_blank" rel="noopener">Zobrazit detail →</a>
     </div>
@@ -925,20 +923,12 @@ html{background:var(--color-bg);}
     </nav>
     <span class="head__spacer"></span>
     <a class="gcal" href="https://calendar.google.com/calendar/u/0?cid=ZTIxNDBkZmRkNjViYWNlYjdhYzljMGIwMzdmMTcyZjg3NzhlYmIxZmQyZDlhMzA5ZjNkMGQ0YjVjZWQ5ZjA2YUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=64&domain=calendar.google.com" alt="Google Kalendář" width="18" height="18"><span>Odebírat kalendář</span></a>
+    <button class="addev" type="button" data-tip-open><i data-lucide="plus"></i> <span>Přidat akci</span></button>
     
   </div>
 </header>
 
 <!-- v41 — „Přidat na plochu" (jen mobil + kompatibilní zařízení; zobrazí JS) -->
-<div id="a2hs" class="a2hs">
-  <button id="a2hsBtn" class="a2hs__btn" type="button">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V5"/><path d="m8 9 4-4 4 4"/><rect x="5" y="15" width="14" height="5" rx="1.5"/></svg>
-    <span>Přidat q247.live na plochu</span>
-  </button>
-  <span id="a2hsMsg" class="a2hs__msg" hidden>Odkaz na instalaci aplikace najdete dole na konci stránky.</span>
-  <button id="a2hsX" class="a2hs__x" type="button" aria-label="Skrýt">✕</button>
-  <a id="a2hsClose" class="a2hs__close" href="#a2hs-footer" hidden>Zavřít</a>
-</div>
 <div id="a2hsHelp" class="a2hsheet" hidden>
   <div class="a2hsheet__card">
     <h4>Přidat na plochu</h4>
@@ -997,15 +987,17 @@ html{background:var(--color-bg);}
       <div>
         <p class="eyebrow">Akce · nejbližších 5 dní</p>
         <h2 class="sectitle">Příštích 5 dní</h2>
+        <p class="secsub">Co se děje dnes a v nejbližších dnech — kluby, párty, sport i komunitní akce. Opakující se akce poznáš podle ikony opakování.</p>
       </div>
       <a class="secaction" href="#mesicni">Celý kalendář <i data-lucide="arrow-right"></i></a>
     </div>
+    <div class="recurbar"><button class="recurtoggle" type="button" data-recur-toggle aria-pressed="true"><span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span> <span class="recurtoggle__label">Včetně opakujících se</span></button></div>
     <div class="tl tl5">
         <div class="tlcol">
           <div class="tldate"><span class="tlwd">ČTVRTEK</span><span class="tlnum"><span class="tlday">18</span><span class="tlmo">ČVN</span></span></div>
-          <div class="tlcard">
+          <div class="tlcard is-recurring">
             <span class="tlcard__time">15:00 · Zdarma</span>
-            <a class="tlcard__name" href="https://www.praguepride.com/kc-program/otevreny-ctvrtek-cz-en/2026-06-18/" target="_blank" rel="noopener">Otevřený čtvrtek</a>
+            <a class="tlcard__name" href="https://www.praguepride.com/kc-program/otevreny-ctvrtek-cz-en/2026-06-18/" target="_blank" rel="noopener">Otevřený čtvrtek <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></a>
             <span class="tlcard__sub">Komunitní centrum · Praha</span>
           </div>
           <div class="tlcard">
@@ -1013,14 +1005,14 @@ html{background:var(--color-bg);}
             <a class="tlcard__name" href="https://www.praguepride.com/kc-program/make-up-tipy-a-triky-s-m%c2%b7a%c2%b7c-make-up-tips-and-tricks-with-m%c2%b7a%c2%b7c-cz-en/" target="_blank" rel="noopener">Make-up tipy a triky s M·A·C</a>
             <span class="tlcard__sub">Komunitní centrum · Praha</span>
           </div>
-          <div class="tlcard">
+          <div class="tlcard is-recurring">
             <span class="tlcard__time">19:00 · Zdarma</span>
-            <a class="tlcard__name" href="https://www.instagram.com/out_a_run/" target="_blank" rel="noopener">Out and Run</a>
+            <a class="tlcard__name" href="https://www.instagram.com/out_a_run/" target="_blank" rel="noopener">Out and Run <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></a>
             <span class="tlcard__sub">Výstaviště · běh 5 km · Praha</span>
           </div>
-          <div class="tlcard">
+          <div class="tlcard is-recurring">
             <span class="tlcard__time">22:00</span>
-            <a class="tlcard__name" href="https://friendsclub.cz/program/2026-06-18-drag-travesto-show-by-smokeekween-kimberley" target="_blank" rel="noopener">Drag &amp; Travesti show</a>
+            <a class="tlcard__name" href="https://friendsclub.cz/program/2026-06-18-drag-travesto-show-by-smokeekween-kimberley" target="_blank" rel="noopener">Drag &amp; Travesti show <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></a>
             <span class="tlcard__sub">Friends Club · Praha</span>
           </div>
         </div>
@@ -1057,17 +1049,17 @@ html{background:var(--color-bg);}
         </div>
         <div class="tlcol">
           <div class="tldate"><span class="tlwd">NEDĚLE</span><span class="tlnum"><span class="tlday">21</span><span class="tlmo">ČVN</span></span></div>
-          <div class="tlcard">
+          <div class="tlcard is-recurring">
             <span class="tlcard__time">21:00</span>
-            <a class="tlcard__name" href="https://friendsclub.cz/program/2026-06-21-sunday-chill" target="_blank" rel="noopener">Sunday Chill</a>
+            <a class="tlcard__name" href="https://friendsclub.cz/program/2026-06-21-sunday-chill" target="_blank" rel="noopener">Sunday Chill <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></a>
             <span class="tlcard__sub">Friends Club · Praha</span>
           </div>
         </div>
         <div class="tlcol">
           <div class="tldate"><span class="tlwd">PONDĚLÍ</span><span class="tlnum"><span class="tlday">22</span><span class="tlmo">ČVN</span></span></div>
-          <div class="tlcard">
+          <div class="tlcard is-recurring">
             <span class="tlcard__time">21:00</span>
-            <a class="tlcard__name" href="https://friendsclub.cz/program/2026-06-22-student-monday" target="_blank" rel="noopener">Student Monday</a>
+            <a class="tlcard__name" href="https://friendsclub.cz/program/2026-06-22-student-monday" target="_blank" rel="noopener">Student Monday <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></a>
             <span class="tlcard__sub">Friends Club · Praha</span>
           </div>
         </div>
@@ -1092,6 +1084,7 @@ html{background:var(--color-bg);}
       <div>
         <p class="eyebrow">Pravidelně · každý týden</p>
         <h2 class="sectitle">Akce, na které se dá vždycky spolehnout</h2>
+        <p class="secsub">Stálice, které běží každý týden nebo měsíc — můžeš na ně vyrazit klidně i naslepo.</p>
       </div>
     </div>
     <div class="reggrid">
@@ -1117,9 +1110,11 @@ html{background:var(--color-bg);}
       <div>
         <p class="eyebrow">Kalendář · co se chystá</p>
         <h2 class="sectitle">Měsíc po měsíci, akce po akci</h2>
+        <p class="secsub">Velký přehled toho, co se chystá — festivaly, párty i pravidelné akce po měsících. Opakující se akce značíme ikonou opakování a dají se skrýt přepínačem.</p>
       </div>
     </div>
 
+    <div class="recurbar"><button class="recurtoggle" type="button" data-recur-toggle aria-pressed="true"><span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span> <span class="recurtoggle__label">Včetně opakujících se</span></button></div>
     <div class="month__head">
       <span class="month__name">🌧️ Červen 2026</span>
       <span class="month__quip">Léto v komunitě i na parketu: podpůrné skupiny, deskovky, make-up workshop, knižní klub, procházka s Logosem i drag noci ve Friends.</span>
@@ -1172,6 +1167,24 @@ html{background:var(--color-bg);}
       </a>
     </div>
 
+    
+    <div class="monthgroup monthgroup--reg">
+      <a class="qevent is-recurring" href="https://www.instagram.com/out_a_run/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">ČT</span><span class="tm">19:00</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Out and Run <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Výstaviště · Praha · běh 5 km</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://friendsclub.cz/program" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">PO</span><span class="tm">21h</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Student Monday <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://friendsclub.cz/program" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">ÚT</span><span class="tm">21h</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Karaoke Night <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://www.qalendar.cz/series/queer-sensitive-joga/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">ÚT</span><span class="tm">17:40</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Queer Sensitive Jóga <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Komunitní centrum · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://friendsclub.cz/program" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">ST</span><span class="tm">21h</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Connection party <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://www.praguepride.com/series/otevreny-ctvrtek-cz-en/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">ČT</span><span class="tm">15–21</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Otevřený čtvrtek <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Komunitní centrum · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://friendsclub.cz/program" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">ČT</span><span class="tm">21h</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Drag &amp; Travesti show <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://heaven.cz/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">víkendy</span><span class="day">PÁ/SO</span><span class="tm">noc</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Víkendové párty <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Heaven · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://club-termix.cz/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">víkendy</span><span class="day">PÁ/SO</span><span class="tm">noc</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Disko víkendy <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Club Termix · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://friendsclub.cz/program" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">SO</span><span class="tm">21h</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Oldies Party <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://friendsclub.cz/program" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">NE</span><span class="tm">21h</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Sunday Chill <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://www.logoscr.cz/praha/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">1./měs</span><span class="day">NE</span><span class="tm">15h</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Setkání Logosu <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>U Jákobova žebříku · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://www.kluci-na-kole.cz/dalsi" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">měs.</span><span class="day">SO</span><span class="tm">9:00</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Kluci na kole — výlet <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Brno / Morava</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://jsmetransparent.cz/podpurne-skupiny/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">několikrát</span><span class="day">↻</span><span class="tm">online</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Trans*parent — podpůrné skupiny <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Praha &amp; online</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+    </div>
+
     <div class="month__head">
       <span class="month__name">☀️ Červenec 2026</span>
       <span class="month__quip">Co červenec neuvaří, srpen nedopeče — a my se pečeme na parketu i na kole. Megastar noci a rozjezd k Pride.</span>
@@ -1207,6 +1220,24 @@ html{background:var(--color-bg);}
         <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">What is PRIDE???</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span><div class="qevent__tags"><span class="qbadge t-neutral">Pride</span><span class="qbadge t-neutral">Párty</span></div></div>
         <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
       </a>
+    </div>
+
+    
+    <div class="monthgroup monthgroup--reg">
+      <a class="qevent is-recurring" href="https://www.instagram.com/out_a_run/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">ČT</span><span class="tm">19:00</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Out and Run <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Výstaviště · Praha · běh 5 km</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://friendsclub.cz/program" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">PO</span><span class="tm">21h</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Student Monday <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://friendsclub.cz/program" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">ÚT</span><span class="tm">21h</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Karaoke Night <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://www.qalendar.cz/series/queer-sensitive-joga/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">ÚT</span><span class="tm">17:40</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Queer Sensitive Jóga <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Komunitní centrum · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://friendsclub.cz/program" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">ST</span><span class="tm">21h</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Connection party <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://www.praguepride.com/series/otevreny-ctvrtek-cz-en/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">ČT</span><span class="tm">15–21</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Otevřený čtvrtek <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Komunitní centrum · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://friendsclub.cz/program" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">ČT</span><span class="tm">21h</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Drag &amp; Travesti show <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://heaven.cz/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">víkendy</span><span class="day">PÁ/SO</span><span class="tm">noc</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Víkendové párty <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Heaven · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://club-termix.cz/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">víkendy</span><span class="day">PÁ/SO</span><span class="tm">noc</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Disko víkendy <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Club Termix · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://friendsclub.cz/program" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">SO</span><span class="tm">21h</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Oldies Party <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://friendsclub.cz/program" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">NE</span><span class="tm">21h</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Sunday Chill <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://www.logoscr.cz/praha/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">1./měs</span><span class="day">NE</span><span class="tm">15h</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Setkání Logosu <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>U Jákobova žebříku · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://www.kluci-na-kole.cz/dalsi" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">měs.</span><span class="day">SO</span><span class="tm">9:00</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Kluci na kole — výlet <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Brno / Morava</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://jsmetransparent.cz/podpurne-skupiny/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">několikrát</span><span class="day">↻</span><span class="tm">online</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Trans*parent — podpůrné skupiny <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Praha &amp; online</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
     </div>
 
     <div class="month__head">
@@ -1249,6 +1280,24 @@ html{background:var(--color-bg);}
         <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Buddy Hiking Club — výlet</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>sraz Bratislava · turistický výlet</span><div class="qevent__tags"><span class="qbadge t-neutral">Turistika</span><span class="qbadge t-neutral">Výlet</span></div></div>
         <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
       </a>
+    </div>
+
+    
+    <div class="monthgroup monthgroup--reg">
+      <a class="qevent is-recurring" href="https://www.instagram.com/out_a_run/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">ČT</span><span class="tm">19:00</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Out and Run <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Výstaviště · Praha · běh 5 km</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://friendsclub.cz/program" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">PO</span><span class="tm">21h</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Student Monday <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://friendsclub.cz/program" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">ÚT</span><span class="tm">21h</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Karaoke Night <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://www.qalendar.cz/series/queer-sensitive-joga/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">ÚT</span><span class="tm">17:40</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Queer Sensitive Jóga <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Komunitní centrum · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://friendsclub.cz/program" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">ST</span><span class="tm">21h</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Connection party <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://www.praguepride.com/series/otevreny-ctvrtek-cz-en/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">ČT</span><span class="tm">15–21</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Otevřený čtvrtek <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Komunitní centrum · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://friendsclub.cz/program" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">ČT</span><span class="tm">21h</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Drag &amp; Travesti show <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://heaven.cz/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">víkendy</span><span class="day">PÁ/SO</span><span class="tm">noc</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Víkendové párty <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Heaven · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://club-termix.cz/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">víkendy</span><span class="day">PÁ/SO</span><span class="tm">noc</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Disko víkendy <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Club Termix · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://friendsclub.cz/program" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">SO</span><span class="tm">21h</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Oldies Party <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://friendsclub.cz/program" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">týdně</span><span class="day">NE</span><span class="tm">21h</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Sunday Chill <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Friends Club · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://www.logoscr.cz/praha/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">1./měs</span><span class="day">NE</span><span class="tm">15h</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Setkání Logosu <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>U Jákobova žebříku · Praha</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://www.kluci-na-kole.cz/dalsi" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">měs.</span><span class="day">SO</span><span class="tm">9:00</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Kluci na kole — výlet <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Brno / Morava</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
+      <a class="qevent is-recurring" href="https://jsmetransparent.cz/podpurne-skupiny/" target="_blank" rel="noopener"><span class="qtime qtime--reg"><span class="wd">několikrát</span><span class="day">↻</span><span class="tm">online</span></span><div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Trans*parent — podpůrné skupiny <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Praha &amp; online</span></div><div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div></a>
     </div>
 
     <div class="month__head">
@@ -1657,101 +1706,101 @@ html{background:var(--color-bg);}
 
   <!-- KAM ZAJÍT -->
   <section class="sec" id="kam">
-    <div class="sechead">
-      <div>
-        <p class="eyebrow">Kam zajít · kde se potkat</p>
-        <h2 class="sectitle">Kam zajít</h2>
-        <p class="secsub">Podniky, spolky a komunity, kde tě vezmou takového, jaký jsi. U každého odkaz na oficiální web.</p>
-      </div>
-    </div>
+ <div class="sechead">
+ <div>
+ <p class="eyebrow">Kam zajít · kde se potkat</p>
+ <h2 class="sectitle">Kam zajít</h2>
+ <p class="secsub">Podniky, spolky a komunity, kde tě vezmou takového, jaký jsi. U každého odkaz na oficiální web.</p>
+ </div>
+ </div>
 
-    <div class="kamgrid">
-      <div class="kamcat">
-        <h3 class="kamcat__h">☕ Přes den na kafe</h3>
-        <div class="kamlist">
-          <div class="kamitem"><a href="https://www.cafecafe.cz/" target="_blank" rel="noopener">Café Cafe</a> <span class="kammeta">— Praha-Staré Město · designová kavárna, dorty 🍰</span></div>
-          <div class="kamitem"><a href="https://www.cafefelix.cz/en/" target="_blank" rel="noopener">Café Felix</a> <span class="kammeta">— Praha-Vinohrady · brunch kavárna 🥐</span></div>
-          <div class="kamitem"><a href="https://www.patrakrymska.cz/" target="_blank" rel="noopener">Patra</a> <span class="kammeta">— Praha-Vršovice · kavárna, bar &amp; galerie 🎨</span></div>
-          <div class="kamitem"><a href="http://q-cafe.cz/" target="_blank" rel="noopener">Q Café</a> <span class="kammeta">— Praha-Staré Město · malý LGBT café-bar ☕</span></div>
-          <div class="kamitem"><a href="https://www.yocafe.cz/" target="_blank" rel="noopener">YoCafé</a> <span class="kammeta">— Praha-Vinohrady · queer kavárna-bar ☕</span></div>
-        </div>
-      </div>
-      <div class="kamcat">
-        <h3 class="kamcat__h">🪩 Noční zábava</h3>
-        <div class="kamlist">
-          <div class="kamitem"><a href="https://club-termix.cz/" target="_blank" rel="noopener">Club Termix / TerMAX</a> <span class="kammeta">— Praha-Vinohrady · disko víkendy 🪩</span></div>
-          <div class="kamitem"><a href="https://www.friendsclub.cz/" target="_blank" rel="noopener">Friends Club</a> <span class="kammeta">— Praha · ikonický klub, drag &amp; karaoke 🎤</span></div>
-          <div class="kamitem"><b>Háčko / H46</b> <span class="kammeta">— Brno · gay/lesbi klub 🌈</span></div>
-          <div class="kamitem"><a href="https://heaven.cz/" target="_blank" rel="noopener">Heaven</a> <span class="kammeta">— Praha · velký gay klub &amp; párty 🕺</span></div>
-          <div class="kamitem"><a href="https://www.facebook.com/Klub21Prague" target="_blank" rel="noopener">Klub 21</a> <span class="kammeta">— Praha-Vinohrady · sklepní bar 🍻</span></div>
-          <div class="kamitem"><b>Klub Fiesta</b> <span class="kammeta">— Ostrava · nejstarší klub, drag show 👑</span></div>
-          <div class="kamitem"><a href="http://piano-bar.cz/" target="_blank" rel="noopener">Piano Bar</a> <span class="kammeta">— Praha-Vinohrady · drag bingo, jukebox 🎶</span></div>
-          <div class="kamitem"><b>Rio Bar</b> <span class="kammeta">— Ostrava · gay bar 🍸</span></div>
-          <div class="kamitem"><a href="https://www.facebook.com/TheSaintsBar" target="_blank" rel="noopener">The Saints</a> <span class="kammeta">— Praha-Vinohrady · pohodový bar 🌈</span></div>
-          <div class="kamitem"><a href="http://www.updownbarprague.cz/en/home/" target="_blank" rel="noopener">UpDown Bar</a> <span class="kammeta">— Praha-Žižkov · lounge + klub 🕺</span></div>
-        </div>
-      </div>
-      <div class="kamcat">
-        <h3 class="kamcat__h">🏃 Sport a turistika</h3>
-        <div class="kamlist">
-          <div class="kamitem"><a href="https://www.alcedopraha.cz/" target="_blank" rel="noopener">Alcedo Praha</a> <span class="kammeta">— Praha · největší LGBT sport. klub 🏸</span></div>
-          <div class="kamitem"><a href="http://aquamen.eu/" target="_blank" rel="noopener">Aquamen</a> <span class="kammeta">— Praha · LGBT plavecký oddíl 🏊</span></div>
-          <div class="kamitem"><a href="https://www.instagram.com/buddy.hiking.club/" target="_blank" rel="noopener">Buddy Hiking Club</a> <span class="kammeta">— online · queer turistika &amp; výlety · Instagram 🥾</span></div>
-          <div class="kamitem"><a href="http://gaysport.cz/" target="_blank" rel="noopener">GaySport.cz</a> <span class="kammeta">— Praha · neformální parta, různé sporty 🤾</span></div>
-          <div class="kamitem"><a href="https://www.nakluky.cz/organizace/item/67-gfc-prague-friends/" target="_blank" rel="noopener">GFC Prague Friends</a> <span class="kammeta">— Praha · gay fotbalový klub ⚽</span></div>
-          <div class="kamitem"><a href="https://www.nakluky.cz/organizace/item/20-go-outdoor-praha/" target="_blank" rel="noopener">Go outdoor Praha</a> <span class="kammeta">— Praha · kolo, běžky, treky, voda 🏕️</span></div>
-          <div class="kamitem"><a href="https://www.nakluky.cz/organizace/item/21-golfsky-proud/" target="_blank" rel="noopener">Golfský proud</a> <span class="kammeta">— Brno · plavání 🏊</span></div>
-          <div class="kamitem"><a href="https://www.kluci-na-kole.cz/" target="_blank" rel="noopener">Kluci na kole</a> <span class="kammeta">— Brno/Morava · cyklovýlety &amp; výlety 🚲</span></div>
-          <div class="kamitem"><a href="https://www.instagram.com/out_a_run/" target="_blank" rel="noopener">Out a run</a> <span class="kammeta">— Praha · queer běžecká skupina · Instagram 🏃</span></div>
-          <div class="kamitem"><a href="https://www.nakluky.cz/organizace/item/53-prague-friendly-tennis-open/" target="_blank" rel="noopener">Prague Friendly Tennis</a> <span class="kammeta">— Praha · tenis, GLTA 🎾</span></div>
-          <div class="kamitem"><a href="https://praguerainbow.eu/" target="_blank" rel="noopener">Prague Rainbow Spring</a> <span class="kammeta">— Praha · LGBT sportovní víkend 🏅</span></div>
-        </div>
-      </div>
-      <div class="kamcat">
-        <h3 class="kamcat__h">🧘 Jóga, tanec, víra &amp; kultura</h3>
-        <div class="kamlist">
-          <div class="kamitem"><a href="https://www.nakluky.cz/organizace/item/2-galibi/" target="_blank" rel="noopener">Galibi</a> <span class="kammeta">— Praha · VŠ LGBT klub (kultura, výlety) 🎓</span></div>
-          <div class="kamitem"><a href="https://www.nakluky.cz/organizace/item/4-gate/" target="_blank" rel="noopener">GaTe (STUD Brno)</a> <span class="kammeta">— Brno · mladí v coming outu 🌱</span></div>
-          <div class="kamitem"><a href="https://www.jsmefer.cz/" target="_blank" rel="noopener">Jsme fér</a> <span class="kammeta">— ČR · manželství pro všechny 💍</span></div>
-          <div class="kamitem"><a href="https://www.qalendar.cz/series/setkani-logosu-v-praze/" target="_blank" rel="noopener">Logos</a> <span class="kammeta">— Praha · společenství queer křesťanů 🙏</span></div>
-          <div class="kamitem"><a href="https://www.mezipatra.cz/" target="_blank" rel="noopener">Mezipatra</a> <span class="kammeta">— ČR · queer filmový festival 🎬</span></div>
-          <div class="kamitem"><a href="https://www.praguepride.cz/" target="_blank" rel="noopener">Prague Pride</a> <span class="kammeta">— Praha · komunitní centrum, knižní klub, deskovky 🌈</span></div>
-          <div class="kamitem"><a href="https://www.queerball.cz/" target="_blank" rel="noopener">Queer Ball</a> <span class="kammeta">— Praha · queer ples 🪩</span></div>
-          <div class="kamitem"><a href="https://www.queergeography.cz/" target="_blank" rel="noopener">Queer Geography</a> <span class="kammeta">— ČR · queer dějiny &amp; vzdělávání 📚</span></div>
-          <div class="kamitem"><a href="https://www.qalendar.cz/series/queer-sensitive-joga/" target="_blank" rel="noopener">Queer Sensitive Jóga</a> <span class="kammeta">— Komunitní centrum, Praha · jóga 🧘</span></div>
-          <div class="kamitem"><a href="https://www.sbarvouven.cz/" target="_blank" rel="noopener">S barvou ven</a> <span class="kammeta">— ČR · online · poradna &amp; komunita 🌈</span></div>
-          <div class="kamitem"><a href="https://www.stud.cz/" target="_blank" rel="noopener">STUD Brno</a> <span class="kammeta">— Brno · LGBT spolek 🌈</span></div>
-          <div class="kamitem"><a href="https://www.qalendar.cz/series/tanecni-lekce/" target="_blank" rel="noopener">Taneční lekce</a> <span class="kammeta">— Komunitní centrum, Praha · tanec 💃</span></div>
-          <div class="kamitem"><a href="https://jsmetransparent.cz/" target="_blank" rel="noopener">Trans*parent</a> <span class="kammeta">— Praha &amp; online · spolek trans* lidí, podpůrné skupiny 🤝</span></div>
-        </div>
-      </div>
-      <div class="kamcat" id="zdravi">
-        <h3 class="kamcat__h">🩺 Jak zůstat zdraví</h3>
-        <div class="kamlist">
-          <div class="kamitem"><a href="https://www.hiv-testovani.cz/checkpoint-dum-svetla-praha" target="_blank" rel="noopener">Checkpoint — Dům světla</a> <span class="kammeta">— Praha-Karlín · anonymní testování HIV/STI zdarma, Po 16–19h, St 9–12h, Čt 15–18h 🛡️</span></div>
-          <div class="kamitem"><a href="https://www.hiv-testovani.cz" target="_blank" rel="noopener">HIV Checkpoint Brno</a> <span class="kammeta">— Brno · testování, FN Brno-Bohunice, Pavilon B 🩺</span></div>
-          <div class="kamitem"><a href="https://www.chciprep.cz" target="_blank" rel="noopener">PrEP Point — Dům světla ČSAP</a> <span class="kammeta">— Praha · poradenství a získání PrEP na předpis 💊</span></div>
-          <div class="kamitem"><a href="https://www.sbarvouven.cz" target="_blank" rel="noopener">Sbarvouven — poradna &amp; podpora</a> <span class="kammeta">— celé ČR · online poradenství a bezpečný prostor ☎️</span></div>
-          <div class="kamnote">Checkpointy i v Ostravě, Olomouci, Č. Budějovicích, Hradci Králové, Ústí, Liberci a Plzni — přehled na <a href="https://www.hiv-testovani.cz" target="_blank" rel="noopener">hiv-testovani.cz</a>.</div>
-        </div>
-      </div>
-      <div class="kamcat">
-        <h3 class="kamcat__h">💼 Kde pracovat</h3>
-        <div class="kamlist">
-          <div class="kamitem"><a href="https://www.vodafone.cz/o-vodafonu/kariera/" target="_blank" rel="noopener">Vodafone</a> <span class="kammeta">— <span class="emptier emptier--gold">Gold · 94,5 %</span></span></div>
-          <div class="kamitem"><a href="https://jobs.msd.com/" target="_blank" rel="noopener">MSD</a> <span class="kammeta">— <span class="emptier emptier--gold">Gold</span></span></div>
-          <div class="kamitem"><a href="https://www.novartis.com/careers" target="_blank" rel="noopener">Novartis</a> <span class="kammeta">— <span class="emptier emptier--silver">Silver · 86</span></span></div>
-          <div class="kamitem"><a href="https://www.ikea.com/cz/cs/this-is-ikea/work-with-us/" target="_blank" rel="noopener">IKEA</a> <span class="kammeta">— <span class="emptier emptier--silver">Silver · 81</span></span></div>
-          <div class="kamitem"><a href="https://www.accenture.com/cz-cs/careers" target="_blank" rel="noopener">Accenture</a> <span class="kammeta">— <span class="emptier emptier--silver">Silver · 81</span></span></div>
-          <div class="kamitem"><a href="https://www.sap.com/cz/about/careers.html" target="_blank" rel="noopener">SAP</a> <span class="kammeta">— <span class="emptier emptier--silver">Silver · 80,5</span></span></div>
-          <div class="kamitem"><a href="https://www.generaliceska.cz/" target="_blank" rel="noopener">Generali Česká</a> <span class="kammeta">— <span class="emptier emptier--silver">Silver</span></span></div>
-          <div class="kamitem"><a href="https://www.skoda-kariera.cz/" target="_blank" rel="noopener">Škoda Auto</a> <span class="kammeta">— <span class="emptier emptier--bronze">Bronze · 75,5</span></span></div>
-          <div class="kamitem"><a href="https://kariera.itesco.cz/" target="_blank" rel="noopener">Tesco</a> <span class="kammeta">— <span class="emptier emptier--bronze">Bronze · 71</span></span></div>
-        </div>
-        <div class="kamnote">Firmy oceněné <a href="https://www.pridebusinessforum.com/oceneni-lgbtq-friendly-employer/" target="_blank" rel="noopener">Pride Business Forum</a> jako LGBTQ+ Friendly Employer (2025) — s hodnocením inkluze na pracovišti. Otevřené pozice najdeš na jejich kariérních stránkách; inkluzivní nabídky i na <a href="https://www.mygwork.com/" target="_blank" rel="noopener">myGwork</a>.</div>
-      </div>
-    </div>
-  </section>
+ <div class="kamgrid">
+ <div class="kamcat">
+ <h3 class="kamcat__h">Přes den na kafe</h3>
+ <div class="kamlist">
+ <div class="kamitem"><a href="https://www.cafecafe.cz/" target="_blank" rel="noopener">Café Cafe</a> <span class="kammeta">— Praha-Staré Město · designová kavárna, dorty</span></div>
+ <div class="kamitem"><a href="https://www.cafefelix.cz/en/" target="_blank" rel="noopener">Café Felix</a> <span class="kammeta">— Praha-Vinohrady · brunch kavárna</span></div>
+ <div class="kamitem"><a href="https://www.patrakrymska.cz/" target="_blank" rel="noopener">Patra</a> <span class="kammeta">— Praha-Vršovice · kavárna, bar &amp; galerie</span></div>
+ <div class="kamitem"><a href="http://q-cafe.cz/" target="_blank" rel="noopener">Q Café</a> <span class="kammeta">— Praha-Staré Město · malý LGBT café-bar</span></div>
+ <div class="kamitem"><a href="https://www.yocafe.cz/" target="_blank" rel="noopener">YoCafé</a> <span class="kammeta">— Praha-Vinohrady · queer kavárna-bar</span></div>
+ </div>
+ </div>
+ <div class="kamcat">
+ <h3 class="kamcat__h">Noční zábava</h3>
+ <div class="kamlist">
+ <div class="kamitem"><a href="https://club-termix.cz/" target="_blank" rel="noopener">Club Termix / TerMAX</a> <span class="kammeta">— Praha-Vinohrady · disko víkendy</span></div>
+ <div class="kamitem"><a href="https://www.friendsclub.cz/" target="_blank" rel="noopener">Friends Club</a> <span class="kammeta">— Praha · ikonický klub, drag &amp; karaoke</span></div>
+ <div class="kamitem"><b>Háčko / H46</b> <span class="kammeta">— Brno · gay/lesbi klub</span></div>
+ <div class="kamitem"><a href="https://heaven.cz/" target="_blank" rel="noopener">Heaven</a> <span class="kammeta">— Praha · velký gay klub &amp; párty</span></div>
+ <div class="kamitem"><a href="https://www.facebook.com/Klub21Prague" target="_blank" rel="noopener">Klub 21</a> <span class="kammeta">— Praha-Vinohrady · sklepní bar</span></div>
+ <div class="kamitem"><b>Klub Fiesta</b> <span class="kammeta">— Ostrava · nejstarší klub, drag show</span></div>
+ <div class="kamitem"><a href="http://piano-bar.cz/" target="_blank" rel="noopener">Piano Bar</a> <span class="kammeta">— Praha-Vinohrady · drag bingo, jukebox</span></div>
+ <div class="kamitem"><b>Rio Bar</b> <span class="kammeta">— Ostrava · gay bar</span></div>
+ <div class="kamitem"><a href="https://www.facebook.com/TheSaintsBar" target="_blank" rel="noopener">The Saints</a> <span class="kammeta">— Praha-Vinohrady · pohodový bar</span></div>
+ <div class="kamitem"><a href="http://www.updownbarprague.cz/en/home/" target="_blank" rel="noopener">UpDown Bar</a> <span class="kammeta">— Praha-Žižkov · lounge + klub</span></div>
+ </div>
+ </div>
+ <div class="kamcat">
+ <h3 class="kamcat__h">Sport a turistika</h3>
+ <div class="kamlist">
+ <div class="kamitem"><a href="https://www.alcedopraha.cz/" target="_blank" rel="noopener">Alcedo Praha</a> <span class="kammeta">— Praha · největší LGBT sport. klub</span></div>
+ <div class="kamitem"><a href="http://aquamen.eu/" target="_blank" rel="noopener">Aquamen</a> <span class="kammeta">— Praha · LGBT plavecký oddíl</span></div>
+ <div class="kamitem"><a href="https://www.instagram.com/buddy.hiking.club/" target="_blank" rel="noopener">Buddy Hiking Club</a> <span class="kammeta">— online · queer turistika &amp; výlety · Instagram</span></div>
+ <div class="kamitem"><a href="http://gaysport.cz/" target="_blank" rel="noopener">GaySport.cz</a> <span class="kammeta">— Praha · neformální parta, různé sporty</span></div>
+ <div class="kamitem"><a href="https://www.nakluky.cz/organizace/item/67-gfc-prague-friends/" target="_blank" rel="noopener">GFC Prague Friends</a> <span class="kammeta">— Praha · gay fotbalový klub</span></div>
+ <div class="kamitem"><a href="https://www.nakluky.cz/organizace/item/20-go-outdoor-praha/" target="_blank" rel="noopener">Go outdoor Praha</a> <span class="kammeta">— Praha · kolo, běžky, treky, voda</span></div>
+ <div class="kamitem"><a href="https://www.nakluky.cz/organizace/item/21-golfsky-proud/" target="_blank" rel="noopener">Golfský proud</a> <span class="kammeta">— Brno · plavání</span></div>
+ <div class="kamitem"><a href="https://www.kluci-na-kole.cz/" target="_blank" rel="noopener">Kluci na kole</a> <span class="kammeta">— Brno/Morava · cyklovýlety &amp; výlety</span></div>
+ <div class="kamitem"><a href="https://www.instagram.com/out_a_run/" target="_blank" rel="noopener">Out a run</a> <span class="kammeta">— Praha · queer běžecká skupina · Instagram</span></div>
+ <div class="kamitem"><a href="https://www.nakluky.cz/organizace/item/53-prague-friendly-tennis-open/" target="_blank" rel="noopener">Prague Friendly Tennis</a> <span class="kammeta">— Praha · tenis, GLTA</span></div>
+ <div class="kamitem"><a href="https://praguerainbow.eu/" target="_blank" rel="noopener">Prague Rainbow Spring</a> <span class="kammeta">— Praha · LGBT sportovní víkend</span></div>
+ </div>
+ </div>
+ <div class="kamcat">
+ <h3 class="kamcat__h">Jóga, tanec, víra &amp; kultura</h3>
+ <div class="kamlist">
+ <div class="kamitem"><a href="https://www.nakluky.cz/organizace/item/2-galibi/" target="_blank" rel="noopener">Galibi</a> <span class="kammeta">— Praha · VŠ LGBT klub (kultura, výlety)</span></div>
+ <div class="kamitem"><a href="https://www.nakluky.cz/organizace/item/4-gate/" target="_blank" rel="noopener">GaTe (STUD Brno)</a> <span class="kammeta">— Brno · mladí v coming outu</span></div>
+ <div class="kamitem"><a href="https://www.jsmefer.cz/" target="_blank" rel="noopener">Jsme fér</a> <span class="kammeta">— ČR · manželství pro všechny</span></div>
+ <div class="kamitem"><a href="https://www.qalendar.cz/series/setkani-logosu-v-praze/" target="_blank" rel="noopener">Logos</a> <span class="kammeta">— Praha · společenství queer křesťanů</span></div>
+ <div class="kamitem"><a href="https://www.mezipatra.cz/" target="_blank" rel="noopener">Mezipatra</a> <span class="kammeta">— ČR · queer filmový festival</span></div>
+ <div class="kamitem"><a href="https://www.praguepride.cz/" target="_blank" rel="noopener">Prague Pride</a> <span class="kammeta">— Praha · komunitní centrum, knižní klub, deskovky</span></div>
+ <div class="kamitem"><a href="https://www.queerball.cz/" target="_blank" rel="noopener">Queer Ball</a> <span class="kammeta">— Praha · queer ples</span></div>
+ <div class="kamitem"><a href="https://www.queergeography.cz/" target="_blank" rel="noopener">Queer Geography</a> <span class="kammeta">— ČR · queer dějiny &amp; vzdělávání</span></div>
+ <div class="kamitem"><a href="https://www.qalendar.cz/series/queer-sensitive-joga/" target="_blank" rel="noopener">Queer Sensitive Jóga</a> <span class="kammeta">— Komunitní centrum, Praha · jóga</span></div>
+ <div class="kamitem"><a href="https://www.sbarvouven.cz/" target="_blank" rel="noopener">S barvou ven</a> <span class="kammeta">— ČR · online · poradna &amp; komunita</span></div>
+ <div class="kamitem"><a href="https://www.stud.cz/" target="_blank" rel="noopener">STUD Brno</a> <span class="kammeta">— Brno · LGBT spolek</span></div>
+ <div class="kamitem"><a href="https://www.qalendar.cz/series/tanecni-lekce/" target="_blank" rel="noopener">Taneční lekce</a> <span class="kammeta">— Komunitní centrum, Praha · tanec</span></div>
+ <div class="kamitem"><a href="https://jsmetransparent.cz/" target="_blank" rel="noopener">Trans*parent</a> <span class="kammeta">— Praha &amp; online · spolek trans* lidí, podpůrné skupiny</span></div>
+ </div>
+ </div>
+ <div class="kamcat" id="zdravi">
+ <h3 class="kamcat__h">Jak zůstat zdraví</h3>
+ <div class="kamlist">
+ <div class="kamitem"><a href="https://www.hiv-testovani.cz/checkpoint-dum-svetla-praha" target="_blank" rel="noopener">Checkpoint — Dům světla</a> <span class="kammeta">— Praha-Karlín · anonymní testování HIV/STI zdarma, Po 16–19h, St 9–12h, Čt 15–18h</span></div>
+ <div class="kamitem"><a href="https://www.hiv-testovani.cz" target="_blank" rel="noopener">HIV Checkpoint Brno</a> <span class="kammeta">— Brno · testování, FN Brno-Bohunice, Pavilon B</span></div>
+ <div class="kamitem"><a href="https://www.chciprep.cz" target="_blank" rel="noopener">PrEP Point — Dům světla ČSAP</a> <span class="kammeta">— Praha · poradenství a získání PrEP na předpis</span></div>
+ <div class="kamitem"><a href="https://www.sbarvouven.cz" target="_blank" rel="noopener">Sbarvouven — poradna &amp; podpora</a> <span class="kammeta">— celé ČR · online poradenství a bezpečný prostor</span></div>
+ <div class="kamnote">Checkpointy i v Ostravě, Olomouci, Č. Budějovicích, Hradci Králové, Ústí, Liberci a Plzni — přehled na <a href="https://www.hiv-testovani.cz" target="_blank" rel="noopener">hiv-testovani.cz</a>.</div>
+ </div>
+ </div>
+ <div class="kamcat">
+ <h3 class="kamcat__h">Kde pracovat</h3>
+ <div class="kamlist">
+ <div class="kamitem"><a href="https://www.vodafone.cz/o-vodafonu/kariera/" target="_blank" rel="noopener">Vodafone</a> <span class="kammeta">— <span class="emptier emptier--gold">Gold · 94,5 %</span></span></div>
+ <div class="kamitem"><a href="https://jobs.msd.com/" target="_blank" rel="noopener">MSD</a> <span class="kammeta">— <span class="emptier emptier--gold">Gold</span></span></div>
+ <div class="kamitem"><a href="https://www.novartis.com/careers" target="_blank" rel="noopener">Novartis</a> <span class="kammeta">— <span class="emptier emptier--silver">Silver · 86</span></span></div>
+ <div class="kamitem"><a href="https://www.ikea.com/cz/cs/this-is-ikea/work-with-us/" target="_blank" rel="noopener">IKEA</a> <span class="kammeta">— <span class="emptier emptier--silver">Silver · 81</span></span></div>
+ <div class="kamitem"><a href="https://www.accenture.com/cz-cs/careers" target="_blank" rel="noopener">Accenture</a> <span class="kammeta">— <span class="emptier emptier--silver">Silver · 81</span></span></div>
+ <div class="kamitem"><a href="https://www.sap.com/cz/about/careers.html" target="_blank" rel="noopener">SAP</a> <span class="kammeta">— <span class="emptier emptier--silver">Silver · 80,5</span></span></div>
+ <div class="kamitem"><a href="https://www.generaliceska.cz/" target="_blank" rel="noopener">Generali Česká</a> <span class="kammeta">— <span class="emptier emptier--silver">Silver</span></span></div>
+ <div class="kamitem"><a href="https://www.skoda-kariera.cz/" target="_blank" rel="noopener">Škoda Auto</a> <span class="kammeta">— <span class="emptier emptier--bronze">Bronze · 75,5</span></span></div>
+ <div class="kamitem"><a href="https://kariera.itesco.cz/" target="_blank" rel="noopener">Tesco</a> <span class="kammeta">— <span class="emptier emptier--bronze">Bronze · 71</span></span></div>
+ </div>
+ <div class="kamnote">Firmy oceněné <a href="https://www.pridebusinessforum.com/oceneni-lgbtq-friendly-employer/" target="_blank" rel="noopener">Pride Business Forum</a> jako LGBTQ+ Friendly Employer (2025) — s hodnocením inkluze na pracovišti. Otevřené pozice najdeš na jejich kariérních stránkách; inkluzivní nabídky i na <a href="https://www.mygwork.com/" target="_blank" rel="noopener">myGwork</a>.</div>
+ </div>
+ </div>
+ </section>
   <!-- NABÍZÍTE SLUŽBY -->
   <section class="sec" id="sluzby">
     <div class="sechead">
@@ -1769,7 +1818,7 @@ html{background:var(--color-bg);}
           <div class="svcrow"><span class="svcchip">Architekti</span><span class="svcchip">Hodinoví manželé</span><span class="svcchip">Daňoví poradci</span><span class="svcchip">Trenéři</span></div>
           <div class="svcrow"><span class="svcchip">Terapeuti</span><span class="svcchip">Dentální hygienici</span><span class="svcchip">Zubaři</span><span class="svcchip svcchip--more">a další…</span></div>
         </div>
-        <a class="svccta__btn" href="mailto:ahoj@q247.live?subject=Nab%C3%ADzím%20slu%C5%BEby%20pro%20queer%20lidi">Ozvěte se <i data-lucide="mail"></i></a>
+        <button class="svccta__btn" type="button" data-tip-open>Ozvěte se <i data-lucide="mail"></i></button>
       </div>
   </section>
 
@@ -1779,6 +1828,13 @@ html{background:var(--color-bg);}
 
 </div><!-- /wrap -->
 
+<div id="tipsheet" class="a2hsheet" hidden>
+  <div class="a2hsheet__card">
+    <h4>Přidat akci nebo tip</h4>
+    <p>Jednoduše napište e‑mail na <a href="mailto:pridat@q247.live">pridat@q247.live</a>. Váš tip posoudíme hned, jakmile se k tomu dostaneme (obvykle do 1 dne), a přidáme nebo ne. Děkujeme.</p>
+    <button class="a2hsheet__close" type="button" data-tip-close>Rozumím</button>
+  </div>
+</div>
 <footer class="foot">
   <div class="wrap">
     <div class="foot__top">
@@ -1893,54 +1949,24 @@ html{background:var(--color-bg);}
 })();
 </script>
 <script>
-/* v41 — „Přidat na plochu": tlačítko jen na mobilu a jen když to zařízení/prohlížeč umí */
 (function(){
-  var bar=document.getElementById('a2hs'),
-      btn=document.getElementById('a2hsBtn'),
-      x=document.getElementById('a2hsX'),
-      help=document.getElementById('a2hsHelp'),
-      helpClose=document.getElementById('a2hsHelpClose');
-  if(!bar||!btn)return;
-  var deferred=null;
-  var ua=navigator.userAgent||'';
+  var help=document.getElementById('a2hsHelp'),helpClose=document.getElementById('a2hsHelpClose'),footer=document.getElementById('a2hs-footer');
+  var deferred=null,ua=navigator.userAgent||'';
   var isAndroid=/android/i.test(ua);
   var isIOS=/iphone|ipad|ipod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
-  var inApp=/FBAN|FBAV|Instagram|Line|Twitter|MicroMessenger|GSA/i.test(ua); /* in-app prohlížeče instalaci neumí */
-  var iosOther=/CriOS|FxiOS|EdgiOS|OPiOS|mercury/i.test(ua); /* na iOS umí A2HS jen Safari */
-  function standalone(){ return (window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches)||window.navigator.standalone===true; }
-  function isMobile(){ return (window.matchMedia&&(window.matchMedia('(max-width: 860px)').matches||window.matchMedia('(pointer: coarse)').matches)); }
+  var inApp=/FBAN|FBAV|Instagram|Line|Twitter|MicroMessenger|GSA/i.test(ua);
+  var iosOther=/CriOS|FxiOS|EdgiOS|OPiOS|mercury/i.test(ua);
+  function standalone(){ return (window.matchMedia&&matchMedia('(display-mode: standalone)').matches)||navigator.standalone===true; }
+  function isMobile(){ return window.matchMedia&&(matchMedia('(max-width: 860px)').matches||matchMedia('(pointer: coarse)').matches); }
   function compatible(){ if(inApp)return false; if(isIOS)return !iosOther; if(isAndroid)return true; return false; }
-  function dismissed(){ try{var t=localStorage.getItem('a2hs_hidden_v2');return t&&(Date.now()-(+t))<6048e5;}catch(e){return false;} }
-  function hide(){ bar.classList.add('is-off'); }
-  function evaluate(){ if(!compatible()||!isMobile()||standalone()||dismissed()) hide(); }
-  function openHelp(){
-    if(!help)return;
-    var t=document.getElementById('a2hsHelpText');
-    if(t)t.innerHTML=isIOS
-      ? 'Klepni dole na ikonu <b>Sdílet</b> (čtvereček se šipkou nahoru) a zvol <b>„Přidat na plochu"</b>.'
-      : 'Otevři <b>menu prohlížeče</b> (tři tečky ⋮ vpravo nahoře) a zvol <b>„Instalovat aplikaci"</b> nebo <b>„Přidat na plochu"</b>.';
-    help.hidden=false;
-  }
-  /* Android Chrome: zachytíme nativní prompt, jakmile přijde */
+  function openHelp(){ if(!help)return; var t=document.getElementById('a2hsHelpText'); if(t)t.innerHTML=isIOS?"Klepni dole na ikonu <b>Sdílet</b> (čtvereček se šipkou nahoru) a zvol <b>„Přidat na plochu\"</b>.":"Otevři <b>menu prohlížeče</b> (tři tečky ⋮ vpravo nahoře) a zvol <b>„Instalovat aplikaci\"</b> nebo <b>„Přidat na plochu\"</b>."; help.hidden=false; }
+  function installAction(e){ if(e)e.preventDefault(); if(deferred){ deferred.prompt(); (deferred.userChoice||Promise.resolve()).then(function(){ deferred=null; }); } else { openHelp(); } }
   window.addEventListener('beforeinstallprompt',function(e){ e.preventDefault(); deferred=e; });
-  /* proužek je na mobilu vidět už z CSS; JS ho jen schová tam, kde nedává smysl */
-  evaluate();
-  btn.addEventListener('click',function(){
-    if(deferred){
-      deferred.prompt();
-      (deferred.userChoice||Promise.resolve()).then(function(c){ if(c&&c.outcome==='accepted')hide(); deferred=null; });
-    }else{ openHelp(); }
-  });
-  var a2hsMsg=document.getElementById('a2hsMsg'),a2hsClose=document.getElementById('a2hsClose'),a2hsFooter=document.getElementById('a2hs-footer');
-  function installAction(e){ if(e)e.preventDefault(); if(deferred){ deferred.prompt(); (deferred.userChoice||Promise.resolve()).then(function(c){ if(c&&c.outcome==='accepted')hide(); deferred=null; }); } else { openHelp(); } }
-  if(x)x.addEventListener('click',function(){ if(btn)btn.hidden=true; x.hidden=true; if(a2hsMsg)a2hsMsg.hidden=false; if(a2hsClose)a2hsClose.hidden=false; });
-  if(a2hsClose)a2hsClose.addEventListener('click',function(e){ e.preventDefault(); hide(); try{localStorage.setItem('a2hs_hidden_v2',String(Date.now()));}catch(_e){} });
-  if(a2hsFooter && compatible() && isMobile() && !standalone()){ a2hsFooter.hidden=false; a2hsFooter.addEventListener('click', installAction); }
+  if(footer && compatible() && isMobile() && !standalone()){ footer.hidden=false; footer.addEventListener('click',installAction); }
   if(helpClose)helpClose.addEventListener('click',function(){ help.hidden=true; });
   if(help)help.addEventListener('click',function(e){ if(e.target===help)help.hidden=true; });
-  window.addEventListener('appinstalled',function(){ hide(); try{localStorage.setItem('a2hs_hidden_v2',String(Date.now()));}catch(e){} });
-  /* service worker — kvůli instalovatelnosti (beforeinstallprompt) + lehký offline */
-  if('serviceWorker' in navigator){ window.addEventListener('load',function(){ navigator.serviceWorker.register('sw.js').catch(function(){}); }); }
+  window.addEventListener('appinstalled',function(){ if(help)help.hidden=true; });
+  if('serviceWorker' in navigator){ window.addEventListener('load',function(){ navigator.serviceWorker.register('/sw.js').catch(function(){}); }); }
 })();
 </script>
 <script>
@@ -1989,6 +2015,21 @@ document.querySelectorAll('[data-lang]').forEach(function(a){
     reels.addEventListener('touchstart', function(e){ ty=e.touches[0].clientY; }, {passive:true});
     reels.addEventListener('touchend', function(e){ var ey=(e.changedTouches&&e.changedTouches[0])?e.changedTouches[0].clientY:ty; if((ty-ey)>40 && atEnd()) close(); }, {passive:true});
   }
+})();
+</script>
+<script>
+(function(){
+  var sheet=document.getElementById('tipsheet');
+  if(sheet){ function o(){sheet.hidden=false;} function c(){sheet.hidden=true;}
+    document.querySelectorAll('[data-tip-open]').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();o();});});
+    sheet.addEventListener('click',function(e){if(e.target===sheet||e.target.hasAttribute('data-tip-close'))c();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')c();}); }
+  var K='q247-hiderecur',root=document.documentElement;
+  function g(){try{return localStorage.getItem(K)==='1';}catch(e){return false;}}
+  function ap(h){root.setAttribute('data-hiderecur',h?'1':'0');document.querySelectorAll('[data-recur-toggle]').forEach(function(b){b.setAttribute('aria-pressed',h?'false':'true');var l=b.querySelector('.recurtoggle__label');if(l)l.textContent=h?"Bez opakujících se":"Včetně opakujících se";});}
+  function st(h){try{localStorage.setItem(K,h?'1':'0');}catch(e){} ap(h);}
+  document.querySelectorAll('[data-recur-toggle]').forEach(function(b){b.addEventListener('click',function(){st(root.getAttribute('data-hiderecur')!=='1');});});
+  ap(g());
 })();
 </script>
 </body>

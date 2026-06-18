@@ -4,7 +4,7 @@
   "description": "Queer Česko 24/7 — akce, kluby, kavárny, filmy, podcasty a kultura. Aktualizováno každý den.",
   "lang": "cs",
   "dir": "ltr",
-  "id": "/landing",
+  "id": "/",
   "start_url": "/web/",
   "scope": "/",
   "display": "standalone",
