@@ -847,12 +847,13 @@ html{background:var(--color-bg);}
 .q247-reels-logo__mark{width:34px;height:34px;border-radius:9px;}
 .q247-reels-logo__word{font-size:23px;letter-spacing:-.03em;}
 .q247-reel__desc{margin:0 0 20px;max-width:32ch;font-size:15.5px;line-height:1.45;color:#f2e9ef;text-shadow:0 1px 12px rgba(0,0,0,.6);}.q247-reel__desc ul{margin:0;padding:0;list-style:none;}.q247-reel__desc li{position:relative;padding-left:16px;margin:0 0 5px;}.q247-reel__desc li:last-child{margin-bottom:0;}.q247-reel__desc li::before{content:"\203A";position:absolute;left:0;color:var(--brand-strong);font-weight:700;}
-.addev{display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:var(--text-on-brand);font-family:var(--font-sans);font-weight:700;font-size:13px;padding:7px 14px;border-radius:var(--radius-pill);border:0;cursor:pointer;flex:none;margin-left:8px;transition:background .15s;}.addev:hover{background:var(--magenta-600);}.addev svg{width:16px;height:16px;display:block;}.recurflag{display:inline-flex;align-items:center;justify-content:center;width:1em;height:1em;color:var(--text-brand);flex:none;vertical-align:-2px;margin-left:5px;}.recurflag svg{width:100%;height:100%;display:block;}.q247-reel .recurflag{color:#fff;width:1.05em;height:1.05em;}.recurbar{display:flex;justify-content:flex-end;margin:-4px 0 16px;}.recurtoggle{display:inline-flex;align-items:center;gap:7px;color:var(--text-muted);font-family:var(--font-sans);font-size:12.5px;font-weight:600;cursor:pointer;user-select:none;white-space:nowrap;}.recurtoggle:hover{color:var(--text-brand);}.recurtoggle__cb{accent-color:var(--brand);width:15px;height:15px;cursor:pointer;margin:0;flex:none;}.recurtoggle .recurflag{margin-left:0;width:1em;height:1em;}:root[data-hiderecur="1"] #akce .tlcard.is-recurring,:root[data-hiderecur="1"] #mesicni .qevent.is-recurring{display:none !important;}
+.addev{display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:var(--text-on-brand);font-family:var(--font-sans);font-weight:700;font-size:13px;padding:7px 14px;border-radius:var(--radius-pill);border:0;cursor:pointer;flex:none;margin-left:8px;transition:background .15s;}.addev:hover{background:var(--magenta-600);}.addev svg{width:16px;height:16px;display:block;}.recurflag{display:inline-flex;align-items:center;justify-content:center;width:1em;height:1em;color:var(--text-brand);flex:none;vertical-align:-2px;margin-left:5px;}.recurflag svg{width:100%;height:100%;display:block;}.q247-reel .recurflag{color:#fff;width:1.05em;height:1.05em;}.recurbar{display:flex;justify-content:flex-start;margin:-4px 0 16px;}:root[data-hiderecur="1"] #akce .tlcard.is-recurring,:root[data-hiderecur="1"] #mesicni .qevent.is-recurring{display:none !important;}
 .tlfly{display:flex;flex-direction:column;gap:1px;margin-top:5px;align-items:flex-start;}.tlfly__price{font-family:var(--font-mono);font-size:11.5px;color:var(--text-muted);}
 #tipsheet{align-items:center;}
 /* scroll reveal — adresář "Kam zajít": sloupce postupně (opacity, bez transformace) */
 .kamgrid.kam-reveal .kamcat{opacity:0;}
 .kamgrid.kam-reveal .kamcat.kam-in{opacity:1;transition:opacity .6s ease;}
+.recurtoggle{display:inline-flex;align-items:center;font-family:var(--font-sans);font-size:12.5px;font-weight:600;color:var(--text-link);text-decoration:underline;text-underline-offset:2px;cursor:pointer;background:none;border:none;padding:0;}.recurtoggle:hover{color:var(--text-brand);}.a2hsheet__card{box-sizing:border-box;}.a2hsheet__card p{overflow-wrap:anywhere;}.q247-reel__art{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);font-size:clamp(150px,42vw,280px);line-height:1;opacity:.2;z-index:0;pointer-events:none;}.q247-reel .recurflag{position:absolute;top:calc(96px + env(safe-area-inset-top));right:14px;z-index:4;width:16px;height:16px;color:rgba(255,255,255,.62);margin:0;}@media(max-width:560px){.addev span{display:none;}}@media(max-width:480px){.a2hsheet{padding:0 12px 16px;}.a2hsheet__card{padding:18px 16px;}}
 </style>
 </head>
 <body>
@@ -862,43 +863,25 @@ html{background:var(--color-bg);}
   <div id="q247-reels-hint" class="q247-reels-hint">Posuň nahoru ↑</div>
   <!-- DENNÍ RUTINA: jeden <section class="q247-reel"> na KAŽDOU dnešní akci z „Příštích 5 dní" -->
   <section class="q247-reel" style="background:radial-gradient(130% 90% at 12% 0%,rgba(124,92,246,.55),transparent 58%),radial-gradient(120% 95% at 100% 100%,rgba(236,72,153,.5),transparent 55%),linear-gradient(155deg,#241048,#120a1e 72%)">
-    <div class="q247-reel__scrim"></div>
+    <div class="q247-reel__scrim"></div><div class="q247-reel__art">🏳️‍🌈</div>
     <span class="dnesbadge">DNES</span>
     <div class="q247-reel__content">
-      <span class="q247-reel__eyebrow">DNES · 15:00</span>
-      <h2 class="q247-reel__title">Otevřený čtvrtek <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h2>
+      <span class="q247-reel__eyebrow">DNES · 17:00 · Zdarma</span>
+      <h2 class="q247-reel__title">Deskohraní</h2>
       <p class="q247-reel__sub">Komunitní centrum · Praha</p>
-      <a class="q247-reel__link" href="https://www.praguepride.com/kc-program/otevreny-ctvrtek-cz-en/2026-06-18/" target="_blank" rel="noopener">Zobrazit detail →</a>
-    </div>
-  </section>
-  <section class="q247-reel" style="background:radial-gradient(120% 90% at 85% 5%,rgba(236,72,153,.55),transparent 56%),radial-gradient(120% 95% at 0% 100%,rgba(59,130,246,.5),transparent 58%),linear-gradient(155deg,#2a0f3a,#120a1e 72%)">
-    <div class="q247-reel__scrim"></div>
-    <span class="dnesbadge">DNES</span>
-    <div class="q247-reel__content">
-      <span class="q247-reel__eyebrow">DNES · 18:00</span>
-      <h2 class="q247-reel__title">Make-up tipy s M·A·C</h2>
-      <p class="q247-reel__sub">Komunitní centrum · Praha</p>
-      <a class="q247-reel__link" href="https://www.praguepride.com/kc-program/make-up-tipy-a-triky-s-m%c2%b7a%c2%b7c-make-up-tips-and-tricks-with-m%c2%b7a%c2%b7c-cz-en/" target="_blank" rel="noopener">Zobrazit detail →</a>
-    </div>
-  </section>
-  <section class="q247-reel" style="background:radial-gradient(120% 90% at 15% 5%,rgba(21,160,90,.5),transparent 56%),radial-gradient(120% 95% at 100% 100%,rgba(59,130,246,.5),transparent 58%),linear-gradient(155deg,#10233a,#0b0f1e 72%)">
-    <div class="q247-reel__scrim"></div>
-    <span class="dnesbadge">DNES</span>
-    <div class="q247-reel__content">
-      <span class="q247-reel__eyebrow">DNES · 19:00</span>
-      <h2 class="q247-reel__title">Out and Run <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h2>
-      <p class="q247-reel__sub">Výstaviště · běh 5 km · Praha</p>
-      <a class="q247-reel__link" href="https://www.instagram.com/out_a_run/" target="_blank" rel="noopener">Zobrazit detail →</a>
+      <div class="q247-reel__desc"><ul><li>Deskovky, karty a dobrá parta v KáCéčku</li><li>Pohodový start a snadné téma k řeči</li><li>Vstup zdarma, přijď sám/sama</li></ul></div>
+      <a class="q247-reel__link" href="https://www.praguepride.com/kc-program/deskohrani-cz-en-3/2026-06-19/" target="_blank" rel="noopener">Zobrazit detail →</a>
     </div>
   </section>
   <section class="q247-reel" style="background:radial-gradient(130% 90% at 100% 0%,rgba(255,122,24,.5),transparent 56%),radial-gradient(120% 95% at 0% 100%,rgba(214,36,140,.55),transparent 58%),linear-gradient(155deg,#2a1024,#150a12 72%)">
-    <div class="q247-reel__scrim"></div>
+    <div class="q247-reel__scrim"></div><div class="q247-reel__art">🎉</div>
     <span class="dnesbadge">DNES</span>
     <div class="q247-reel__content">
       <span class="q247-reel__eyebrow">DNES · 22:00</span>
-      <h2 class="q247-reel__title">Drag &amp; Travesti show <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></h2>
+      <h2 class="q247-reel__title">Hot NaviGAYtion night</h2>
       <p class="q247-reel__sub">Friends Club · Praha</p>
-      <a class="q247-reel__link" href="https://friendsclub.cz/program/2026-06-18-drag-travesto-show-by-smokeekween-kimberley" target="_blank" rel="noopener">Zobrazit detail →</a>
+      <div class="q247-reel__desc">Páteční párty ve Friends — DJ Franta, hosteska Bájí a tanec až do rána.</div>
+      <a class="q247-reel__link" href="https://friendsclub.cz/program/2026-06-19-hot-navigaytion-night" target="_blank" rel="noopener">Jdu tam →</a>
     </div>
   </section>
 </div>
@@ -943,42 +926,42 @@ html{background:var(--color-bg);}
   <!-- HERO + FEATURED -->
   <section class="hero">
     <div>
-      <p class="hero__eyebrow">Čtvrtek 18. června 2026</p>
-      <h1 class="hero__title">Pride Month jede dál a horký letní čtvrtek (~29 °C) volá ven — na queer běh kolem Výstaviště, drag noc ve Friends i make-up s M·A·C v komunitním centru. Ať žije <em>Pride Month.</em></h1>
+      <p class="hero__eyebrow">Pátek 19. června 2026</p>
+      <h1 class="hero__title">Tropický páteční večer (~33 °C) volá ven — deskovky v KáCéčku i Hot NaviGAYtion noc ve <em>Friends.</em></h1>
       <p class="hero__lead">Živý průvodce queer komunitou v Česku — akce, kluby, kavárny a kultura. Aktualizováno každý den, psané pro lidi.</p>
       <div class="hero__cta">
         <a class="qbtn qbtn--pride qbtn--lg" href="#akce"><i data-lucide="calendar-heart"></i> Dnešní program</a>
         <a class="qbtn qbtn--secondary qbtn--lg" href="#kam">Kam zajít</a>
       </div>
-      <p class="hero__updated"><span class="dotlive"></span>Naživo · poslední aktualizace dnes v 6:30</p>
+      <p class="hero__updated"><span class="dotlive"></span>Naživo · poslední aktualizace dnes v 8:45</p>
     </div>
 
     <article class="feat">
-      <div class="feat__photo" style="background-image:url('https://friendsclub.cz/uploads/events/bannery/2026/06/715404925-1464325882394726-6845463982525202871-n.webp');background-size:cover;background-position:center"></div>
+      <div class="feat__photo" style="background-image:url('https://friendsclub.cz/uploads/events/bannery/2026/04/672142371-1417906353703346-8157487935319085041-n.webp');background-size:cover;background-position:center"></div>
       <div class="feat__body">
         <div class="feat__row">
           <span class="qbadge qbadge--pride qbadge--md">TIP DNE</span>
-          <span class="qbadge t-neutral qbadge--md">Drag show</span>
+          <span class="qbadge t-neutral qbadge--md">Párty</span>
         </div>
-        <p class="feat__lead">Čtvrteční noc patří lesku a humoru. Smokee Kween a Kimberley rozjedou ve Friends drag/travesti show plnou převleků, playbacku a šťavnatých hlášek — a po ní se tančí až do rána. Ideální večer, kdy se zasměješ, povzbudíš umělkyně a snadno potkáš nové lidi.</p>
-        <h3 class="feat__title">Drag &amp; Travesti show</h3>
+        <p class="feat__lead">Páteční noc ve Friends nabere kurz na parket. Hot NaviGAYtion night s DJ Frantou a hosteskou Bájí rozjede tropický večer plný popu i tanečních hitů — a tančí se až do rána. Ideální večer, kdy vypneš mobil, dáš drink na baru a snadno potkáš nové lidi.</p>
+        <h3 class="feat__title">Hot NaviGAYtion night</h3>
         <div class="feat__meta">
-          <span class="feat__metaItem"><i data-lucide="calendar"></i>Čt 18. 6.</span>
+          <span class="feat__metaItem"><i data-lucide="calendar"></i>Pá 19. 6.</span>
           <span class="feat__metaItem"><i data-lucide="clock"></i>22:00–06:00</span>
           <span class="feat__metaItem"><i data-lucide="map-pin"></i>Friends Club, Praha</span>
         </div>
         <div class="feat__foot">
           <div class="feat__hosts">
             <span class="qav qav--sm">FC</span>
-            <span class="feat__hostlabel">Friends Club · Smokee Kween &amp; Kimberley</span>
+            <span class="feat__hostlabel">Friends Club · DJ Franta &amp; Bájí</span>
           </div>
-          <a class="qbtn qbtn--primary qbtn--sm" href="https://friendsclub.cz/program/2026-06-18-drag-travesto-show-by-smokeekween-kimberley" target="_blank" rel="noopener">Detail akce <i data-lucide="arrow-right"></i></a>
+          <a class="qbtn qbtn--primary qbtn--sm" href="https://friendsclub.cz/program/2026-06-19-hot-navigaytion-night" target="_blank" rel="noopener">Detail akce <i data-lucide="arrow-right"></i></a>
         </div>
       </div>
     </article>
   </section>
 
-  <!-- "Věděli jste, že…" pásek: generuje se POUZE ve dny významně spjaté s LGBT+ komunitou (cca 1–2× týdně). Denní task rozhoduje podle data; jinak se pásek vynechá. Dnes (17. 6.) bez konkrétní vazby → vynecháno. -->
+  <!-- "Věděli jste, že…" pásek: generuje se POUZE ve dny významně spjaté s LGBT+ komunitou (cca 1–2× týdně). Denní task rozhoduje podle data; jinak se pásek vynechá. Dnes (19. 6.) bez konkrétní vazby → vynecháno. -->
 
   <!-- PŘÍŠTÍCH 5 DNÍ -->
   <section class="sec" id="akce">
@@ -988,33 +971,9 @@ html{background:var(--color-bg);}
         <h2 class="sectitle">Příštích 5 dní</h2>
         <p class="secsub">Co se děje dnes a v nejbližších dnech — kluby, párty, sport i komunitní akce. Opakující se akce poznáš podle ikony opakování.</p>
       </div>
-      <a class="secaction" href="#mesicni">Celý kalendář <i data-lucide="arrow-right"></i></a>
     </div>
-    <div class="recurbar"><label class="recurtoggle"><input type="checkbox" class="recurtoggle__cb" data-recur-toggle checked><span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span> <span class="recurtoggle__label">Včetně opakujících se akcí</span></label></div>
+    <div class="recurbar"><a class="recurtoggle" data-recur-toggle role="button" tabindex="0"><span class="recurtoggle__label">Zobrazit opakující se události</span></a></div>
     <div class="tl tl5">
-        <div class="tlcol">
-          <div class="tldate"><span class="tlwd">ČTVRTEK</span><span class="tlnum"><span class="tlday">18</span><span class="tlmo">ČVN</span></span></div>
-          <div class="tlcard is-recurring">
-            <span class="tlcard__time">15:00 · Zdarma</span>
-            <a class="tlcard__name" href="https://www.praguepride.com/kc-program/otevreny-ctvrtek-cz-en/2026-06-18/" target="_blank" rel="noopener">Otevřený čtvrtek <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></a>
-            <span class="tlcard__sub">Komunitní centrum · Praha</span>
-          </div>
-          <div class="tlcard">
-            <span class="tlcard__time">18:00</span>
-            <a class="tlcard__name" href="https://www.praguepride.com/kc-program/make-up-tipy-a-triky-s-m%c2%b7a%c2%b7c-make-up-tips-and-tricks-with-m%c2%b7a%c2%b7c-cz-en/" target="_blank" rel="noopener">Make-up tipy a triky s M·A·C</a>
-            <span class="tlcard__sub">Komunitní centrum · Praha</span>
-          </div>
-          <div class="tlcard is-recurring">
-            <span class="tlcard__time">19:00 · Zdarma</span>
-            <a class="tlcard__name" href="https://www.instagram.com/out_a_run/" target="_blank" rel="noopener">Out and Run <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></a>
-            <span class="tlcard__sub">Výstaviště · běh 5 km · Praha</span>
-          </div>
-          <div class="tlcard is-recurring">
-            <span class="tlcard__time">22:00</span>
-            <a class="tlcard__name" href="https://friendsclub.cz/program/2026-06-18-drag-travesto-show-by-smokeekween-kimberley" target="_blank" rel="noopener">Drag &amp; Travesti show <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></a>
-            <span class="tlcard__sub">Friends Club · Praha</span>
-          </div>
-        </div>
         <div class="tlcol">
           <div class="tldate"><span class="tlwd">PÁTEK</span><span class="tlnum"><span class="tlday">19</span><span class="tlmo">ČVN</span></span></div>
           <div class="tlcard">
@@ -1023,7 +982,7 @@ html{background:var(--color-bg);}
             <span class="tlcard__sub">Komunitní centrum · Praha</span>
           </div>
           <div class="tlcard">
-            <span class="tlcard__time">21:00</span>
+            <span class="tlcard__time">22:00</span>
             <a class="tlcard__name" href="https://friendsclub.cz/program/2026-06-19-hot-navigaytion-night" target="_blank" rel="noopener">Hot NaviGAYtion night</a>
             <span class="tlcard__sub">Friends Club · Praha</span>
           </div>
@@ -1039,11 +998,6 @@ html{background:var(--color-bg);}
             <span class="tlcard__time">21:00</span>
             <a class="tlcard__name" href="https://friendsclub.cz/program/2026-06-20-oldies-but-not-old-enough" target="_blank" rel="noopener">Oldies but not old enough! 🔥</a>
             <span class="tlcard__sub">Friends Club · Praha</span>
-          </div>
-          <div class="tlcard">
-            <span class="tlcard__time"><img class="flagimg sm" src="https://flagcdn.com/fr.svg" alt="Francie"> Pride</span>
-            <a class="tlcard__name" href="https://www.inter-lgbt.org/" target="_blank" rel="noopener">Marche des Fiertés</a>
-            <span class="tlcard__sub">Paříž · průvod 27. 6.</span>
           </div>
         </div>
         <div class="tlcol">
@@ -1062,6 +1016,14 @@ html{background:var(--color-bg);}
             <span class="tlcard__sub">Friends Club · Praha</span>
           </div>
         </div>
+        <div class="tlcol">
+          <div class="tldate"><span class="tlwd">ÚTERÝ</span><span class="tlnum"><span class="tlday">23</span><span class="tlmo">ČVN</span></span></div>
+          <div class="tlcard is-recurring">
+            <span class="tlcard__time">21:00</span>
+            <a class="tlcard__name" href="https://friendsclub.cz/program/2026-06-23-karaoke-night" target="_blank" rel="noopener">Karaoke Night <span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span></a>
+            <span class="tlcard__sub">Friends Club · Praha</span>
+          </div>
+        </div>
       </div>
   </section>
 
@@ -1071,9 +1033,9 @@ html{background:var(--color-bg);}
       <div class="tip__bg" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Riegrovy_sady3.jpg');background-size:cover;background-position:center"></div>
       <div class="tip__overlay"></div>
       <p class="eyebrow">PÁROVÁNÍ</p>
-      <h3>Horký letní čtvrtek? Zavři foťák a vyraž ven — město dnes hraje pro tebe.</h3>
-      <p>Praha si dnes užívá skoro letní den, kolem ~29 °C a skoro jasno — ideál na večer venku. Po práci sedneš na zahrádku na Vinohradech nebo ve Vršovicích, dáš skleničku v Riegrových sadech, projdeš se parkem a snadno začneš s někým řeč. V Pride Month je atmosféra ve městě otevřená — využij to.</p>
-      <p>Nejlepší tip dne pro seznámení naživo: v 19:00 vybíhá z Výstaviště queer běžecká parta <a href="https://www.instagram.com/out_a_run/" target="_blank" rel="noopener">Out and Run</a> (5 km, pohodové tempo a po běhu pokec), a od 22:00 rozjede Friends <a href="https://friendsclub.cz/program/2026-06-18-drag-travesto-show-by-smokeekween-kimberley" target="_blank" rel="noopener">Drag &amp; Travesti show</a> se Smokee Kween a Kimberley. A kdo radši online, najde nejvíc lidí na <a href="https://www.grindr.com" target="_blank" rel="noopener">Grindru</a>, <a href="https://bumble.com" target="_blank" rel="noopener">Bumble</a> nebo <a href="https://tinder.com" target="_blank" rel="noopener">Tinderu</a> — ale dnes to ven fakt stojí. 💛</p>
+      <h3>Tropický pátek (~33 °C)? Vypni foťák a vyraž k vodě — Praha dnes hraje pro tebe.</h3>
+      <p>Praha si dnes užívá tropický den, kolem ~33 °C a jasno — ideál na večer venku. Po práci to vezmi na náplavku nebo do pivní zahrádky v Riegrových sadech, dej skleničku, projdi se a snadno začneš s někým řeč.</p>
+      <p>Nejlepší tip dne pro seznámení naživo: od 17:00 jsou v KáCéčku <a href="https://www.praguepride.com/kc-program/deskohrani-cz-en-3/2026-06-19/" target="_blank" rel="noopener">Deskovky</a> (pohodový start a snadné téma k řeči), a od 22:00 rozjede Friends <a href="https://friendsclub.cz/program/2026-06-19-hot-navigaytion-night" target="_blank" rel="noopener">Hot NaviGAYtion night</a> s DJ Frantou. A kdo radši online, najde nejvíc lidí na <a href="https://www.grindr.com" target="_blank" rel="noopener">Grindru</a>, <a href="https://bumble.com" target="_blank" rel="noopener">Bumble</a> nebo <a href="https://tinder.com" target="_blank" rel="noopener">Tinderu</a> — ale dnes to ven fakt stojí. 💛</p>
     </div>
   </section>
 
@@ -1113,17 +1075,12 @@ html{background:var(--color-bg);}
       </div>
     </div>
 
-    <div class="recurbar"><label class="recurtoggle"><input type="checkbox" class="recurtoggle__cb" data-recur-toggle checked><span class="recurflag" title="Opakující se akce" aria-label="Opakující se akce"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg></span> <span class="recurtoggle__label">Včetně opakujících se akcí</span></label></div>
+    <div class="recurbar"><a class="recurtoggle" data-recur-toggle role="button" tabindex="0"><span class="recurtoggle__label">Zobrazit opakující se události</span></a></div>
     <div class="month__head">
       <span class="month__name">🌧️ Červen 2026</span>
       <span class="month__quip">Léto v komunitě i na parketu: podpůrné skupiny, deskovky, make-up workshop, knižní klub, procházka s Logosem i drag noci ve Friends.</span>
     </div>
     <div class="monthgroup">
-      <a class="qevent" href="https://www.praguepride.com/kc-program/make-up-tipy-a-triky-s-m%c2%b7a%c2%b7c-make-up-tips-and-tricks-with-m%c2%b7a%c2%b7c-cz-en/" target="_blank" rel="noopener">
-        <span class="qtime"><span class="wd">ČT</span><span class="day">18</span><span class="mo">ČVN</span><span class="tm">18:00</span></span>
-        <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Make-up tipy a triky s M·A·C</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Komunitní centrum · Praha</span><div class="qevent__tags"><span class="qbadge t-neutral">Workshop</span><span class="qbadge t-neutral">Beauty</span></div></div>
-        <div class="qevent__side"><span class="qevent__chev"><i data-lucide="chevron-right"></i></span></div>
-      </a>
       <a class="qevent" href="https://www.praguepride.com/kc-program/deskohrani-cz-en-3/2026-06-19/" target="_blank" rel="noopener">
         <span class="qtime"><span class="wd">PÁ</span><span class="day">19</span><span class="mo">ČVN</span><span class="tm">17:00</span></span>
         <div class="qevent__main"><div class="qevent__top"><h3 class="qevent__title">Deskohraní</h3></div><span class="qevent__venue"><i data-lucide="map-pin"></i>Komunitní centrum · Praha</span><div class="qevent__tags"><span class="qbadge t-success">Zdarma</span><span class="qbadge t-neutral">Hry</span><span class="qbadge t-neutral">Komunita</span></div></div>
@@ -1796,7 +1753,7 @@ html{background:var(--color-bg);}
  <div class="kamitem"><a href="https://www.skoda-kariera.cz/" target="_blank" rel="noopener">Škoda Auto</a> <span class="kammeta">— <span class="emptier emptier--bronze">Bronze · 75,5</span></span></div>
  <div class="kamitem"><a href="https://kariera.itesco.cz/" target="_blank" rel="noopener">Tesco</a> <span class="kammeta">— <span class="emptier emptier--bronze">Bronze · 71</span></span></div>
  </div>
- <div class="kamnote">Firmy oceněné <a href="https://www.pridebusinessforum.com/oceneni-lgbtq-friendly-employer/" target="_blank" rel="noopener">Pride Business Forum</a> jako LGBTQ+ Friendly Employer (2025) — s hodnocením inkluze na pracovišti. Otevřené pozice najdeš na jejich kariérních stránkách; inkluzivní nabídky i na <a href="https://www.mygwork.com/" target="_blank" rel="noopener">myGwork</a>.</div>
+ <div class="kamnote">Firmy oceněné <a href="https://www.pridebusinessforum.com/oceneni-lgbtq-friendly-employer/" target="_blank" rel="noopener">Pride Business Forum</a> jako LGBTQ+ Friendly Employer (2025). Další inkluzivní nabídky na <a href="https://www.mygwork.com/" target="_blank" rel="noopener">myGwork</a>.</div>
  </div>
  </div>
  </section>
@@ -1822,8 +1779,7 @@ html{background:var(--color-bg);}
   </section>
 
   <div class="rights">
-      Ne všude je duha samozřejmost. Ve velké části světa jsou stejnopohlavní vztahy dodnes nezákonné a v desítkách zemí za ně hrozí vězení i trest smrti. To, co je tady v Evropě běžné, je jinde odvaha. Mrkni do <a href="https://database.ilga.org/en" target="_blank" rel="noopener">databáze LGBT práv ILGA World</a> nebo na <a href="https://rainbowmap.ilga-europe.org/" target="_blank" rel="noopener">Rainbow Map Evropy</a> — a buďme na sebe a k sobě navzájem laskaví. A hrdí.
-    </div>
+      Ne všude je duha samozřejmost. Ve velké části světa jsou stejnopohlavní vztahy dodnes nezákonné a v desítkách zemí za ně hrozí vězení i trest smrti. To, co je tady v Evropě běžné, je jinde odvaha. Víc v <a href="https://database.ilga.org/en" target="_blank" rel="noopener">databázi ILGA World</a> a na <a href="https://rainbowmap.ilga-europe.org/" target="_blank" rel="noopener">Rainbow Map Evropy</a>. </div>
 
 </div><!-- /wrap -->
 
@@ -2001,9 +1957,9 @@ document.querySelectorAll('[data-lang]').forEach(function(a){
   var isMobile = matchMedia('(max-width:768px)').matches;
   var key = 'q247-reels-' + new Date().toISOString().slice(0,10);
   var cards = reels.querySelectorAll('.q247-reel');
-  function close(){ reels.classList.remove('is-open'); var b=document.body, d=document.documentElement; window.scrollTo(0,0); if(d)d.scrollTop=0; if(b)b.scrollTop=0; b.style.position='fixed'; b.style.top='0'; b.style.left='0'; b.style.right='0'; b.style.width='100%'; b.style.overflow='hidden'; var done=false; function unlock(){ if(done)return; done=true; b.style.position=''; b.style.top=''; b.style.left=''; b.style.right=''; b.style.width=''; b.style.overflow=''; window.scrollTo(0,0); window.removeEventListener('touchstart',oi); window.removeEventListener('wheel',oi); window.removeEventListener('keydown',oi); } function oi(){ unlock(); } setTimeout(function(){ window.addEventListener('touchstart',oi,{passive:true}); window.addEventListener('wheel',oi,{passive:true}); window.addEventListener('keydown',oi); }, 350); setTimeout(unlock, 6000); try{ localStorage.setItem(key,'1'); }catch(e){} }
+  function close(){ reels.classList.remove('is-open'); var _m=document.querySelector('meta[name="theme-color"]'); if(_m){ var _p=reels.getAttribute('data-prevtc'); _m.setAttribute('content', _p || getComputedStyle(document.documentElement).getPropertyValue('--color-bg').trim() || '#130a10'); } var b=document.body, d=document.documentElement; window.scrollTo(0,0); if(d)d.scrollTop=0; if(b)b.scrollTop=0; b.style.position='fixed'; b.style.top='0'; b.style.left='0'; b.style.right='0'; b.style.width='100%'; b.style.overflow='hidden'; var done=false; function unlock(){ if(done)return; done=true; b.style.position=''; b.style.top=''; b.style.left=''; b.style.right=''; b.style.width=''; b.style.overflow=''; window.scrollTo(0,0); window.removeEventListener('touchstart',oi); window.removeEventListener('wheel',oi); window.removeEventListener('keydown',oi); } function oi(){ unlock(); } setTimeout(function(){ window.addEventListener('touchstart',oi,{passive:true}); window.addEventListener('wheel',oi,{passive:true}); window.addEventListener('keydown',oi); }, 350); setTimeout(unlock, 6000); try{ localStorage.setItem(key,'1'); }catch(e){} }
   if (isMobile && cards.length) {  /* TESTING: zobrazit pokaždé */
-    reels.classList.add('is-open'); document.body.style.overflow='hidden';
+    reels.classList.add('is-open'); document.body.style.overflow='hidden'; var _m=document.querySelector('meta[name="theme-color"]'); if(_m){ reels.setAttribute('data-prevtc', _m.getAttribute('content')||''); _m.setAttribute('content','#130a10'); }
     var x = document.getElementById('q247-reels-close'); if (x) x.addEventListener('click', close);
     var hint = document.getElementById('q247-reels-hint');
     if (hint && cards.length>1) hint.classList.add('show');
@@ -2023,11 +1979,11 @@ document.querySelectorAll('[data-lang]').forEach(function(a){
     document.querySelectorAll('[data-tip-open]').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();o();});});
     sheet.addEventListener('click',function(e){if(e.target===sheet||e.target.hasAttribute('data-tip-close'))c();});
     document.addEventListener('keydown',function(e){if(e.key==='Escape')c();}); }
-  var K='q247-hiderecur',root=document.documentElement;
-  function g(){ try{return localStorage.getItem(K)==='1';}catch(e){return false;} }
-  function ap(h){ root.setAttribute('data-hiderecur',h?'1':'0'); document.querySelectorAll('[data-recur-toggle]').forEach(function(cb){ cb.checked=!h; }); }
+  var K='q247-hiderecur',root=document.documentElement,SHOW="Zobrazit opakující se události",HIDE="Skrýt opakující se události";
+  function g(){ try{var v=localStorage.getItem(K);return v===null?true:v==='1';}catch(e){return true;} }
+  function ap(h){ root.setAttribute('data-hiderecur',h?'1':'0'); document.querySelectorAll('[data-recur-toggle] .recurtoggle__label').forEach(function(l){ l.textContent=h?SHOW:HIDE; }); }
   function st(h){ try{localStorage.setItem(K,h?'1':'0');}catch(e){} ap(h); }
-  document.querySelectorAll('[data-recur-toggle]').forEach(function(cb){ cb.addEventListener('change',function(){ st(!cb.checked); }); });
+  document.querySelectorAll('[data-recur-toggle]').forEach(function(b){ b.addEventListener('click',function(e){ e.preventDefault(); st(root.getAttribute('data-hiderecur')!=='1'); }); });
   ap(g());
 })();
 </script>
@@ -2052,6 +2008,7 @@ document.querySelectorAll('[data-lang]').forEach(function(a){
   io.observe(grid);
 })();
 </script>
+<!-- q247:lastrun 2026-06-19T08:45:00+02:00 -->
 </body>
 </html>
-                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
