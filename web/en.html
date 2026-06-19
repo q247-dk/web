@@ -856,6 +856,7 @@ html{background:var(--color-bg);}
 .recurtoggle{display:inline-flex;align-items:center;font-family:var(--font-sans);font-size:12.5px;font-weight:600;color:var(--text-link);text-decoration:underline;text-underline-offset:2px;cursor:pointer;background:none;border:none;padding:0;}.recurtoggle:hover{color:var(--text-brand);}.a2hsheet__card{box-sizing:border-box;}.a2hsheet__card p{overflow-wrap:anywhere;}.q247-reel__art{position:absolute;left:50%;top:30%;transform:translate(-50%,-50%);font-size:clamp(170px,48vw,320px);line-height:1;opacity:.32;z-index:0;pointer-events:none;}.q247-reel .recurflag{position:absolute;top:calc(96px + env(safe-area-inset-top));right:14px;z-index:4;width:16px;height:16px;color:rgba(255,255,255,.62);margin:0;}@media(max-width:560px){.addev span{display:none;}}@media(max-width:480px){.a2hsheet{padding:0 12px 16px;}.a2hsheet__card{padding:18px 16px;}}
 /* MĚSÍC PO MĚSÍCI — responzivní mřížka ~5/řádek, kompaktní karty, bez vodorovného scrollu */.monthgroup{display:grid !important;grid-template-columns:repeat(auto-fill,minmax(190px,1fr)) !important;gap:12px;}.monthgroup .qevent{flex-direction:column;align-items:stretch;gap:9px;padding:13px;height:100%;}.monthgroup .qtime{width:auto;min-height:0;flex-direction:row;align-items:baseline;justify-content:flex-start;gap:5px;padding:4px 9px;align-self:flex-start;}.monthgroup .qtime .day{font-size:15px;margin:0;}.monthgroup .qtime .wd,.monthgroup .qtime .mo{font-size:10px;margin:0;}.monthgroup .qtime .tm{font-size:10px;margin:0 0 0 3px;}.monthgroup .qevent__title{font-size:1rem;line-height:1.16;}.monthgroup .qevent__venue{font-size:.74rem;}.monthgroup .qevent__tags{display:none;}.monthgroup .qevent__side{display:none;}
 /* MĚSÍČNÍ OSA — stejné karty jako „Příštích 5 dní", ale ZALAMOVANÁ mřížka (bez vodorovného scrollu) */.tl--wrap{display:grid !important;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;overflow:visible !important;padding:4px 0 10px;scroll-snap-type:none;}.tl--wrap .tlcol{flex:none !important;width:auto !important;}
+/* Kde pracovat — štítky Gold/Silver/Bronze: nenápadné, sekundární (jen tlumený text + drobná tečka) */.emptier{background:none !important;border:0 !important;color:var(--text-faint) !important;font-weight:600 !important;font-size:10.5px !important;padding:0 !important;gap:5px !important;letter-spacing:.02em !important;}.emptier::before{width:6px !important;height:6px !important;opacity:.85;background:#a7adb8 !important;}.emptier--gold::before{background:#c9a227 !important;}.emptier--silver::before{background:#a7adb8 !important;}.emptier--bronze::before{background:#b07a45 !important;}
 </style>
 </head>
 <body>
@@ -1406,7 +1407,7 @@ html{background:var(--color-bg);}
  <div class="kamcat">
  <h3 class="kamcat__h">Daytime coffee</h3>
  <div class="kamlist">
- <div class="kamitem"><a href="https://www.cafecafe.cz/" target="_blank" rel="noopener">Café Cafe</a> <span class="kammeta">— Prague-Old Town · design café, cakes</span></div>
+ <div class="kamitem"><a href="https://www.cafecafe.cz/" target="_blank" rel="noopener">Café Cafe</a> <span class="kammeta">— Prague-Old Town · design café</span></div>
  <div class="kamitem"><a href="https://www.cafefelix.cz/en/" target="_blank" rel="noopener">Café Felix</a> <span class="kammeta">— Prague-Vinohrady · brunch café</span></div>
  <div class="kamitem"><a href="https://www.patrakrymska.cz/" target="_blank" rel="noopener">Patra</a> <span class="kammeta">— Prague-Vršovice · café, bar &amp; gallery</span></div>
  <div class="kamitem"><a href="http://q-cafe.cz/" target="_blank" rel="noopener">Q Café</a> <span class="kammeta">— Prague-Old Town · small LGBT café-bar</span></div>
@@ -1433,13 +1434,13 @@ html{background:var(--color-bg);}
  <div class="kamlist">
  <div class="kamitem"><a href="https://www.alcedopraha.cz/" target="_blank" rel="noopener">Alcedo Praha</a> <span class="kammeta">— Prague · biggest LGBT sports club</span></div>
  <div class="kamitem"><a href="http://aquamen.eu/" target="_blank" rel="noopener">Aquamen</a> <span class="kammeta">— Prague · LGBT swim team</span></div>
- <div class="kamitem"><a href="https://www.instagram.com/buddy.hiking.club/" target="_blank" rel="noopener">Buddy Hiking Club</a> <span class="kammeta">— online · queer hiking &amp; trips · Instagram</span></div>
+ <div class="kamitem"><a href="https://www.instagram.com/buddy.hiking.club/" target="_blank" rel="noopener">Buddy Hiking Club</a> <span class="kammeta">— online · queer hiking &amp; trips</span></div>
  <div class="kamitem"><a href="http://gaysport.cz/" target="_blank" rel="noopener">GaySport.cz</a> <span class="kammeta">— Prague · casual crew, various sports</span></div>
  <div class="kamitem"><a href="https://www.nakluky.cz/organizace/item/67-gfc-prague-friends/" target="_blank" rel="noopener">GFC Prague Friends</a> <span class="kammeta">— Prague · gay football club</span></div>
  <div class="kamitem"><a href="https://www.nakluky.cz/organizace/item/20-go-outdoor-praha/" target="_blank" rel="noopener">Go outdoor Praha</a> <span class="kammeta">— Prague · bike, ski, treks, water</span></div>
  <div class="kamitem"><a href="https://www.nakluky.cz/organizace/item/21-golfsky-proud/" target="_blank" rel="noopener">Golfský proud</a> <span class="kammeta">— Brno · swimming</span></div>
  <div class="kamitem"><a href="https://www.kluci-na-kole.cz/" target="_blank" rel="noopener">Kluci na kole</a> <span class="kammeta">— Brno/Moravia · bike rides &amp; trips</span></div>
- <div class="kamitem"><a href="https://www.instagram.com/out_a_run/" target="_blank" rel="noopener">Out a run</a> <span class="kammeta">— Prague · queer running group · Instagram</span></div>
+ <div class="kamitem"><a href="https://www.instagram.com/out_a_run/" target="_blank" rel="noopener">Out a run</a> <span class="kammeta">— Prague · queer running group</span></div>
  <div class="kamitem"><a href="https://www.nakluky.cz/organizace/item/53-prague-friendly-tennis-open/" target="_blank" rel="noopener">Prague Friendly Tennis</a> <span class="kammeta">— Prague · tennis, GLTA</span></div>
  <div class="kamitem"><a href="https://praguerainbow.eu/" target="_blank" rel="noopener">Prague Rainbow Spring</a> <span class="kammeta">— Prague · LGBT sports weekend</span></div>
  </div>
@@ -1452,14 +1453,14 @@ html{background:var(--color-bg);}
  <div class="kamitem"><a href="https://www.jsmefer.cz/" target="_blank" rel="noopener">Jsme fér</a> <span class="kammeta">— Czechia · marriage equality</span></div>
  <div class="kamitem"><a href="https://www.qalendar.cz/series/setkani-logosu-v-praze/" target="_blank" rel="noopener">Logos</a> <span class="kammeta">— Prague · queer Christian community</span></div>
  <div class="kamitem"><a href="https://www.mezipatra.cz/" target="_blank" rel="noopener">Mezipatra</a> <span class="kammeta">— Czechia · queer film festival</span></div>
- <div class="kamitem"><a href="https://www.praguepride.cz/" target="_blank" rel="noopener">Prague Pride</a> <span class="kammeta">— Prague · community centre, book club, board games</span></div>
+ <div class="kamitem"><a href="https://www.praguepride.cz/" target="_blank" rel="noopener">Prague Pride</a> <span class="kammeta">— Prague · community centre & book club</span></div>
  <div class="kamitem"><a href="https://www.queerball.cz/" target="_blank" rel="noopener">Queer Ball</a> <span class="kammeta">— Prague · queer ball</span></div>
  <div class="kamitem"><a href="https://www.queergeography.cz/" target="_blank" rel="noopener">Queer Geography</a> <span class="kammeta">— Czechia · queer history &amp; education</span></div>
- <div class="kamitem"><a href="https://www.qalendar.cz/series/queer-sensitive-joga/" target="_blank" rel="noopener">Queer Sensitive Jóga</a> <span class="kammeta">— Community centre, Prague · yoga</span></div>
+ <div class="kamitem"><a href="https://www.qalendar.cz/series/queer-sensitive-joga/" target="_blank" rel="noopener">Queer Sensitive Jóga</a> <span class="kammeta">— Prague · queer-friendly yoga</span></div>
  <div class="kamitem"><a href="https://www.sbarvouven.cz/" target="_blank" rel="noopener">S barvou ven</a> <span class="kammeta">— Czechia · online · counselling &amp; community</span></div>
  <div class="kamitem"><a href="https://www.stud.cz/" target="_blank" rel="noopener">STUD Brno</a> <span class="kammeta">— Brno · LGBT org</span></div>
- <div class="kamitem"><a href="https://www.qalendar.cz/series/tanecni-lekce/" target="_blank" rel="noopener">Taneční lekce</a> <span class="kammeta">— Community centre, Prague · dance</span></div>
- <div class="kamitem"><a href="https://jsmetransparent.cz/" target="_blank" rel="noopener">Trans*parent</a> <span class="kammeta">— Prague &amp; online · trans* org, support groups</span></div>
+ <div class="kamitem"><a href="https://www.qalendar.cz/series/tanecni-lekce/" target="_blank" rel="noopener">Taneční lekce</a> <span class="kammeta">— Prague · dance classes</span></div>
+ <div class="kamitem"><a href="https://jsmetransparent.cz/" target="_blank" rel="noopener">Trans*parent</a> <span class="kammeta">— Prague &amp; online · trans* org</span></div>
  </div>
  </div>
  <div class="kamcat" id="zdravi">
